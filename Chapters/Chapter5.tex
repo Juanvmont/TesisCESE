@@ -13,41 +13,50 @@
 
 \section{Conclusiones del trabajo realizado}
 
-En la presente memoria de tesis se ha documentado el Trabajo Final para la obtención del grado de \degreename.  Se obtuvo una \keyword{interfaz web} embebida en la plataforma \keyword{CIAA-NXP} que permite monitoriar y controlar un acuario en forma remota. Se pudo modelar y maquetar el comportamiento de un acuario real para obtener una planta piloto que posibilitó el desarrollo del \keyword{firmware} de control.
+En la presente memoria de tesis se ha documentado el Trabajo Final para la obtención del grado de \degreename.  
 
-Se pudo integrar el stack TCP/IP \texttt{lwIP} con el sistema operativo de tiempo real \texttt{freeRTOS} al firmware de control sobre la base de un port desarrollado por el fabricante del microcontrolador, NXP.
+Se obtuvo un \texttt{firmware} que permite monitoriar y controlar un acuario en forma remota mediante una \keyword{interfaz web} embebida en la plataforma \keyword{CIAA-NXP}. Se pudo modelar el comportamiento de un acuario real mediante una ``planta piloto'' para poder avanzar en el desarrollo del \texttt{firmware} de control.
+
+Se pudo integrar el stack TCP/IP \keyword{\texttt{lwIP}} con el sistema operativo de tiempo real \keyword{\texttt{freeRTOS}} al firmware de control sobre la base de un \texttt{port} desarrollado por NXP, fabricante del microcontrolador.
 
 \medskip
 
-Durante el desarrollo de este Trabajo Final se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos.  Si bien el conjunto total me asignaturas cursadas  aportó un conocimiento general de la práctica profesional en el área de los Sistemas Embebidos, se quiere dejar constancia en particular, de las asignaturas con mayor relevancia para el trabajo presentado.
+Durante el desarrollo de este Trabajo Final se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos.  Si bien el conjunto total de asignaturas cursadas  aportaron conocimientos necesarios para la práctica profesional en el área de los Sistemas Embebidos, se quiere dejar constancia en particular, de las asignaturas con mayor relevancia para el trabajo presentado.
 
 \begin{itemize}
 \item
-\textbf{Arquitectura de microprocesadores}. De esta asignatura se emplean los conocimientos adquiridos sobre la arquitectura ARM Cortex M necesarios para implementar en lenguaje \textit{assembler} las funciones que realizan el cambio de contexto, necesarias para que funcione el concepto de Proceso SCJ. 
+\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \keyword{CIAA-NXP} y el uso de los periféricos.  \textit{Algo del mapa de memoria. Algo de las interrupciones.}
 
 \item
-\textbf{Programación de microprocesadores}. De esta asignatura se aprovecha la experiencia sobre lenguaje C para microcontroladores de 32 bits y el manejo de sus periféricos. Fue de especial importancia, debido a que; a excepción de unas pocas, todas las funciones para portar HVM a la CIAA debían realizarse en lenguaje C. Este lenguaje también se utilizó en la creación de  la API para el manejo de periféricos.
+\textbf{Programación de microprocesadores}. Se utilizaron buenas prácticas de programación en Lenguaje C para microcontroladores y periféricos, aprendidas en esta asignatura. Se usó un formato del código consitente: comentarios en las declaraciones de funciones y partes importantes del código, constantes en mayúsculas, \texttt{camelCase} para poner nombres significativos a funciones y variables. Se utilizaron APIs para abstraer distintas capas del código. Se obtuvo un código más legible y reutilizable que puede ser portado a distintas plataformas con menor esfuerzo.
 
 \item
-\textbf{Ingeniería de Software en Sistemas Embebidos}. Se utilizaron técnicas provinientes de la ingeniería de software. Siempre que fue posible se utilizó un método sistemático de desarrollo, para hacer mejor uso de los recursos del proyecto, que aportan calidad y eficiencia la desarrollo. En particular, el diseño iterativo, la utilización de repositorios de software y el diseño modular en capas.
+\textbf{Ingeniería de Software en Sistemas Embebidos}. Se utilizaron técnicas provinientes de la Ingeniería de Software. Siempre que fue posible se utilizó un método sistemático e iterativo de desarrollo pensando en el ciclo de vida del \texttt{software}. Se hizo uso extensivo de \texttt{git} como sistema de control de versiones distribuido del \texttt{software}.  \textit{Algo de diagramas UML.}
 
 \item
-\textbf{Gestión de Proyectos en Ingeniería}. %Durante ésta se desarrolló el Plan de Proyecto del Trabajo Final, permitiendo desde un principio tener una clara planificación del trabajo a realizar. 
+\textbf{Gestión de Proyectos en Ingeniería}. Resultó de mucha utilidad elaborar un Plan de Proyecto para organizar el Trabajo Final.  Parte del material elaborado en esta asignatura se encuentra en la presente memoria. \textit{Definición del proyecto, gestión de tiempos, análisis de riesgos, planificación de tareas.}
 
 \item
-\textbf{Sistemas Operativos de Tiempo Real (I y II)}. %De estas asignaturas se aplica el conocimiento obtenido sobre planificadores de tareas expropiativos y la manera en que trabajan. Esto ha sido muy importante para la realización de este Trabajo Final.
+\textbf{Sistemas Operativos de Tiempo Real (I y II)}. Se aplicaron los conocimientos adquiridos sobre freeRTOS respecto a tareas, cambios de contexto, manejo de colas, semáforos y mutex entre otras cosas.  Asimismo, se utilizaron herramientas de desarrollo propias de \texttt{freeRTOS} para medir el uso de las pilas de las tareas creadas y optimizar el uso de la memoria.
 
 \item 
-\textbf{Protocolos de Comunicación}.
+\textbf{Protocolos de Comunicación}. Se aplicaron ampliamente los conocimientos obtenidos en el área de \texttt{Ethernet}. En particular, resultó muy útil el material sobre el stack tpc/ip \keyword{\texttt{lwIP}}.
+
 \item
-\textbf{Diseño de Sistemas Críticos}.es industriales.
+\textbf{Diseño de Sistemas Críticos}. Siempre que fue posible se utilizon técnicas de programación defensiva para que el comportamiento del \texttt{firmware} resulte lo más predecible posible.  Se buscó obtener un sistema de control que no falle en primer lugar, y que si lo hace, falle en forma segura evitando daños a los seres vivos dentro y fuera del acuario y la propiedad. \textit{Algo sobre Utilización de estándares, MISRA C, C99 y buenas prácticas de programación}.
 \end{itemize}
 
 
 
 \medskip
 
-\noindent También, se han adquirido aprendizajes en las temáticas:
+\noindent Asimismo, se adquirió conocimientos en las áreas de:
+
+\begin{itemize}
+\item Programación en \textbf{\texttt{HTML5}}.
+\item Programación en \textbf{\texttt{Javascript}}.  
+\item Utilización de \textbf{\texttt{linker scripts}} para el entorno de desarrollo \texttt{LPCXpresso}.
+\end{itemize}
 
 
 \medskip
@@ -60,4 +69,23 @@ Por lo tanto, se llega a la conclusión que los objetivos planteados al comenzar
 
 \section{Trabajo futuro}
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
+\textbf{página web:}
+
+portabilidad: versión para distintos dispositivos: teléfonos, tablets, etc
+
+apariencia: diseño escalable para distintas resoluciones de pantalla. 
+
+accesibilidad: integrar mensajes de ayuda describiendo los elementos de interacción con el usuario.
+
+robustez: validación de datos, formularios, etc. 
+
+seguridad: Ingreso con usuario y contraseña a las páginas que permitan hacer cambios en el acuario.
+
+
+\textbf{Planta piloto:}
+
+Utilización de sensores y actuadores reales.
+
+
+
+
