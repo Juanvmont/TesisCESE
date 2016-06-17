@@ -18,28 +18,37 @@
 
 \section{Introducción}
 
-El Acuarismo es una actividad comercial y recreativa ampliamente difundida en la Argentina.  Sus orígenes históricos se remontan a la llegada de los primeros inmigrante europeos, principalmente alemanes que introdujeron las primeras especies de peces, \textit{Scalares}, \textit{Lebistes} y \textit{Bettas} entre otros.
+En el presente trabajo se busca satisfacer una necesidad relacionada con los acuarios. En particular, interesa poder monitorear y controlar un número de variables indicativas del estado del mismo.  Se busca obtener una plataforma que permita visualizar información relevante sobre el estado del acuario y permita actuar sobre las variables cuyas desviaciones respecto a valores de referencia, pueden afectar negativamente al entorno.  Asimismo, se busca facilitar tareas de mantenimiento que se deben realizar rutinariamente y que son de vital importancia para la supervivencia de los seres vivos que habitan en el acuario, principalmente peces, invertebrados y plantas. Detalles referentes a qué son los acuarios serán abordados en la sección \ref{acuario}.
+
+Se implementa un \texttt{firmware} de monitoreo y control sobre una las plataformas de \texttt{hardware} desarrollada por el Proyecto \textit{Computadora Industrial Abierta Argentina}, denominado de ahora en adelante \textbf{\texttt{Proyecto-CIAA}}, en particular la versión \textbf{\texttt{CIAA-NXP}} que utiliza un microprocesador fabricado por la empresa NXP. El Proyecto-CIAA se trata en la sección \ref{proyecto-ciaa}.
+
+Debido a la vasta difusión de las redes de computadoras y la tendencia mundial a incorporar cada día más dispositivos a internet, fenómeno también conocido con el internet de las cosas o IoT (\textit{Internet of Things}) se opta por desarrollar una interfaz web embebida en la \textbf{\texttt{CIAA-NXP}}.  Dicha interfaz es accesible mediante el protocolo \texttt{ethernet} a través de una red de área local LAN y los detalles de la implementación se abordan en la sección \ref{interfaz-web}.
+
+
+
+
+\subsection{¿Qué es un Acuario?}
+\label{acuario}
+
+El Acuarismo o acuariofilia es una actividad comercial y recreativa ampliamente difundida en la Argentina.  Sus orígenes históricos se remontan a la llegada de los primeros inmigrante europeos, principalmente alemanes que introdujeron las primeras especies de peces, \textit{Scalares}, \textit{Lebistes} y \textit{Bettas} entre otros.
 El acuarismo en la Argentina antes de 1950 era materia para exclusivos y muy fanáticos. La mayoría de las especies resultaban muy onerosas y prácticamente sólo los \textit{Carassius} tenían precios accesibles para la mayoría de los potenciales interesados en esta actividad.
 
 Desde la década del 70 a esta parte, se puede apreciar una importante difusión del acuarismo. Surgen nuevas ideas y nuevas publicaciones.  Actualmente, existen numerosas asociaciones de aficionados y publicaciones especializadas, algunas con tiradas de 100.000 ejemplares.  Entre las asociaciones más destacadas podemos nombrar a la Asociación Acuariófila Argentina y El Acuarista, entre otras.
-
-En el presente proyecto se busca satisfacer una necesidad relacionada con los acuarios. En particular, interesa poder monitorear y controlar un número de variables indicativas del estado del mismo.  Se busca obtener una plataforma que permita visualizar información relevante sobre el estado del acuario y permita actuar sobre las variables cuyas desviaciones respecto a valores de referencia, pueden afectar negativamente al entorno.  Asimismo, se busca facilitar tareas de mantenimiento que se deben realizar rutinariamente y que son de vital importancia para la supervivencia de los seres vivos que habitan en el acuario, principalmente peces y plantas.
 
 De conversaciones con personas que practican el acuarismo se tomó conocimiento de la existencia de una necesidad no satisfecha de un equipo electrónico que permita monitoriar y controlar las variables de estado de un acuario.  %En términos muy generales, el equipo a proyectar debería ser capaz de manejar las funciones más básicas de un acuario.  A modo ilustrativo podemos nombrar algunas de ellas: temperatura, fotoperíodo, nivel de agua, alimentación de los peces.
 Las personas consultadas manifestaron no conocer equipos que puedan realizar estas u otras funciones más complejas y que se comercialicen en el mercado local.  
 Asimismo, se consultaron distintos acuarios de capital federal vía e-mail preguntando si tenían a la venta o conocían la existencia de un equipo para satisfacer la necesidad planteada y la respuesta fue abrumadoramente negativa. Como se detallará más adelante, solo dos acuarios dieron respuesta positiva, lo cuál permite afirmar que la necesidad planteada esta, en el peor de los casos, parcialmente satisfecha, y en el mejor, indebidamente satitisfecha.
 
+\begin{figure}[]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/acuarioHobby3.jpg}
+	\label{fig.acuarioHobby}
+	\caption{Acuario de un individuo particular}
+\end{figure}       
 
-\subsection{¿Qué es un Acuario?}
-
-	\begin{figure}[]
-		\centering
-	    \includegraphics[width=.5\textwidth]{./Figures/acuarioHobby3.jpg}
-		\label{fig.acuarioHobby}
-		\caption{Acuario}
-	\end{figure}       
 
 \subsection{¿Qué es el Proyecto CIAA?}
+\label{proyecto-ciaa}
 
 El Proyecto CIAA nació en 2013 como una iniciativa conjunta entre el sector académico y el industrial, representados por la ACSE y CADIEEL, respectivamente.
 Objetivos del proyecto
