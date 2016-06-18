@@ -10,28 +10,72 @@
 
 \section{Trabajo a realizar}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
 
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Objetivo}
+%\subsection{Objetivo}
+\begin{itemize}
 
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
+\item \textbf{Objetivos}:\\
+	Desarrollar un software que permita utilizar la CIAA como un controlador de acuarios. Agregar valor al ecosistema del proyecto-ciaa incorporando nuevas aplicaciones para la misma.
+	
+	\item \textbf{Alcance}:\\
+	El proyecto incluye únicamente el desarrollo de un software de control para la plataforma CIAA.
 
+%	\item \textbf{Criterio de aceptación}:
+%	\begin{itemize}
+%		\item Correcta visualización de todas las variable de estado del sistema enumeradas en el REQ2 mediante una interfaz web.
+%		\item Correcto comportamiento al accionar los actuadores enumerados en el REQ3 desde la interfaz web.
+%	\end{itemize}
+	
+%	\item \textbf{Restricciones}:\\
+%	Finalización del proyecto 15 de diciembre de 2015
+
+	\item \textbf{Suposiciones}:\\
+	Contar con los fondos solicitados al Ministerio de Industria Nacional permitirá costear los sensores y actuadores para armar una planta piloto de desarrollo.  En caso que los fondos no estén disponibles tanto por el rechazo del proyecto presentado como por una demora en los plazos de adjundicación, está contemplado la utilización de simulaciones para emular los elementos que no se hayan podído adquirir.
+	
+	Asimismo, se estima que estará disponible para el desarrollo del proyecto, y mientras dure el mismo, una plataforma CIAA que será otorgada al \textit{project manager} bajo su responsabilidad y en carácter de préstamo.
+	
+	\end{itemize}
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
 
-\subsection{Alcances}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
+%\subsection{Alcances}
+%Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
 
 %-----------------------------------
 %	SUBSECTION 3
 %-----------------------------------
-
+\clearpage
 \subsection{Requerimientos y Criterios de aceptación}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
+
+\begin{itemize}
+	\item \textbf{REQ1:}\\ El \textit{software} se debe desarrollar para la plataforma de hardware CIAA, en lenguaje C.
+	\item \textbf{REQ2:}\\ El equipo a desarrollar debe poder sensar las siguientes variable del entorno de un acuario,
+	\begin{itemize}
+		\item REQ2\_A: temperatura en el rango de 16 a 30 %°C con una resolución de 0,5 °C o superior.
+		\item REQ2\_B: pH en el rango de 5 a 9 con una resolución de 0,1 o superior.
+%		\item REQ2\_C: nivel de agua alto o bajo
+	\end{itemize}
+	\item \textbf{REQ3:}\\ El equipo debe poder actuar sobre los siguiente elementos del entorno de un acuario,
+	\begin{itemize}
+		\item REQ3\_A: Encender/apagar la iluminación
+%		\item REQ3\_B: Encender/apagar bombas para el llenado/vaciado de agua
+		\item REQ3\_B: Encender/apagar bomba de CO2
+		\item REQ3\_C: Encender/apagar dofificador de alimento/nutrientes
+		\item REQ3\_D: Encender/apagar calefactor
+	\end{itemize}
+	\item \textbf{REQ4:}\\ El equipo debe poder ser administrado mediante una interfaz web. Se debe poder visualizar el estado del sistema y realizar su programación.
+	\item \textbf{REQ5:}\\ El equipo debe poder emitir una alarma por un medio adecuado, sonoro y/o visual cuando las variables bajo control salgan de su rango de operación segura.
+\end{itemize}
+
+\textbf{Criterio de aceptación}:
+	\begin{itemize}
+		\item Correcta visualización de todas las variable de estado del sistema enumeradas en el REQ2 mediante una interfaz web.
+		\item Correcto comportamiento al accionar los actuadores enumerados en el REQ3 desde la interfaz web.
+	\end{itemize}
 
 %-----------------------------------
 %	SUBSECTION 4
@@ -72,8 +116,34 @@ en referencia a los requerimientos y al recorte del problema de la sección ante
 \subsection{Alternativas tecnológicas}
 
 Alternativas de sensores.
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/sensor_nivel}
+	\label{fig:Sensor de nivel}
+	\caption{Sensor de nivel de Agua}
+\end{figure}
 
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/sensor_temp}
+	\label{fig:Sensor de temperatura}
+	\caption{Sensor de temperatra}
+\end{figure}
 Alternativas de actuadores.
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/actuador_heater}
+	\label{fig:act_heater}
+	\caption{Actuador Calefactor}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/actuador_pump}
+	\label{fig:act_pump}
+	\caption{Actuador Bomba de agua}
+\end{figure}
 
 Alternativas de alarmas.
 
