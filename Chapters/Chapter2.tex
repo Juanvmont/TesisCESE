@@ -17,25 +17,19 @@
 %\subsection{Objetivo}
 \begin{itemize}
 
-\item \textbf{Objetivos}:\\
+	\item \textbf{Objetivos}:\\
 	Desarrollar un software que permita utilizar la CIAA como un controlador de acuarios. Agregar valor al ecosistema del proyecto-ciaa incorporando nuevas aplicaciones para la misma.
 	
 	\item \textbf{Alcance}:\\
 	El proyecto incluye únicamente el desarrollo de un software de control para la plataforma CIAA.
 
-%	\item \textbf{Criterio de aceptación}:
-%	\begin{itemize}
-%		\item Correcta visualización de todas las variable de estado del sistema enumeradas en el REQ2 mediante una interfaz web.
-%		\item Correcto comportamiento al accionar los actuadores enumerados en el REQ3 desde la interfaz web.
-%	\end{itemize}
-	
 %	\item \textbf{Restricciones}:\\
 %	Finalización del proyecto 15 de diciembre de 2015
 
 	\item \textbf{Suposiciones}:\\
-	Contar con los fondos solicitados al Ministerio de Industria Nacional permitirá costear los sensores y actuadores para armar una planta piloto de desarrollo.  En caso que los fondos no estén disponibles tanto por el rechazo del proyecto presentado como por una demora en los plazos de adjundicación, está contemplado la utilización de simulaciones para emular los elementos que no se hayan podído adquirir.
+	Contar con los fondos solicitados al Ministerio de Industria Nacional permitirá costear los sensores y actuadores para armar una planta piloto de desarrollo.  En caso que los fondos no estén disponibles tanto por el rechazo del proyecto presentado como por una demora en los plazos de adjudicación, está contemplado la utilización de simulaciones para emular los elementos que no se hayan podido adquirir.
 	
-	Asimismo, se estima que estará disponible para el desarrollo del proyecto, y mientras dure el mismo, una plataforma CIAA que será otorgada al \textit{project manager} bajo su responsabilidad y en carácter de préstamo.
+	Asimismo, se estima que estará disponible para el desarrollo del proyecto, y mientras dure el mismo, una plataforma CIAA-NXP.
 	
 	\end{itemize}
 %-----------------------------------
@@ -53,7 +47,7 @@
 
 \begin{itemize}
 	\item \textbf{REQ1:}\\ El \textit{software} se debe desarrollar para la plataforma de hardware CIAA, en lenguaje C.
-	\item \textbf{REQ2:}\\ El equipo a desarrollar debe poder sensar las siguientes variable del entorno de un acuario,
+	\item \textbf{REQ2:}\\ El equipo a desarrollar debe poder medir las siguientes variable del entorno de un acuario,
 	\begin{itemize}
 		\item REQ2\_A: temperatura en el rango de 16 a 30 %°C con una resolución de 0,5 °C o superior.
 		\item REQ2\_B: pH en el rango de 5 a 9 con una resolución de 0,1 o superior.
@@ -62,9 +56,9 @@
 	\item \textbf{REQ3:}\\ El equipo debe poder actuar sobre los siguiente elementos del entorno de un acuario,
 	\begin{itemize}
 		\item REQ3\_A: Encender/apagar la iluminación
-%		\item REQ3\_B: Encender/apagar bombas para el llenado/vaciado de agua
-		\item REQ3\_B: Encender/apagar bomba de CO2
-		\item REQ3\_C: Encender/apagar dofificador de alimento/nutrientes
+		\item REQ3\_B: Encender/apagar bombas para el llenado/vaciado de agua
+		\item REQ3\_C: Encender/apagar bomba de CO2
+%		\item REQ3\_C: Encender/apagar dosificador de alimento/nutrientes
 		\item REQ3\_D: Encender/apagar calefactor
 	\end{itemize}
 	\item \textbf{REQ4:}\\ El equipo debe poder ser administrado mediante una interfaz web. Se debe poder visualizar el estado del sistema y realizar su programación.
@@ -92,6 +86,7 @@ Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar p
 
 Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
 
+
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
@@ -116,34 +111,34 @@ en referencia a los requerimientos y al recorte del problema de la sección ante
 \subsection{Alternativas tecnológicas}
 
 Alternativas de sensores.
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/sensor_nivel}
-	\label{fig:Sensor de nivel}
-	\caption{Sensor de nivel de Agua}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/sensor_temp}
-	\label{fig:Sensor de temperatura}
-	\caption{Sensor de temperatra}
-\end{figure}
-Alternativas de actuadores.
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/actuador_heater}
-	\label{fig:act_heater}
-	\caption{Actuador Calefactor}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/actuador_pump}
-	\label{fig:act_pump}
-	\caption{Actuador Bomba de agua}
-\end{figure}
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/sensor_nivel}
+%	\label{fig:Sensor de nivel}
+%	\caption{Sensor de nivel de Agua}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/sensor_temp}
+%	\label{fig:Sensor de temperatura}
+%	\caption{Sensor de temperatra}
+%\end{figure}
+%Alternativas de actuadores.
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/actuador_heater}
+%	\label{fig:act_heater}
+%	\caption{Actuador Calefactor}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/actuador_pump}
+%	\label{fig:act_pump}
+%	\caption{Actuador Bomba de agua}
+%\end{figure}
 
 Alternativas de alarmas.
 

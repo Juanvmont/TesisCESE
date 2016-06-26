@@ -16,50 +16,18 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Introducción}
+%\section{Introducción}
 
-En el trabajo que se documenta en la presente memoria, se busca satisfacer una necesidad relacionada con los \textbf{\texttt{acuarios}}. En particular, interesa poder monitorear y controlar un número de variables indicativas del estado del mismo.  Se busca obtener una plataforma que permita visualizar información relevante sobre el estado del acuario y permita actuar sobre las variables cuyas desviaciones respecto a valores de referencia, pueden afectar negativamente al entorno.  Asimismo, se busca facilitar tareas de mantenimiento que se deben realizar rutinariamente y que son de vital importancia para la supervivencia de los seres vivos que habitan en el acuario, principalmente peces, invertebrados y plantas. Detalles referentes a qué son los acuarios serán abordados en la sección \ref{sec:acuario}.
+En la presente memoria se documenta el trabajo final de la Carrera de Especialización en Sistemas Embebidos que consiste en implementar un \textit{web server} utilizando la plataforma CIAA-NXP, el RTOS freeRTOS V8.0.1, y el stack TCP/IP lwip V1.41. 
 
-Se implementa un \texttt{firmware} de monitoreo y control sobre una de las plataformas de \texttt{hardware} desarrollada por el Proyecto \textit{Computadora Industrial Abierta Argentina}, denominado de ahora en adelante \textbf{\texttt{Proyecto-CIAA}}, en particular la versión \textbf{\texttt{CIAA-NXP}} que utiliza un microprocesador fabricado por la empresa NXP. El Proyecto-CIAA se trata en la sección \ref{sec:proyecto-ciaa}.
+Se busca satisfacer una necesidad relacionada con los acuarios. En particular, interesa poder controlar un número de variables indicativas del estado del mismo.  Se busca implementar una interfaz web que permita visualizar información relevante sobre el estado del acuario y permita actuar sobre las variables cuyas desviaciones respecto a valores de referencia, pueden afectar negativamente al entorno.  Asimismo, se busca facilitar tareas de mantenimiento que se deben realizar en forma rutinaria y que son de vital importancia para la supervivencia de los seres vivos que habitan en el acuario, principalmente peces, invertebrados y plantas. Detalles referentes a qué son los acuarios serán abordados en la sección \ref{sec:acuario}.
 
-Debido a la vasta difusión de las redes de computadoras y la tendencia mundial a incorporar cada día más dispositivos a internet, fenómeno también conocido con el internet de las cosas o IoT (por sus siglas en inglés \textit{Internet of Things}) se opta por desarrollar una \textbf{\texttt{interfaz web embebida}} en la \texttt{CIAA-NXP}.  Dicha interfaz es accesible mediante el protocolo \texttt{ethernet} a través de una red de área local o LAN (por sus siglas en inglés \textit{Local Area Network}). Detalles de la implementación se abordan en la sección \ref{sec:interfaz-web}.
+Se implementa un firmware de monitoreo y control sobre una de las plataformas de hardware desarrollada por el Proyecto Computadora Industrial Abierta Argentina, denominado de ahora en adelante Proyecto-CIAA, en particular la versión CIAA-NXP que utiliza un microprocesador fabricado por la empresa NXP. El Proyecto-CIAA se trata en la sección \ref{sec:proyecto-ciaa}.
 
-
-
-
-\subsection{¿Qué es un Acuario?}
-\label{sec:acuario}
-
-El Acuarismo es una actividad comercial y recreativa ampliamente difundida en la Argentina que consiste en establecer y mantener un ecosistema acuático artificial. La clasificación más importante de un acuario es respecto a la salinidad del agua contenida en él:
-
-\begin{itemize}
-\item Agua dulce: Baja concentración de sales disueltas.
-\item Salobre: Agua con entre 0.5 y 30 gramos de sal por litro.
-\item Agua de mar: 35 gr sal por litro% 
-\end{itemize}
-
-Sus orígenes históricos se remontan a la llegada de los primeros inmigrante europeos, principalmente alemanes que introdujeron las primeras especies de peces, \textit{Scalares}, \textit{Lebistes} y \textit{Bettas} entre otros.
-
-El acuarismo en la Argentina antes de 1950 era materia para exclusivos y muy fanáticos. La mayoría de las especies resultaban muy onerosas y prácticamente sólo los \textit{Carassius} tenían precios accesibles para la mayoría de los potenciales interesados en esta actividad.
-
-Desde la década del 70 a esta parte, se puede apreciar una importante difusión del acuarismo. Surgen nuevas ideas y nuevas publicaciones.  Actualmente, existen numerosas asociaciones de aficionados y publicaciones especializadas, algunas con tiradas de 100.000 ejemplares.  Entre las asociaciones más destacadas podemos nombrar a la Asociación Acuariófila Argentina y El Acuarista, entre otras.
+Debido a la vasta difusión de las redes de computadoras y la tendencia mundial a incorporar cada día más dispositivos a internet, fenómeno también conocido con el internet de las cosas o IoT (por sus siglas en inglés \textit{Internet of Things}) se opta por desarrollar una interfaz web embebida en la CIAA-NXP.  Dicha interfaz es accesible mediante el protocolo ethernet a través de una red de área local o LAN (por sus siglas en inglés \textit{Local Area Network}). Detalles de la implementación se abordan en la sección \ref{sec:interfaz-web}.
 
 
-\begin{figure}[]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/acuarioHobby3.jpg}
-	\label{fig:acuarioHobby}
-	\caption{Acuario de un individuo particular}
-\end{figure}       
-
-\begin{figure}[]
-	\centering
-    \includegraphics[width=.7\textwidth]{./Figures/acuarioTienda.jpg}
-	\label{fig:acuarioTienda}
-	\caption{Tienda de insumos para Acuario}
-\end{figure}
-
-\subsection{¿Qué es el Proyecto CIAA?}
+\section{¿Qué es el Proyecto CIAA?}
 \label{sec:proyecto-ciaa}
 
 El Proyecto CIAA nació en 2013 como una iniciativa conjunta entre el sector académico y el industrial, representados por la ACSE\footnote{\url{http://www.sase.com.ar/asociacion-civil-sistemas-embebidos}} y CADIEEL\footnote{\url{http://www.cadieel.org.ar}}, respectivamente.
@@ -74,22 +42,90 @@ Objetivos del proyecto:
 
 Todo esto en el marco de un trabajo libre, colaborativo y articulado entre industria y academia. 
 
+
+\section{¿Qué es un Acuario?}
+\label{sec:acuario}
+
+El Acuarismo es una actividad comercial y recreativa ampliamente difundida en la Argentina que consiste en establecer y mantener un ecosistema acuático artificial. El término acuario o pecera se utiliza indistintamente para referirse tanto al contenedor de agua como a todo el ecosistema artificial. 
+
+Un acuario puede albergar a un número determinado de peces, plantas e invertebrados y para su mantenimiento es preciso recrear un biotopo\footnote{Territorio o espacio vital cuyas condiciones ambientales son las adecuadas para que en él se desarrolle una determinada comunidad de seres vivos.} en función de los hábitos y costumbres de las especies que lo habiten; a modo de ejemplo, existen vertebrados acuáticos aptos para vivir en agua fría, otros requieren un sistema calefactor para mantener el agua en un microclima cálido, incluso las especies marinas precisan cuidados más específicos en cuanto al tratamiento del agua.
+
+Los acuarios se clasifican principalmente según las condiciones del agua:
+\begin{itemize}
+	\item Por temperatura
+	\begin{itemize}
+		\item Agua fría; entorno a los 18 \degree C.
+		\item Agua tropical; normalmente entre 22 y 27 \degree C.
+	\end{itemize}
+	\vspace{5px}
+	\item Por salinidad
+	\begin{itemize}
+		\item Agua dulce; baja concentración de sales disueltas.
+		\item Salobre; agua con entre 0.5 y 30 gr. de sal por litro.
+		\item Agua de mar o Marinos; 35 gr. de sal por litro. 
+	\end{itemize}
+\end{itemize}
+
+El punto de entrada recomendado para principiantes en la disciplina es el acuario de agua dulce y fría de al menos 90 litros.  Su mantenimiento es más sencillo que el de los acuarios marinos y los peces de agua fría son los más resistentes y los que presentan mayor compatibilidad entre especies. Normalmente se pueden mantener con agua de red debidamente declorada y acondicionada. Finalmente, un acuario más grande es más fácil de mantener, sobre todo en lo referido al tratamiento del agua y a conseguir una temperatura estable para los peces \citep{paradais1}.
+
+Es necesario que el agua se encuentre debidamente tratada de acuerdo con las necesidades específicas que requiera la especie que se pretenda albergar. Según la salinidad del agua es necesario tener en cuenta los siguientes parámetros.
+
+\begin{itemize}
+\item Agua dulce:
+	\begin{itemize}
+		\item dureza del agua (dGH).
+		\item valor pH.
+		\item el CO2  o anhídrido carbónico.
+	\end{itemize}
+	\vspace{5px}
+	\item Agua Salada:
+	\begin{itemize}
+		\item desidad del agua
+		\item valor pH.
+		\item el CO2  o anhídrido carbónico.
+	\end{itemize}
+	
+\end{itemize}
+Nos referimos a la dureza del agua (dGH), el valor pH y el CO2  o anhídrido carbónico. Existen en el mercado productos específicos que ayudan a mantenerla en óptimas condiciones, incluso \textit{tests} que facilitan un control adecuado sobre la medición de los valores químicos que debe tener el agua del acuario.
+
+A modo de ejemplo, destacar que para acuarios de agua dulce, la media ideal del agua, tendrá como valores: un pH de 7, dureza 10º a 15º dGH y 5 a 10º KH, pero estas medidas son variables en función de la especie en cuestión.
+
+Los acuarios de agua salada requieren mayor complejidad, entra en juego la salinidad del agua que en cierta medida sustituye a la dureza, y su valor debe estar en una escala de entre 1022-1025, por otro lado el pH mantendrá un valor a partir de 8, normalmente la media oscila en torno a 8,2.
+
+%
+%\begin{figure}[]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/acuarioHobby3.jpg}
+%	\label{fig:acuarioHobby}
+%	\caption{Acuario de un individuo particular}
+%\end{figure}       
+%
+%\begin{figure}[]
+%	\centering
+%    \includegraphics[width=.7\textwidth]{./Figures/acuarioTienda.jpg}
+%	\label{fig:acuarioTienda}
+%	\caption{Tienda de insumos para Acuario}
+%\end{figure}
+
+
 %----------------------------------------------------------------------------------------
 
 \section{Motivación}
 
-De conversaciones con personas que practican el acuarismo se tomó conocimiento de la existencia de \textbf{\texttt{una necesidad no satisfecha}} de un equipo electrónico que permita monitoriar y controlar las variables de estado de un acuario. 
+Según el tipo de actividad se pueden encontrar acuarios con fines productivos para la recreación de especies destinadas al consumo humano.  Por otra parte
+
+De conversaciones con personas que practican el acuarismo se tomó conocimiento de la existencia de una necesidad no satisfecha de un equipo electrónico que permita controlar las variables de estado de un acuario. 
  
 Las personas consultadas manifestaron no conocer equipos que puedan realizar estas u otras funciones más complejas y que se comercialicen en el mercado local.  
 
 Asimismo, se consultaron distintas locales de venta de insumos para acuarios de capital federal vía e-mail preguntando si tenían a la venta o conocían la existencia de un equipo para satisfacer la necesidad planteada y la respuesta fue abrumadoramente negativa. Como se detallará en la sección \ref{sec:existentes}, existen soluciones comerciales disponibles pero no se comercializan en el mercado local, lo cuál permite afirmar que la necesidad planteada no esta debidamente satisfecha y existe un mercado potencial que se analizará en la sección \ref{sec:mercado}.
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.9\textwidth]{./Figures/nemo.jpg}
-	\label{fig:nemo}
-	\caption{Pez payaso}
-\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.9\textwidth]{./Figures/nemo.jpg}
+%	\label{fig:nemo}
+%	\caption{Pez payaso}
+%\end{figure}
 
 \subsection{Dimensionamiento del mercado}
 \label{sec:mercado}
@@ -119,20 +155,20 @@ Asimismo, se consultaron distintas locales de venta de insumos para acuarios de 
 %\end{minipage}
 %\end{frame}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/profilux}
-	\label{fig:competencia1}
-	\caption{Solución existente 1}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/reefkeeper}
-	\label{fig:competencia2}
-	\caption{Solución existente 2}
-%	\footnote{Referencia a la figura}
-\end{figure}
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/profilux}
+%	\label{fig:competencia1}
+%	\caption{Solución existente 1}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=.5\textwidth]{./Figures/reefkeeper}
+%	\label{fig:competencia2}
+%	\caption{Solución existente 2}
+%%	\footnote{Referencia a la figura}
+%\end{figure}
 
 
 \subsection{Aplicabilidad a otras áreas}

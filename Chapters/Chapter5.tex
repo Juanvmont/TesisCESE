@@ -15,9 +15,17 @@
 
 En la presente memoria de tesis se ha documentado el Trabajo Final para la obtención del grado de \degreename.  
 
-Se obtuvo un \texttt{firmware} que permite monitoriar y controlar un acuario en forma remota mediante una \keyword{interfaz web} embebida en la plataforma \keyword{CIAA-NXP}. Se pudo modelar el comportamiento de un acuario real mediante una ``planta piloto'' para poder avanzar en el desarrollo del \texttt{firmware} de control.
+Se obtuvo un firmware que permite controlar un acuario en forma remota mediante una interfaz web embebida en la plataforma CIAA-NXP. Se aplicaron simplificaciones al modelo de acuario, principalmente debido a las restricciones de tiempo establecidas para la finalización del trabajo y a la ejecución de acciones de contingencia de risgos identificados al comienzo de la planificación del trabajo, a saber:
 
-Se pudo integrar el stack TCP/IP \keyword{\texttt{lwIP}} con el sistema operativo de tiempo real \keyword{\texttt{freeRTOS}} al firmware de control sobre la base de un \texttt{port} desarrollado por NXP, fabricante del microcontrolador.
+\begin{itemize}
+	\item Riesgo: No contar con un subsidio para la adquisición de sensores y actuadores de acuario.
+	\item Riesgo: No disponer de una CIAA-NXP a tiempo para el comienzo del proyecto.
+	\item Contingencia:  Simular sensores y actuadores del modelo de acuario.
+\end{itemize}
+
+Con las mencionadas simplificaciones se obtuvo una ``planta piloto'' que permitió avanzar en el desarrollo del firmware de control y cumplir con los requerimientos de tiempo de finalización.
+
+Se pudo integrar el \textit{stack} TCP/IP lwIP con el RTOS freeRTOS al firmware de control sobre la base de un \textit{port} desarrollado por NXP, fabricante del microcontrolador LPC4337.
 
 \medskip
 
@@ -25,66 +33,63 @@ Durante el desarrollo de este Trabajo Final se aplicaron conocimientos adquirido
 
 \begin{itemize}
 \item
-\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \keyword{CIAA-NXP} y el uso de los periféricos.  \textit{Algo del mapa de memoria. Algo de las interrupciones.}
+\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \keyword{CIAA-NXP} y el uso de los periféricos.
 
 \item
-\textbf{Programación de microprocesadores}. Se utilizaron buenas prácticas de programación en Lenguaje C para microcontroladores y periféricos, aprendidas en esta asignatura. Se usó un formato del código consitente: comentarios en las declaraciones de funciones y partes importantes del código, constantes en mayúsculas, \texttt{camelCase} para poner nombres significativos a funciones y variables. Se utilizaron APIs para abstraer distintas capas del código. Se obtuvo un código más legible y reutilizable que puede ser portado a distintas plataformas con menor esfuerzo.
+\textbf{Programación de microprocesadores}. Se utilizaron buenas prácticas de programación en Lenguaje C para microcontroladores y periféricos, aprendidas en esta asignatura. Se usó un formato de código consistente: comentarios en las declaraciones de funciones y partes importantes del código, constantes en mayúsculas, \textit{camelCase} para poner nombres significativos a funciones y variables. Se utilizaron APIs para abstraer distintas capas del código. Se obtuvo un código más legible y reutilizable que puede ser portado a distintas plataformas con menor esfuerzo.
 
 \item
-\textbf{Ingeniería de Software en Sistemas Embebidos}. Se utilizaron técnicas provinientes de la Ingeniería de Software. Siempre que fue posible se utilizó un método sistemático e iterativo de desarrollo pensando en el ciclo de vida del \texttt{software}. Se hizo uso extensivo de \texttt{git} como sistema de control de versiones distribuido del \texttt{software}.  \textit{Algo de diagramas UML.}
+\textbf{Ingeniería de Software en Sistemas Embebidos}. Se utilizaron técnicas provenientes de la Ingeniería de Software. Siempre que fue posible se utilizó un método sistemático e iterativo de desarrollo pensando en el ciclo de vida del software. Se hizo uso extensivo de git como sistema de control de versiones del software.  \textbf{Algo de diagramas UML.}
 
 \item
-\textbf{Gestión de Proyectos en Ingeniería}. Resultó de mucha utilidad elaborar un Plan de Proyecto para organizar el Trabajo Final.  Parte del material elaborado en esta asignatura se encuentra en la presente memoria. \textit{Definición del proyecto, gestión de tiempos, análisis de riesgos, planificación de tareas.}
+\textbf{Gestión de Proyectos en Ingeniería}. Resultó de mucha utilidad elaborar un Plan de Proyecto para organizar el Trabajo Final.  Parte del material elaborado en esta asignatura se encuentra en la presente memoria.
 
 \item
-\textbf{Sistemas Operativos de Tiempo Real (I y II)}. Se aplicaron los conocimientos adquiridos sobre freeRTOS respecto a tareas, cambios de contexto, manejo de colas, semáforos y mutex entre otras cosas.  Asimismo, se utilizaron herramientas de desarrollo propias de \texttt{freeRTOS} para medir el uso de las pilas de las tareas creadas y optimizar el uso de la memoria.
+\textbf{Sistemas Operativos de Tiempo Real (I y II)}. Se aplicaron los conocimientos adquiridos sobre freeRTOS respecto a tareas, cambios de contexto, manejo de colas, semáforos y mutex entre otras cosas.  Asimismo, se utilizaron herramientas de desarrollo propias de freeRTOS para medir el uso de las pilas de las tareas creadas y optimizar el uso de la memoria.
 
 \item 
-\textbf{Protocolos de Comunicación}. Se aplicaron ampliamente los conocimientos obtenidos en el área de \texttt{Ethernet}. En particular, resultó muy útil el material sobre el stack tpc/ip \keyword{\texttt{lwIP}}.
+\textbf{Protocolos de Comunicación}. Se aplicaron ampliamente los conocimientos obtenidos en el área de Ethernet. En particular, resultó muy útil el material sobre el stack tpc/ip lwIP.
 
 \item
-\textbf{Diseño de Sistemas Críticos}. Siempre que fue posible se utilizon técnicas de programación defensiva para que el comportamiento del \texttt{firmware} resulte lo más predecible posible.  Se buscó obtener un sistema de control que no falle en primer lugar, y que si lo hace, falle en forma segura evitando daños a los seres vivos dentro y fuera del acuario y la propiedad. \textit{Algo sobre Utilización de estándares, MISRA C, C99 y buenas prácticas de programación}.
+\textbf{Diseño de Sistemas Críticos}. Siempre que fue posible se utilizaron técnicas de programación defensiva para que el comportamiento del firmware resulte lo más predecible posible.  Se buscó obtener un sistema de control que no falle en primer lugar, y que si lo hace, falle en forma segura evitando daños a los seres vivos dentro y fuera del acuario y la propiedad. \textbf{Algo sobre Utilización de estándares, MISRA C, C99 y buenas prácticas de programación}.
 \end{itemize}
 
 
 
 \medskip
 
-\noindent Asimismo, se adquirió conocimientos en las áreas de:
+\noindent Asimismo, durante el desarrollo del trabajo final se adquirieron conocimientos en las áreas de:
 
 \begin{itemize}
-\item Programación en \textbf{\texttt{HTML5}}.
-\item Programación en \textbf{\texttt{Javascript}}.  
-\item Utilización de \textbf{\texttt{linker scripts}} para el entorno de desarrollo \texttt{LPCXpresso}.
+	\item Programación en HTML5.
+	\item Programación en Javascript.  
+	\item Utilización de linker scripts para el entorno de desarrollo LPCXpresso.
 \end{itemize}
 
 
 \medskip
 
-Por lo tanto, se llega a la conclusión que los objetivos planteados al comenzar el trabajo han sido alcanzados satisfactoriamente, y además, se obtienen conocimientos muy importantes para la formación profesional del autor.
+Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo han sido alcanzados satisfactoriamente, y además, se han obtenido conocimientos valiosos para la formación profesional del autor.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-
+\clearpage
 \section{Trabajo futuro}
 
-\textbf{página web:}
+Se considera oportuno identificar las lineas de trabajo futuro para dar continuidad al esfuerzo invertido.  Se listan a continuación las principales.
 
-portabilidad: versión para distintos dispositivos: teléfonos, tablets, etc
+\begin{itemize}
+	\item Trabajar con una planta piloto real, con sensores y actuadores de acuario.  Caracterizar la dinámica del entorno real y ajustar la lógica de control si fuera necesario.
+	\vspace{5px}
+	\item Escalar el firmware desarrollado para obtener un \textit{framework} que posibilite cambiar el dominio de aplicación a otras áreas de control donde el modelo de ``medir, alertar y actuar'' aplique.
+	\vspace{5px}
+	\item Permitir la introducción de nuevos sensores y actuadores debidamente parametrizados mediante la interfaz de usuario.
+	\vspace{5px}
+	\item Mejorar la portabilidad de la interfaz web utilizando técnicas de RWD (\textit{Responsive Web Design}) para que permita su correcta visualización en distintos dispositivos, navegadores y resoluciones de pantalla.
+\end{itemize}
 
-apariencia: diseño escalable para distintas resoluciones de pantalla. 
 
-accesibilidad: integrar mensajes de ayuda describiendo los elementos de interacción con el usuario.
-
-robustez: validación de datos, formularios, etc. 
-
-seguridad: Ingreso con usuario y contraseña a las páginas que permitan hacer cambios en el acuario.
-
-
-\textbf{Planta piloto:}
-
-Utilización de sensores y actuadores reales.
 
 
 

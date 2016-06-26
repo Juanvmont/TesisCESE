@@ -51,6 +51,8 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
+%\usepackage{gensymb} % para el símbolo de grados con \degree
+
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
 %----------------------------------------------------------------------------------------
@@ -92,6 +94,8 @@ headsepline, % Uncomment to get a line under the header
 \newcaptionname{spanish}{\authorshipname}{Declaración de Autoría}
 \newcaptionname{spanish}{\abbrevname}{Glosario}
 \newcaptionname{spanish}{\byname}{por}
+
+\addtolength{\footnotesep}{5mm} % Espacio adicional en los footnotes
 
 \begin{document}
 
@@ -215,19 +219,19 @@ Agradezco a\ldots
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-\addchaptertocentry{\abbrevname}
-\\
-\textbf{CIAA}	& \textbf{C}ompuradora \textbf{I}ndustrial \textbf{A}bierta \textbf{A}rgentina\\
-\textbf{lwIP} 	& \textbf{l}ight \textbf{w}eigth \textbf{I}nternet \textbf{P}rotocol\\
-\textbf{LAN}		& \textbf{L}ocal \textbf{A}rea \textbf{N}etwork\\
-\textbf{TCP/IP}	& \textbf{T}ransfer \textbf{C}ontrol \textbf{P}rotocol / \textbf{I}nternet \textbf{P}rotocol\\
-\textbf{SSI}		& \textbf{S}erver \textbf{S}ide \textbf{I}ncludes\\
-\textbf{CGI}		& \textbf{C}ommon \textbf{G}ateway \textbf{I}nterface\\
-\textbf{AJAX}	& \textbf{A}synchronous \textbf{J}avaScript \textbf{a}nd \textbf{X}ML\\
-\textbf{RTOS} 	& \textbf{R}eal \textbf{T}ime \textbf{O}perating \textbf{S}ystem\\
-
-\end{abbreviations}
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%\addchaptertocentry{\abbrevname}
+%\\
+%\textbf{CIAA}	& \textbf{C}ompuradora \textbf{I}ndustrial \textbf{A}bierta \textbf{A}rgentina\\
+%\textbf{lwIP} 	& \textbf{l}ight \textbf{w}eigth \textbf{I}nternet \textbf{P}rotocol\\
+%\textbf{LAN}		& \textbf{L}ocal \textbf{A}rea \textbf{N}etwork\\
+%\textbf{TCP/IP}	& \textbf{T}ransfer \textbf{C}ontrol \textbf{P}rotocol / \textbf{I}nternet \textbf{P}rotocol\\
+%\textbf{SSI}		& \textbf{S}erver \textbf{S}ide \textbf{I}ncludes\\
+%\textbf{CGI}		& \textbf{C}ommon \textbf{G}ateway \textbf{I}nterface\\
+%\textbf{AJAX}	& \textbf{A}synchronous \textbf{J}avaScript \textbf{a}nd \textbf{X}ML\\
+%\textbf{RTOS} 	& \textbf{R}eal \textbf{T}ime \textbf{O}perating \textbf{S}ystem\\
+%
+%\end{abbreviations}
 
 %----------------------------------------------------------------------------------------
 %	PHYSICAL CONSTANTS/OTHER DEFINITIONS
