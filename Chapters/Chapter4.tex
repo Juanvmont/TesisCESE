@@ -24,28 +24,32 @@ Para verificar y validar la correcta implementación del sistema se procede a en
 
 \subsection{Ensayo de caja negra}
 
-Se utiliza la técnica de inyección de fallas para evaluar la respuesta del sistema frente a las condiciones de alarma.  El ensayo consiste en forzar las entradas de los sensores a valores que disparen las condiciones de alarma y contrastar las acciones de control del sistema con las esperadas.
+Se utiliza la técnica de inyección de fallas para evaluar la respuesta del sistema frente a las distintas condiciones de alarma posibles.  El ensayo consiste en forzar las entradas de los sensores a valores que disparen las condiciones de alarma y contrastar las acciones de control del sistema con las esperadas.
 
-Si bien el sistema tiene seis condiciones de alarma, cada uno de los tres sensores del sistema tiene dos condiciones, una por exceso y otra por defecto que son mutuamente excluyentes.  Por este motivo, el máximo número de alarmas simultáneas que puede haber en un momento dado es tres.  Para verificar el correcto comportamiento del sistema se elaboran tablas de decisión con las acciones que se deben tomar para las distintas combinaciones de alarmas. En el cuadro \ref{tab:1alarma} se indican las acciones de contingencia para cuando hay una única condición de alarma en el sistema.  En el cuadro \ref{tab:2alarmas} se indican las acciones para las distintas combinaciones de dos alarmas. En el cuadro \ref{tab:3alarmas} se indican las acciones de contingencias para las combinaciones de 3 alarmas.
+Se utiliza la UART para realizar un seguimiento en el tiempo del valor de los sensores, del estado de las alarmas y del estado de los actuadores. Se tomaron muestras a una tasa de 1 muestra por segundo mientras se hacían variar las entradas del sistema para recorrer todas las posibles combinaciones de alarma. La información fue procesada mediante rutinas de MATLAB elaboradas ad-hoc para obtener gráficas el estado del sistema que permitan corroborar el correto funcionamiento del mismo como se puede observar en la sección \ref{sec:Resultados}. 
 
-\begin{table}[ht!]
+Si bien el sistema tiene seis condiciones de alarma, cada uno de los tres sensores del sistema tiene dos condiciones, una por exceso y otra por defecto que son mutuamente excluyentes.  Por este motivo, el máximo número de alarmas simultáneas que puede haber en un momento dado es tres. Para analizar el comportamiento del sistema se agrupan las respuestas según la cantidad de alarmas en conjuntos de una única alarma, dos alarmas o tres alarmas simulatáneas.
+
+Para garantizar que se recorre todo el espacio de posibilidades de alarma se elaboran tablas de decisión con las acciones que se deben tomar para las distintas combinaciones posibles.  En el cuadro \ref{tab:1alarma} se indican las acciones de contingencia para cuando hay una única condición de alarma en el sistema.  En el cuadro \ref{tab:2alarmas} se indican las acciones para las distintas combinaciones de dos alarmas. En el cuadro \ref{tab:3alarmas} se indican las acciones de contingencias para las combinaciones de 3 alarmas.
+
+\begin{table}[p]
 	\centering
-    \includegraphics[width=.7\textwidth]{./Figures/tabla1alarma.pdf}
-	\caption{Tabla de decisión para el control de 1 sóla alarma.}
+    \includegraphics[width=.55\textwidth]{./Figures/tabla1alarma.pdf}
+	\caption{Tabla de decisión para el control de una sóla alarma.}
 	\label{tab:1alarma}
 \end{table}
 
-\begin{table}[ht!]
+\begin{table}[p]
 	\centering
-    \includegraphics[width=.9\textwidth]{./Figures/tabla2alarmas.pdf}
-	\caption{Tabla de decisión para el control de 2 alarmas.}
+    \includegraphics[width=.75\textwidth]{./Figures/tabla2alarmas.pdf}
+	\caption{Tabla de decisión para el control de dos alarmas.}
 	\label{tab:2alarmas}
 \end{table}
 
-\begin{table}[ht!]
+\begin{table}[p]
 	\centering
-    \includegraphics[width=.8\textwidth]{./Figures/tabla3alarmas.pdf}
-	\caption{Tabla de decisión para el control de 3 alarmas.}
+    \includegraphics[width=.6\textwidth]{./Figures/tabla3alarmas.pdf}
+	\caption{Tabla de decisión para el control de tres alarmas.}
 	\label{tab:3alarmas}
 \end{table}
 
@@ -54,17 +58,91 @@ Si bien el sistema tiene seis condiciones de alarma, cada uno de los tres sensor
 %----------------------------------------------------------------------------------------
 
 \section{Resultados}
+\label{sec:Resultados}
 
-\begin{figure}
+En esta sección se muestran los resultados correspondientes a las distintas combinaciones de alarmas presentes en el sistema.  Se puede observar el valor de los sensores junto con sus valores límites graficados en línea punteada y el estado lógico de los actuadores.  Por simplicidad de la gráfica, el estado de los actuadores de iluminación no se muestran para ningún caso de análisis ya que estos no tienen efecto sobre las acciones de control de las alarmas.
+
+Se agrupan los resultados con el criterio ya mencionado de cantidad de alarmas simultáneas.  En la sección \ref{sec:1alarma} se muestran los resultados para una única alarma presente. En la sección \ref{sec:2alarma} se pueden ver los resultados para dos alarmas presentes y finalmente, en la sección \ref{sec:3alarma} se encuentran los resultados para tres alarmas simultáneas.
+
+\subsection{Respuesta a una única alarma}
+\label{sec:1alarma}
+Existen seis combinaciones de una única alarma, según fueron listadas en el cuadro \ref{tab:1alarma}. En la Fig. \ref{fig:alarma1Nivel} se muestra la respuesta del sistema frente a las alarmas de Nivel de Agua ALTO y Nivel de Agua BAJO . En la Fig. \ref{fig:alarma1Temp} se puede ver la respuesta frente a las alarmas Temperatura ALTA y Temperatura BAJA. Finalmente, en la Fig. \ref{fig:alarma1pH} se grafica la respuesta frente a las alarmas pH ALTO y pH BAJO.
+
+\begin{figure}[h]
 \centering
-    \includegraphics[width=\textwidth]{./Figures/Alarma1Nivel.pdf}
+    \includegraphics[width=\textwidth]{./Figures/plot1Water.pdf}
 	\caption{Respuesta del sistema frente a variaciones en el nivel de agua.}
 	\label{fig:alarma1Nivel}
 \end{figure}
 
-\begin{figure}
+Observando la Fig. \ref{fig:alarma1Nivel}, se puede apreciar que, en el momento en que el Nivel de Agua excede el valor límite superior. Esto provoca que se encienda la Bomba de Salida que luego se apaga cuando valor vuelve a estar en el rango de valores permitidos.  En forma análoga, cuando el Nivel de Agua supera el valor límite inferior se enciende la Bomba de Entrada para luego apagarse cuando el valor retorna a niveles normales.
+
+\begin{figure}[h]
 \centering
-    \includegraphics[width=\textwidth]{./Figures/Alarma1Temp.pdf}
+    \includegraphics[width=\textwidth]{./Figures/plot1Temp.pdf}
 	\caption{Respuesta del sistema frente a variaciones en la temperatura.}
 	\label{fig:alarma1Temp}
+\end{figure}
+
+Las variaciones en la Temperatura en la Fig. \ref{fig:alarma1Temp} producen que se enciendan las Bombas de Entrada y Salida para recircular el agua cuando el valor excede el límite superior y que se encienda el Calefactor cuando el valor de Temperatura se encuentra por debajo del límite inferior.  Todas los actuadores que se encienden o apagan por medidas de control vuelven al estado anterior al restablecerse las valores normales de Temperatura.
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot1pH.pdf}
+	\caption{Respuesta del sistema frente a variaciones en el pH.}
+	\label{fig:alarma1pH}
+\end{figure}
+
+Cuando varía el pH en la Fig. \ref{fig:alarma1pH}, se puede observar que se enciende la Bomba de CO2 cuando el valor excede el límite superior y que este actuador se apaga cuando el valor se encuentra por debajo de dicho límite.  En forma similar al comportamiento frente a la alarma de Temperatura ALTA, cuando el valor de pH se encuentra por debajo del límite inferior, se encienden las Bombas de Entrada y Salida para recircular el agua.
+
+\subsection{Respuesta a dos alarmas}
+\label{sec:2alarma}
+
+Existen doce combinaciones de dos alarmas al mismo tiempo, según fueron listadas en el cuadro \ref{tab:2alarmas}. En la Fig. \ref{fig:alarma2WaterHigh} se muestra la respuesta del sistema para las distintas combinaciones de dos alarmas que incluyan a Nivel de Agua ALTO.  En la Fig. \ref{fig:alarma2WaterLow} se puede ver las respuestas frente a las combinaciones de dos alarmas que incluyan a Nivel de Agua BAJO. Finalmente, en la Fig. \ref{fig:alarma2Temp} se grafica la respuesta frente a las combinaciones de alarma de Temperatura ALTA y BAJA junto con ph ALTO y BAJO respectivamente.
+
+A partir de esta sección, los valores límite en línea punteada se grafican del mismo color que el sensor al cual refieren por simplicidad en la visualización.
+
+\begin{figure}[h]
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot2waterHigh.pdf}
+	\caption{Respuesta a dos alarmas simultáneas.\\ Nivel de agua Alto + otras.}
+	\label{fig:alarma2WaterHigh}
+\end{figure}
+
+Se puede observar en la Fig. \ref{fig:alarma2WaterHigh} la condición de Nivel de Agua ALTO junto con Temperatura ALTA y BAJA y junto a pH ALTO y BAJO posteriormente.  Cabe destacar que cuando la Temperatura se encuentra por encima de su valor límite, la Bomba de Entrada se encuentra inhibida y no se enciende pese a que la acción de contingencia para Temperatura ALTA es ciclar el agua.  Esto se debe a que la condición de Nivel de Agua ALTO tiene mayor prioridad.  Lo mismo ocurre con la condición de pH bajo que tiene la misma acción de contingencia que la Temperatura ALTA.  Durante todo el tiempo que el Nivel de Agua se supera su valor límite, la Bomba de Salida se encuentra encendida.
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot2waterLow.pdf}
+	\caption{Respuesta a dos alarmas simultáneas.\\ Nivel de agua Bajo + otras.}
+	\label{fig:alarma2WaterLow}
+\end{figure}
+
+De manera análoga al análisis precedente, en la Fig. \ref{fig:alarma2WaterLow} se muestran condiciones de dos alarmas donde una es Nivel de Agua BAJO.  En este caso, frente a las condiciones de Temperatura ALTA y pH BAJO, el actuador que se encuentra inhibido es la Bomba de Salida porque la condición de Nivel de Agua BAJO tiene mayor prioridad que las anteriores.  Durante todo el tiempo que el Nivel de Agua se encuentra por debajo de su límite inferior, la Bomba de Entrada permanece encendida.
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot2Temp.pdf}
+	\caption{Respuesta a dos alarmas simultáneas.\\ Temperatura + pH.}
+	\label{fig:alarma2Temp}
+\end{figure}
+
+Las últimas cuatro combinaciones de dos alarmas se producen entre las asociadas a los sensores de Temperatura y pH.  En la Fig. \ref{fig:alarma2Temp} se puede observar como se encienden las Bombas de Entrada y Salida si al menos una de las condiciones de Temperatura ALTA o pH BAJO están presentes.  Por otra parte, si la Temperatura se encuentra por debajo de su valor mínimo permitido se enciende el calefactor y si el pH supera su límite se enciende la Bomba de CO2.
+
+
+\subsection{Respuesta a tres alarmas}
+\label{sec:3alarma}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot3waterHigh.pdf}
+	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua Alto + otras.}
+	\label{fig:alarma3WaterHigh}
+\end{figure}
+
+\begin{figure}
+\centering
+    \includegraphics[width=\textwidth]{./Figures/plot3waterLow.pdf}
+	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua Bajo + otras.}
+	\label{fig:alarma3WaterLow}
 \end{figure}
