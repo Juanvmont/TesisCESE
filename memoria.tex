@@ -95,7 +95,10 @@ headsepline, % Uncomment to get a line under the header
 \newcaptionname{spanish}{\abbrevname}{Glosario}
 \newcaptionname{spanish}{\byname}{por}
 
-\addtolength{\footnotesep}{5mm} % Espacio adicional en los footnotes
+\renewcommand{\listtablename}{Índice de Tablas}
+\renewcommand{\tablename}{Tabla} 
+
+\addtolength{\footnotesep}{2mm} % Espacio adicional en los footnotes
 
 \begin{document}
 
@@ -141,42 +144,6 @@ headsepline, % Uncomment to get a line under the header
 \end{center}
 \end{titlepage}
 
-%----------------------------------------------------------------------------------------
-%	DECLARATION PAGE
-%----------------------------------------------------------------------------------------
-
-%\begin{declaration}
-%\addchaptertocentry{\authorshipname}
-%
-%\noindent Yo, \authorname, delcaro que esta memoria titulada, \enquote{\ttitle} y el trabajo que en ella de presenta son de mi autoría. Yo confirmo que:
-%
-%\begin{itemize} 
-%\item Este trabajo fue realizado en su totalidad o principalmente, mientras me desempeñaba como alumno de la Carrera de Especialización en Sistemas Embebidos de esta Universidad.
-%\item Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
-%\item Where I have consulted the published work of others, this is always clearly attributed.
-%\item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-%\item I have acknowledged all main sources of help.
-%\item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
-%\end{itemize}
-% 
-%\noindent Signed:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-% 
-%\noindent Date:\\
-%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-%\end{declaration}
-%
-%\cleardoublepage
-
-%----------------------------------------------------------------------------------------
-%	QUOTATION PAGE
-%----------------------------------------------------------------------------------------
-
-%\vspace*{0.2\textheight}
-%
-%\noindent\enquote{\itshape Thanks to my solid academic training, today I can write hundreds of words on virtually any topic without possessing a shred of information, which is how I got a good job in journalism.}\bigbreak
-%
-%\hfill Dave Barry
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE
@@ -208,6 +175,7 @@ Agradezco a\ldots
 %----------------------------------------------------------------------------------------
 %	LIST OF CONTENTS/FIGURES/TABLES PAGES
 %----------------------------------------------------------------------------------------
+\renewcommand{\listtablename}{Índice de Tablas}
 
 \tableofcontents % Prints the main table of contents
 
@@ -275,6 +243,8 @@ Agradezco a\ldots
 \mainmatter % Begin numeric (1,2,3...) page numbering
 
 \pagestyle{thesis} % Return the page headers back to the "thesis" style
+
+\renewcommand{\tablename}{Tabla} 
 
 % Include the chapters of the thesis as separate files from the Chapters folder
 % Uncomment the lines as you write the chapters

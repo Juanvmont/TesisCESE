@@ -26,30 +26,39 @@ Para verificar y validar la correcta implementación del sistema se procede a en
 
 Se utiliza la técnica de inyección de fallas para evaluar la respuesta del sistema frente a las distintas condiciones de alarma posibles.  El ensayo consiste en forzar las entradas de los sensores a valores que disparen las condiciones de alarma y contrastar las acciones de control del sistema con las esperadas.
 
-Se utiliza la UART para realizar un seguimiento en el tiempo del valor de los sensores, del estado de las alarmas y del estado de los actuadores. Se tomaron muestras a una tasa de 1 muestra por segundo mientras se hacían variar las entradas del sistema para recorrer todas las posibles combinaciones de alarma. La información fue procesada mediante rutinas de MATLAB elaboradas ad-hoc para obtener gráficas el estado del sistema que permitan corroborar el correto funcionamiento del mismo como se puede observar en la sección \ref{sec:Resultados}. 
+Se utiliza la UART para realizar un seguimiento en el tiempo del valor de los sensores, del estado de las alarmas y del estado de los actuadores. Se tomaron muestras a una tasa de 1 muestra por segundo mientras se hacían variar las entradas del sistema para recorrer todas las posibles combinaciones de alarma. La información fue procesada mediante rutinas de MATLAB elaboradas ad-hoc para obtener gráficas el estado del sistema que permitan corroborar el correcto funcionamiento del mismo como se puede observar en la sección \ref{sec:Resultados}. 
 
-Si bien el sistema tiene seis condiciones de alarma, cada uno de los tres sensores del sistema tiene dos condiciones, una por exceso y otra por defecto que son mutuamente excluyentes.  Por este motivo, el máximo número de alarmas simultáneas que puede haber en un momento dado es tres. Para analizar el comportamiento del sistema se agrupan las respuestas según la cantidad de alarmas en conjuntos de una única alarma, dos alarmas o tres alarmas simulatáneas.
+Si bien el sistema tiene seis condiciones de alarma, cada uno de los tres sensores del sistema tiene dos condiciones, una por exceso y otra por defecto que son mutuamente excluyentes.  Por este motivo, el máximo número de alarmas simultáneas que puede haber en un momento dado es tres. Para analizar el comportamiento del sistema se agrupan las respuestas según la cantidad de alarmas en conjuntos de una única alarma, dos alarmas o tres alarmas simultáneas.
 
-Para garantizar que se recorre todo el espacio de posibilidades de alarma se elaboran tablas de decisión con las acciones que se deben tomar para las distintas combinaciones posibles.  En el cuadro \ref{tab:1alarma} se indican las acciones de contingencia para cuando hay una única condición de alarma en el sistema.  En el cuadro \ref{tab:2alarmas} se indican las acciones para las distintas combinaciones de dos alarmas. En el cuadro \ref{tab:3alarmas} se indican las acciones de contingencias para las combinaciones de 3 alarmas.
+Para garantizar que se recorre todo el espacio de posibilidades de alarma se elaboran tablas de decisión con las acciones que se deben tomar para las distintas combinaciones posibles.  Se representa mediante una Y la condición de alarma presente.  En caso contrario se utiliza una N. En el cuadro \ref{tab:1alarma} se indican las acciones de contingencia para cuando hay una única condición de alarma en el sistema.  En el cuadro \ref{tab:2alarmas} se indican las acciones para las distintas combinaciones de dos alarmas. En el cuadro \ref{tab:3alarmas} se indican las acciones de contingencias para las combinaciones de 3 alarmas.
 
 \begin{table}[p]
 	\centering
-    \includegraphics[width=.55\textwidth]{./Figures/tabla1alarma.pdf}
 	\caption{Tabla de decisión para el control de una sóla alarma.}
+    \includegraphics[width=.55\textwidth]{./Figures/tabla1alarma.pdf}
 	\label{tab:1alarma}
 \end{table}
 
-\begin{table}[p]
-	\centering
-    \includegraphics[width=.75\textwidth]{./Figures/tabla2alarmas.pdf}
-	\caption{Tabla de decisión para el control de dos alarmas.}
-	\label{tab:2alarmas}
+\begin{table}[htbp]
+\centering
+\caption{Tabla de decisión para el control de dos alarmas.}
+\includegraphics[width=.75\textwidth]{./Figures/tabla2alarmas-alternativo2.pdf}
+\label{tab:2alarmas}
 \end{table}
+
+
+
+%\begin{table}[p]
+%	\centering
+%    \includegraphics[width=.75\textwidth]{./Figures/tabla2alarmas.pdf}
+%	\caption{Tabla de decisión para el control de dos alarmas.}
+%	\label{tab:2alarmas}
+%\end{table}
 
 \begin{table}[p]
 	\centering
-    \includegraphics[width=.6\textwidth]{./Figures/tabla3alarmas.pdf}
 	\caption{Tabla de decisión para el control de tres alarmas.}
+    \includegraphics[width=.6\textwidth]{./Figures/tabla3alarmas.pdf}
 	\label{tab:3alarmas}
 \end{table}
 
@@ -133,16 +142,22 @@ Las últimas cuatro combinaciones de dos alarmas se producen entre las asociadas
 \subsection{Respuesta a tres alarmas}
 \label{sec:3alarma}
 
-\begin{figure}
+Existen 8 combinaciones de 3 alarmas simultáneas según fueron listadas en el cuadro \ref{tab:3alarmas}. Se presentan agrupadas en dos gráficas.  En la Fig. \ref{fig:alarma3WaterHigh} se encuentran las cuatro variantes que contienen a la condición de Nivel de Agua ALTO. En la Fig. \ref{fig:alarma3WaterLow} se muestran las 4 variantes restantes que incluyen a la condición de Nivel de Agua BAJO. 
+
+\begin{figure}[h]
 \centering
     \includegraphics[width=\textwidth]{./Figures/plot3waterHigh.pdf}
-	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua Alto + otras.}
+	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua ALTO + otras.}
 	\label{fig:alarma3WaterHigh}
 \end{figure}
 
-\begin{figure}
+Se puede observar en la Fig. \ref{fig:alarma3WaterHigh}, que las acciones de control de alarma  para los sensores de Temperatura y pH son las esperadas, teniendo en cuenta que, al igual que en el caso de dos alarmas, cuando se encuentra presente la condición de alarma de Nivel de Agua ALTO, se inhibe el encendido de la Bomba de Entrada.
+
+\begin{figure}[H]
 \centering
     \includegraphics[width=\textwidth]{./Figures/plot3waterLow.pdf}
-	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua Bajo + otras.}
+	\caption{Respuesta a tres alarmas simultáneas.\\ Nivel de agua BAJO + otras.}
 	\label{fig:alarma3WaterLow}
 \end{figure}
+
+En forma análoga al análisis precedente, en la Fig. \ref{fig:alarma3WaterLow} se muestra que las acciones de control para los sensores de Temperatura y pH son las esperadas, teniendo en cuenta que en este caso el actuador inhibido es la Bomba de Salida, por la condición de alarma de Nivel de Agua BAJO.

@@ -13,6 +13,7 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\file}[1]{\texttt{\bfseries#1}}
 \newcommand{\option}[1]{\texttt{\itshape#1}}
+\newcommand{\grados}{$^{\circ}$}
 
 %----------------------------------------------------------------------------------------
 
@@ -26,11 +27,15 @@ Se implementa un firmware de monitoreo y control sobre una de las plataformas de
 
 Debido a la vasta difusión de las redes de computadoras y la tendencia mundial a incorporar cada día más dispositivos a internet, fenómeno también conocido con el internet de las cosas o IoT (por sus siglas en inglés \textit{Internet of Things}) se opta por desarrollar una interfaz web embebida en la CIAA-NXP.  Dicha interfaz es accesible mediante el protocolo ethernet a través de una red de área local o LAN (por sus siglas en inglés \textit{Local Area Network}). Detalles de la implementación se abordan en la sección \ref{sec:interfaz-web}.
 
-
+\clearpage
 \section{¿Qué es el Proyecto CIAA?}
 \label{sec:proyecto-ciaa}
 
-El Proyecto CIAA nació en 2013 como una iniciativa conjunta entre el sector académico y el industrial, representados por la ACSE\footnote{\url{http://www.sase.com.ar/asociacion-civil-sistemas-embebidos}} y CADIEEL\footnote{\url{http://www.cadieel.org.ar}}, respectivamente.
+El Proyecto CIAA (Computadora Industrial Abierta Argentina) nació en 2013 como una iniciativa conjunta entre el sector académico y el industrial, representados por la ACSE\footnote{Asociación Civil para la investigación, promoción y desarrollo de los Sistemas electrónicos Embebidos.} y CADIEEL\footnote{Cámara Argentina de Industrias Electrónicas, Electromecánicas y Luminotécnicas.}, respectivamente \citep{CIAA}.
+
+% Sitio web: \url{http://www.sase.com.ar/asociacion-civil-sistemas-embebidos}
+% Sitio web: \url{http://www.cadieel.org.ar/}
+%ACSE\footnote{\url{http://www.sase.com.ar/asociacion-civil-sistemas-embebidos}} y CADIEEL\footnote{\url{http://www.cadieel.org.ar}}, respectivamente. 
 
 Objetivos del proyecto:
 
@@ -42,6 +47,96 @@ Objetivos del proyecto:
 
 Todo esto en el marco de un trabajo libre, colaborativo y articulado entre industria y academia. 
 
+En el marco de esta iniciativa se han desarrollado distintas plataformas de \textit{hardware}, un \textit{firmware} con drivers y ejemplo de aplicación y un entorno de desarrollo basado en el \textit{software} eclipse.
+
+Dentro de las plataformas de \textit{hardware} se encuentran versiones basadas en distintos microcontroladores de distintos fabricantes y versiones sobre FPGA\footnote{Field Programmable Gate Array}.  También hay versiones pensadas para trabajar en ambientes industriales y versiones educativas que utilizan el mismo microcontrolador pero a un costo total menor que la versión industrial. 
+A continuación se listan las plataformas que se encuentra en fase de comercialización.
+
+\begin{itemize}
+\item CIAA-NXP, primera plataforma industrial desarrollada por el proyecto.  Se basa en el microcontrolador NXP LPC4337JBD144. 
+%\vspace{5px
+\item EDU-CIAA-NXP, versión de bajo costo de la CIAA-NXP pensada para la enseñanza universitaria, terciaria y secundaria. 
+\end{itemize}
+
+Asimismo, existen otras versiones en desarrollo, CIAA-FSL, EDU-CIAA-FSL, CIAA-Safety, CIAA-ACC, EDU-CIAA-XILINX, EDU-CIAA-INTEL y CIAA-PIC. Información detallada respecto a cada plataforma y su grado de avance se puede encontrar en \citep{CIAA}.
+
+%\begin{itemize}
+%\item CIAA-FSL, basada en el microcontrolador Freescale MK60FX512VLQ15.
+%%\vspace{5px}
+%\item EDU-CIAA-FSL es una versión de bajo costo de la CIAA-FSL pensada para la enseñanza universitaria, terciaria y secundaria.
+%%\vspace{5px}
+%\item CIAA-Safety, para aplicaciones que requieran de Seguridad Funcional Certificable bajo norma IEC 61508. Basada en el microcontrolador TI RM48L952.
+%%\vspace{5px}
+%\item CIAA-ACC para aplicaciones de Alto Costo Computacional. Basada en tecnología FPGA.
+%%\vspace{5px}
+%\item EDU-CIAA-XILINX es una plataforma de bajo costo para el aprendizaje de los sistemas embebidos implementados con softcores sobre FPGA.
+%%\vspace{5px}
+%\item EDU-CIAA-INTEL es una plataforma de desarrollo de bajo costo basada en el SoM Edison de Intel.
+%%\vspace{5px}
+%\item CIAA-PIC, basada en el microcontrolador Microchip PIC32MZ2048ECH144.
+%\end{itemize}
+
+Debido a que el trabajo requiere una plataforma totalmente desarrollada y conexión ethernet, se elige la plataforma industrial CIAA-NXP. Se detallan a continuación las principales características de la misma.
+
+\subsection{Plataforma CIAA-NXP}
+
+La CIAA-NXP es la primera y única computadora del mundo que reúne dos cualidades:
+
+\begin{itemize}
+\item 
+Ser \textbf{Industrial}, ya que su diseño está preparado para las exigencias de confiabilidad, temperatura, vibraciones, ruido electromagnético, tensiones, cortocircuitos, etc., que demandan los productos y procesos industriales.
+\item 
+Ser \textbf{Abierta}, ya que toda la información sobre su diseño de hardware, firmware, software, etc. está libremente disponible en Internet bajo la Licencia BSD, para que cualquiera la utilice como quiera.
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.8\textwidth]{./Figures/ciaa-nxp.jpg}
+	\label{fig:ciaa-nxp}
+	\caption{Plataforma CIAA-NXP}
+\end{figure}
+
+
+\noindent Esta plataforma se compone de:
+
+\begin{itemize}
+\item CPU: Microcontrolador NXP LPC4337JBD144 (Dual-core Cortex-M4 + Cortex-M0 @ 204MHz).
+\item Debugger: USB-to-JTAG FT2232H. Soportado por OpenOCD.
+\item Memorias: 
+   \begin{itemize}
+   \item IS42S16400F - SDRAM. 64Mbit @ 143MHz.
+   \item S25FL032P0XMFI011 - Flash SPI. 32 Mbit, Quad I/O Fast read: 80 MHz.
+   \item 24AA1025 - EEPROM I2C. 1 Mbit, 400 kHz. Almacenamiento de propósito general, datos de calibración del usuario, etc.
+   \item 24AA025E48 - EEPROM I2C. 2 kbit, 400 kHz. Para implementación de MAC-Address o almacenamiento de propósito general.
+   \end{itemize}
+\item Entradas y salidas:   
+   \begin{itemize}
+   \item 8 entradas digitales opto-acopladas.
+   \item 4 entradas analógicas 0-10V/4-20mA.
+   \item 4 salidas Open-Drain. 
+   \item 4 salidas con Relay DPDT.
+   \item 1 salida analógica 0-10V/4-20mA.
+   \end{itemize}
+\item LV-GPIO:
+   \begin{itemize}
+   \item 14 GPIOs.
+   \item I2C.
+   \item SPI.
+   \item 4 canales analógicos.
+   \item Aux. USB.
+   \end{itemize}
+\item
+Interfaces de comunicación:
+   \begin{itemize}
+   \item Ethernet.
+   \item USB On-The-Go.
+   \item RS232.
+   \item RS485.
+   \item CAN.
+   \end{itemize}
+\item Múltiples fuentes de alimentación.
+
+\end{itemize}
 
 \section{¿Qué es un Acuario?}
 \label{sec:acuario}
@@ -54,8 +149,8 @@ Los acuarios se clasifican principalmente según las condiciones del agua:
 \begin{itemize}
 	\item Por temperatura
 	\begin{itemize}
-		\item Agua fría; entorno a los 18 \degree C.
-		\item Agua tropical; normalmente entre 22 y 27 \degree C.
+		\item Agua fría; entorno a los 18 \grados C.
+		\item Agua tropical; normalmente entre 22 y 27 \grados C.
 	\end{itemize}
 	\vspace{5px}
 	\item Por salinidad
@@ -80,17 +175,23 @@ Es necesario que el agua se encuentre debidamente tratada de acuerdo con las nec
 	\vspace{5px}
 	\item Agua Salada:
 	\begin{itemize}
-		\item desidad del agua
+		\item densidad del agua
 		\item valor pH.
 		\item el CO2  o anhídrido carbónico.
 	\end{itemize}
 	
 \end{itemize}
+
+
 Nos referimos a la dureza del agua (dGH), el valor pH y el CO2  o anhídrido carbónico. Existen en el mercado productos específicos que ayudan a mantenerla en óptimas condiciones, incluso \textit{tests} que facilitan un control adecuado sobre la medición de los valores químicos que debe tener el agua del acuario.
 
-A modo de ejemplo, destacar que para acuarios de agua dulce, la media ideal del agua, tendrá como valores: un pH de 7, dureza 10º a 15º dGH y 5 a 10º KH, pero estas medidas son variables en función de la especie en cuestión.
+Los peces viven bien con un pH que oscile entre 5 y 9, con valores extremos, tanto hacia el 0 como hacia el 14, sólo son aptos peces muy especializados.
 
-Los acuarios de agua salada requieren mayor complejidad, entra en juego la salinidad del agua que en cierta medida sustituye a la dureza, y su valor debe estar en una escala de entre 1022-1025, por otro lado el pH mantendrá un valor a partir de 8, normalmente la media oscila en torno a 8,2.
+Por lo general el pH más correcto para el pleno desarrollo de los peces es el que se encuentra entre 5.5 y 7.5. Hay que tener en cuenta que lo ideal, o sea, la neutralidad es 7. Sin embargo, aconsejo que si los valores de nuestros acuarios no corresponden a estos niveles (entre 5.5 y 7.5) se realice un cambio moderado, no brusco, ya que los peces se desarrollan mejor en ambientes constantes y estables.
+
+El cambio del pH es aconsejable realizarlo cuando este sea demasiado ácido o demasiado básico provocado por un medicamento introducido en el agua
+
+El pH viene establecido por dos componentes, la dureza de carbonatos y el CO2. La relación entre ambos, la dureza de carbonatos como el componente alcalino y el CO2 como componente ácido, son los que establecen el valor del PH. Si la relación es similar el PH es neutro, cercano al valor 7. 
 
 %
 %\begin{figure}[]
