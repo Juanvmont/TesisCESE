@@ -113,34 +113,45 @@ headsepline, % Uncomment to get a line under the header
 \begin{titlepage}
 \begin{center}
 
-{\scshape\LARGE \univname\par}\vspace{1.5cm} % University name
-\textsc{\Large Memoria del Trabajo Final}\\[0.5cm] % Thesis type
+{\scshape\LARGE UNIVERSIDAD DE BUENOS AIRES\par}\vspace{0.1cm} % University name
+{\LARGE Facultad de Ingeniería\par}\vspace{0.1cm} % Faculty name
+\textsc{\Large Carrera de Especialización en Sistemas Embebidos}\vspace{1cm} % Thesis type
 
-\HRule \\[0.4cm] % Horizontal line
+\includegraphics[width=.3\textwidth]{./Figures/logoFIUBA.png}
+\vspace{1cm}
+
+\textsc{\Large Memoria del Trabajo Final}\\[0.5cm] % Thesis type
+%\HRule \\[0.4cm] % Horizontal line
 {\huge \bfseries \ttitle\par}\vspace{0.4cm} % Thesis title
-\HRule \\[1.5cm] % Horizontal line
+%\HRule \\[1.5cm] % Horizontal line
  
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushleft} \large
-\emph{Autor:}\\
-{\authorname} % Author name - remove the \href bracket to remove the link
-\end{flushleft}
-\end{minipage}
-\begin{minipage}[t]{0.4\textwidth}
-\begin{flushright} \large
-\emph{Director:} \\
+%\begin{minipage}[t]{0.4\textwidth}
+%\begin{flushleft} \large
+\vspace{1cm}
+\LARGE\textbf{Autor:\\
+\authorname}\\ % Author name - remove the \href bracket to remove the link
+
+\vspace{1cm}
+
+\large
+\vspace{10px}
+{Director:} \\
 {\supname} % Supervisor name - remove the \href bracket to remove the link  
-\end{flushright}
-\end{minipage}\\[3cm]
  
-\large \textit{Memoria presentada en cumplimiento con los requisitos\\ para el grado de \degreename}\\[0.3cm] % University requirement text
-\textit{en el}\\[0.4cm]
-\groupname\\\deptname\\[2cm] % Research group name and department name
- 
-{\large \today}\\[4cm] % Date
+\vspace{1cm}
+Jurados:\\
+Esp. Ing. Ramiro Alonso (FIUBA)\\
+Ing. Eric Pernia (UNQ) \\
+Esp. Ing. Pablo Ridolfí (UTN)
+%\large \textit{Memoria presentada en cumplimiento con los requisitos\\ para el grado de \degreename}\\[0.3cm] % University requirement text
+%\textit{en el}\\[0.4cm]
+%\groupname\\\deptname\\[2cm] % Research group name and department name
+% 
+%{\large \today}\\[4cm] % Date
 %\includegraphics{Logo} % University/department logo - uncomment to place it
  
 \vfill
+\textit{Este trabajo fue realizado en las Ciudad Autónoma de Buenos Aires, entre agosto de 2015 y julio de 2016.}
 \end{center}
 \end{titlepage}
 
@@ -153,7 +164,7 @@ headsepline, % Uncomment to get a line under the header
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 %
 %The Thesis Abstract is written here (and usually kept to just this page). The page is kept centered vertically so can expand into the blank space above the title too\ldots
-
+\centering
 Pertenencia\ldots
 
 Resumen\ldots
