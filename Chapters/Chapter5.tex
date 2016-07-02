@@ -4,13 +4,22 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-Se diseñó un \textit{harware} que funcionan como Generador Eléctrico Solar Autónomo (GESA) y un \textit{firmware} que permite controlar a sus dispositivos para evitar que el problema se manifieste y si eventualmente se manifiesta, detectarlo e informarlo para tomar las acciones necesarias. En conjunto aportan una solución a un problema de disponibilidad de nodos debido a su autonomía energética.
-
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+\section{Conclusiones generales}
 
-\section{Lecciones aprendidas}
+La presente investigación apunta a la concepcion y realizacion de un sistema fotovoltaico, para lo cual se diseñó un \textit{harware} que funcionan como Generador Eléctrico Solar Autónomo (GESA) y un \textit{firmware} que permite controlar dispositivos para evitar que el problema se manifieste y si eventualmente se manifiesta, detectarlo e informarlo para tomar las acciones necesarias. En conjunto aportan una solución a un problema de disponibilidad de nodos debido a su autonomía energética.
+
+Estos sistemas fotovoltáicos se presentan como una solución portable y de bajo costo que puede ser utilizada para alimentar dispositivos electronicos, como componentes programables, microcontroladores, FPGA, computadoras industriales y sistemas embebidos en general.
+
+El presente trabajo es de interés en el área de Sistemas Embebidos para la implementación de otros algoritmos.
+
+A partir del trabajo realizado se deduce que resulta necesario analizar el comportamiento del protocolo MAC basado en el tipo de tráfico que se tiene que manejar y un uso eficiente del radio, con la finalidad que dos nodos no se interfieran en sus transmisiones y buscando una solución para cuando suceda.
+
+A su vez una buena práctica es analizar los avances de la investigación ejecutando la aplicación en casos prácticos.
+
+Análisis de costos
 
 \medskip
 Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos. Principalmente de las siguientes asignaturas: 
@@ -20,16 +29,16 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 \textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \textit{Mote LSE} y su interacción con los periféricos.
 
 \item
-\textbf{Programación de microprocesadores}. Se utilizaron los principios de programación en Lenguaje C para microcontroladores y periféricos. Utilizando el principio de diseño KISS\footnote{\textit{del inglés Keep It Simple, Stupid!: «¡Manténlo simple, estúpido!»}} que establece a la simplicidad como objetivo clave de diseño de cualquier sistema y cualquier complejidad innecesaria debe ser evitada. Mas aún cuando el ahorro de energía es un tema crítico para la aplicación y se desea evitar un mayor consumo en la operación. 
+\textbf{Programación de microprocesadores}. Se utilizaron los principios de programación en Lenguaje C para microcontroladores y periféricos. Uso de repositorio. Diseño con el principio KISS\footnote{\textit{del inglés Keep It Simple, Stupid!: «¡Manténlo simple, estúpido!»}} que establece a la simplicidad como objetivo clave de diseño de cualquier sistema y cualquier complejidad innecesaria debe ser evitada. Mas aún cuando el ahorro de energía es un tema crítico para la aplicación y se desea evitar un mayor consumo en la operación. 
 
 \item
-\textbf{Gestión de Proyectos en Ingeniería}. El Plan de Proyecto Final, llevó a organizar el trabajo metódicamente. Se emplearon buenas practicas de gestión de proyectos que pueden llevarse a cabo en cualquier ámbito de la ingeniería, tanto laboral como académico.
+\textbf{Gestión de Proyectos en Ingeniería}. El Plan de Proyecto Final, llevó a organizar el presente trabajo metódicamente. Se emplearon buenas practicas de gestión de proyectos que pueden llevarse a cabo en cualquier ámbito de la ingeniería, tanto laboral como académico.
 
 \item 
 \textbf{Protocolos de Comunicación}. Se aplicaron los conocimientos obtenidos sobre los protocolos de comunicación SPI, USB y 802.15.4.
 
 \item 
-\textbf{Introducción a WSN}. .
+\textbf{Introducción a Redes de Sensores Inalámbricos}. .
 \end{itemize}
 
 \medskip
@@ -44,27 +53,18 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 
 \medskip
 
-Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo han sido alcanzados satisfactoriamente, cumpliendo con el requerimiento de mas alta prioridad: Presentar un trabajo final con la finalización del proyecto.
+Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo han sido alcanzados satisfactoriamente, cumpliendo con el requerimiento de mas alta prioridad: Presentar el Trabajo Final con la finalización del proyecto.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\section{Análisis de costos}
+\section{Trabajos futuros}
 
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
-\section{Implementación de otros algoritmos}
-De interés en el área de Sistemas Embebidos
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
-\section{Próximos pasos}
+Hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA \citep{CIAA} (Computadora Industrial Abierta Argentina)y de esta manera brindarle autonomía solar a aplicaciones industriales que no tengan disponibilidad de redes de distribución eléctrica .
 
-\begin{itemize}
-	\item Hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA (Computadora Industrial Abierta Argentina)y de esta manera brindarle autonomía solar a aplicaciones industriales que no tengan disponibilidad de redes de distribución eléctrica .
-\end{itemize}
+Resulta esencial emplear protocolos de sincronización de tiempo, ya sea con corrección de reloj o con una tabla de traducción de tiempo, para lograr ciclos de trabajo eficientes y su desempeño es proporcional a la exactitud de la sincronización. Esto se puede lograr empleando protocolos de sincronización por parejas (por ejemplo TPSN y RBS) o a nivel de red (extensiones de TPSN y RBS).
 
+desarrollar una implementacion donde convivan
 
 
 
