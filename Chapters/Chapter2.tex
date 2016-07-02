@@ -6,138 +6,217 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Trabajo a realizar}
-
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-%\subsection{Objetivo}
-\begin{itemize}
-
-	\item \textbf{Objetivos}:\\
-	Desarrollar un software que permita utilizar la CIAA como un controlador de acuarios. Agregar valor al ecosistema del proyecto-ciaa incorporando nuevas aplicaciones para la misma.
-	
-	\item \textbf{Alcance}:\\
-	El proyecto incluye únicamente el desarrollo de un software de control para la plataforma CIAA.
-
-%	\item \textbf{Restricciones}:\\
-%	Finalización del proyecto 15 de diciembre de 2015
-
-	\item \textbf{Suposiciones}:\\
-	Contar con los fondos solicitados al Ministerio de Industria Nacional permitirá costear los sensores y actuadores para armar una planta piloto de desarrollo.  En caso que los fondos no estén disponibles tanto por el rechazo del proyecto presentado como por una demora en los plazos de adjudicación, está contemplado la utilización de simulaciones para emular los elementos que no se hayan podido adquirir.
-	
-	Asimismo, se estima que estará disponible para el desarrollo del proyecto, y mientras dure el mismo, una plataforma CIAA-NXP.
-	
-	\end{itemize}
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
-%\subsection{Alcances}
-%Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
-
-%-----------------------------------
-%	SUBSECTION 3
-%-----------------------------------
-\clearpage
-\subsection{Requerimientos y Criterios de aceptación}
+\section{Descripción del trabajo}
+\label{sec:trabajo}
+\noindent Los objetivos del proyecto son los siguientes:
 
 \begin{itemize}
-	\item \textbf{REQ1:}\\ El \textit{software} se debe desarrollar para la plataforma de hardware CIAA, en lenguaje C.
-	\item \textbf{REQ2:}\\ El equipo a desarrollar debe poder medir las siguientes variable del entorno de un acuario,
-	\begin{itemize}
-		\item REQ2\_A: temperatura en el rango de 16 a 30 \grados C con una resolución de 0,5 \grados C ó superior.
-		\item REQ2\_B: pH en el rango de 5 a 9 con una resolución de 0,1 ó superior.
-%		\item REQ2\_C: nivel de agua alto o bajo
+	\item Agregar al nodo \textit{Mote LSE} un circuito cargador a partir de un panel solar.
+	\item Desarrollar un software de supervisión de nodos \textit{Mote LSE} con extensión de panel solar.
+	\item Implementar el sistema en \textit{n} nodos desplegados en una red inalámbrica de área personal.
+	\item Gestionar el modo de operación del nodo en función de la tensión que entrega el circuito cargador y la proyección de la batería restante.
+	\item Supervisar la temperatura del entorno del nodo.
+	\item Reportar a un nodo central el estado de salud del nodo.
+	\item Fijar y leer en forma remota las alarmas/parámetros de configuración.
 	\end{itemize}
-	\item \textbf{REQ3:}\\ El equipo debe poder actuar sobre los siguiente elementos del entorno de un acuario,
-	\begin{itemize}
-		\item REQ3\_A: Encender/apagar la iluminación
-		\item REQ3\_B: Encender/apagar bombas para el llenado/vaciado de agua
-		\item REQ3\_C: Encender/apagar bomba de CO2
-%		\item REQ3\_C: Encender/apagar dosificador de alimento/nutrientes
-		\item REQ3\_D: Encender/apagar calefactor
-	\end{itemize}
-	\item \textbf{REQ4:}\\ El equipo debe poder ser administrado mediante una interfaz web. Se debe poder visualizar el estado del sistema y realizar su programación.
-	\item \textbf{REQ5:}\\ El equipo debe poder emitir una alarma por un medio adecuado, sonoro y/o visual cuando las variables bajo control salgan de su rango de operación segura.
-\end{itemize}
-
-\textbf{Criterio de aceptación}:
-	\begin{itemize}
-		\item Correcta visualización de todas las variable de estado del sistema enumeradas en el REQ2 mediante una interfaz web.
-		\item Correcto comportamiento al accionar los actuadores enumerados en el REQ3 desde la interfaz web.
-	\end{itemize}
-
-%-----------------------------------
-%	SUBSECTION 4
-%-----------------------------------
-
-\subsection{Desglose de tareas / GANTT}
-Morbi rutrum odio eget arcu adipiscing sodales. Aenean et purus a est pulvinar pellentesque. Cras in elit neque, quis varius elit. Phasellus fringilla, nibh eu tempus venenatis, dolor elit posuere quam, quis adipiscing urna leo nec orci. Sed nec nulla auctor odio aliquet consequat. Ut nec nulla in ante ullamcorper aliquam at sed dolor. Phasellus fermentum magna in augue gravida cursus. Cras sed pretium lorem. Pellentesque eget ornare odio. Proin accumsan, massa viverra cursus pharetra, ipsum nisi lobortis velit, a malesuada dolor lorem eu neque.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
+\section{Herramientas}
+\label{sec:herramientas}
 
-\section{Planteo del problema}
+LPCxpresso es un toolchain que está compuesto por un IDE basado en eclipse, compiler y linker GNU, GDB debugger y también una herramienta que incluye un programador y debugger (LPC-Link) que es usado para programar el nodo \textit{Mote LSE}.
 
-Sed ullamcorper quam eu nisl interdum at interdum enim egestas. Aliquam placerat justo sed lectus lobortis ut porta nisl porttitor. Vestibulum mi dolor, lacinia molestie gravida at, tempus vitae ligula. Donec eget quam sapien, in viverra eros. Donec pellentesque justo a massa fringilla non vestibulum metus vestibulum. Vestibulum in orci quis felis tempor lacinia. Vivamus ornare ultrices facilisis. Ut hendrerit volutpat vulputate. Morbi condimentum venenatis augue, id porta ipsum vulputate in. Curabitur luctus tempus justo. Vestibulum risus lectus, adipiscing nec condimentum quis, condimentum nec nisl. Aliquam dictum sagittis velit sed iaculis. Morbi tristique augue sit amet nulla pulvinar id facilisis ligula mollis. Nam elit libero, tincidunt ut aliquam at, molestie in quam. Aenean rhoncus vehicula hendrerit.
-
-
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Descripción del problema real}
-
-Interacciones entre variables de estado.
-
-Suposiciones, limitaciones y modelo adoptado.
-
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-
-\subsection{¿Qué hace falta medir, actuar, alertar?}
-
-en referencia a los requerimientos y al recorte del problema de la sección anterior
-
-%-----------------------------------
-%	SUBSECTION 3
-%-----------------------------------
-
-\subsection{Alternativas tecnológicas}
-
-Alternativas de sensores.
-\begin{figure}[h]
+\begin{figure}[h!]
 	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/sensor_nivel}
-	\label{fig:Sensor de nivel}
-	\caption{Sensor de nivel de Agua}
+    \includegraphics[width=.8\textwidth]{./Figures/mote.jpg}
+	\label{fig:mote}
+	\caption{Fotografía de la plataforma. Nodo \textit{Mote LSE}}
 \end{figure}
 
-\begin{figure}[h]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/sensor_temp}
-	\label{fig:Sensor de temperatura}
-	\caption{Sensor de temperatra}
-\end{figure}
-Alternativas de actuadores.
+\noindent Esta plataforma se compone de:
+\begin{itemize}
+\item Microcontrolador NXP LPC1343
+   \begin{itemize}
+   \item Procesador Cortex-M3 @72MHz. 
+   \item 32kB de memoria Flash.
+   \item 8kB de memoria RAM.
+   \end{itemize}
+\item Transceptor TI-2520.
+		\begin{itemize}
+			\item 2394-2507 MHz.
+			\item VCO, LNA, PA y filtros On-chip.
+			\item 3 modos de potencia flexibles para consumo reducido.
+			\item Muy bajo consumo de corriente.
+			\begin{itemize}
+				\item RX: 18.5 - 22.3 mA.
+				\item TX: 25.8 - 33.6 mA.
+			\end{itemize}
+			\item Interfaz de usuario:
+			\begin{itemize}
+				\item SPI.
+				\item 6 GPIOs.
+ 				\item Generador de interrupciones.
+				\item Respuestas automáticas a diferentes eventos.
+%				\item Modo de Packet Sniffer embebido
+			\end{itemize}
+		\end{itemize}
+\item Extensor de rango TI-2591.
+\item Antena y balun en microstrip.
+\item Circuito de control de carga bq24080 1-A.
+		\begin{itemize}
+			\item Alimentación de 5V(DC) a través de conector USB micro-B.
+			\item La carga de la batería termina basada en una corriente mínima.
+			\item Entra en modo \textit{sleep} automáticamente cuando la entrada es removida.		
+		\end{itemize}
+\item Batería de Li-ion de 3.7V y 900mAh.
+\item Sensor de luz.
+\item Sensor de temperatura.
+\end{itemize}
 
-\begin{figure}[h]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/actuador_heater}
-	\label{fig:act_heater}
-	\caption{Actuador Calefactor}
-\end{figure}
+Instrumentos de medición. Soluciones existentes y estado del arte de paneles y baterías.
 
-\begin{figure}[h]
-	\centering
-    \includegraphics[width=.5\textwidth]{./Figures/actuador_pump}
-	\label{fig:act_pump}
-	\caption{Actuador Bomba de agua}
-\end{figure}
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
 
-Alternativas de alarmas.
+\section{Costo energético}
+\label{sec:costo}
+consumos en cada modo de operación
+comparacion de tramas y throughput
 
-listar y justificar alternativas elegidas.
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+
+\clearpage
+\section{Requerimientos}
+\label{sec:requerimientos}
+
+\noindent Requerimientos de hardware:
+\begin{itemize}
+	\item \textbf{REQ1:}\\ Compatibilidad con nodos Mote LSE.
+	\item \textbf{REQ2:}\\ Agregar al nodo Mote LSE la extensión de circuito cargador a partir de panel solar de 12V x 0.5A (10W).
+\end{itemize}
+	
+\noindent Requerimientos de software:
+\begin{itemize}
+	\item \textbf{REQ1:}\\ El sistema de monitoreo debe poder trabajar con una cantidad \textit{n} de nodos simultáneamente.
+	\item \textbf{REQ2:}\\ El sistema debe soportar topologías de tipo estrella, peer-to-peer y árbol de cluster.
+	\item \textbf{REQ3:}\\ El nodo tendrá una memoria no volátil donde guarda los valores de alarma, los parámetros monitoreados, el tiempo total de uso, y la cantidad de ciclos de carga/descarga.
+	\item \textbf{REQ4:}\\ Todas las alarmas/parámetros de configuración/estado del nodo deben poder fijarse y leerse en forma remota (prioridad alta).	
+	\item \textbf{REQ5:}\\ El cambio de modos entre batería y panel solar lo hace el nodo en función de la tensión que entrega el panel solar; el nodo debe funcionar en modo panel solar todo lo posible.
+	\item \textbf{REQ6:}\\ La recarga de la batería la decide el nodo en función de la proyección de batería restante y la tensión que entrega el panel solar.	
+	\item \textbf{REQ7:}\\ Los nodos deben monitorear en todo momento:	
+	\begin{itemize}
+		\item REQ7\_A: Consumo de corriente.
+		\item REQ7\_B: Temperatura ambiente.
+		\item REQ7\_C: Tensión que entrega el panel solar.
+		\item REQ7\_D: Modo de funcionamiento (batería/panel solar).
+		\item REQ7\_E: Alarmas cuando la temperatura ambiente es mayor o menor a un determinado
+		\item REQ7\_F: Tiempo total que lleva el nodo funcionando.
+		\end{itemize}
+	\item \textbf{REQ8:}\\Los nodos en modo batería deben monitorear:
+		\begin{itemize}
+		\item REQ8\_A: Salud de la batería (tensión, corriente y temperatura).
+		\item REQ8\_B: Proyección de batería restante (conociendo la batería y el consumo, estimar cuánto tiempo de vida le queda al nodo).
+		\item REQ8\_C: Alarmas: Tiempo de vida proyectado del nodo menor a un nivel prefijado; tensión de batería menor a un valor prefijado, corriente de la batería mayor a un valor prefijado, y temperatura de batería mayor a un valor prefijado.
+		\end{itemize}
+	\item \textbf{REQ9:}\\Los nodos en modo panel solar deben monitorear:
+		\item REQ9\_A: Estado del sistema de recarga (tensión y corriente que entrega el panel y tensión, corriente y temperatura de la batería).
+		\item REQ9\_B: Tiempo restante estimado para recarga total de la batería.
+		\item REQ9\_C: Cantidad de ciclos de carga/descarga acumulados.
+		\item REQ9\_D: Si está recargando la batería.
+	\item \textbf{REQ10:}\\Se debe implementar un algoritmo de ahorro de energía en los nodos en estado de alarma (prioridad baja).
+\end{itemize}
+
+\noindent Requerimientos de documentacion y entregables:
+\begin{itemize}
+	\item \textbf{REQ1:}\\ El manual de uso debe especificar los parámetros de red configurables para implementar el sistema.
+	\item \textbf{REQ2:}\\ Los diagramas de instalación debe contemplar las tres topologías posibles de acuerdo a 802.15.4.
+	\item \textbf{REQ3:}\\ Se debe presentar un informe de avance del proyecto en una presentación pública ante el jurado el 31 de marzo de 2016.
+	\item \textbf{REQ4:}\\ Se debe presentar un trabajo final con la finalización del proyecto. Este es el requerimiento de más alta prioridad.	
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+
+\section{Tareas a realizar}
+\label{sec:tareas}
+\begin{itemize}
+	\item Planificación del proyecto (40 hs)
+	\item Tareas de hardware (55 hs):
+	\begin{itemize}
+	\item Análisis del hardware nodo Mote LSE y LPC-Link (20 hs).
+	\item Adaptación de circuito cargador a partir de panel solar (35 hs).
+	\end{itemize}
+	\item Tareas de software-topologías (40 hs):
+	\begin{itemize}
+	\item Organizar los nodos en topología de tipo estrella (10 hs).
+	\item Organizar los nodos en topología de tipo peer-to-peer (10 hs).
+	\item Organizar los nodos en topología de tipo árbol de cluster (20 hs).
+	\end{itemize}
+	\item Tareas de software-memoria (25 hs):
+	\begin{itemize}
+	\item Memoria no volátil (10 hs).
+	\item Escribir y leer en forma remota (15 hs).    
+	\end{itemize}
+	\item Tareas de software-energía (60 hs):
+	\begin{itemize}
+	\item Medir la tensión que entrega el panel solar (5 hs).
+	\item Cambio de modos (batería/panel) (10 hs).
+	\item Proyección de batería restante (20 hs).
+	\item Recarga de batería (25 hs).
+	\end{itemize}
+	\item Tareas de software-monitoreo (80 hs):
+	\begin{itemize}
+	\item Medir consumo de corriente (5 hs).
+	\item Modo de funcionamiento (20 hs).
+	\item Medir temperatura ambiente (15 hs).
+	\item Alarmas de temperatura (2) (20 hs).
+	\item Medir tiempo de funcionamiento (20 hs).
+	\end{itemize}
+	\item Tareas de software-batería (50 hs):
+	\begin{itemize}
+	\item Salud de batería (20 hs).
+	\item Generar alarmas (4) (30 hs).
+	\end{itemize}
+	\item Tareas de software-panel (70 hs):
+	\begin{itemize}
+	\item Estado del sistema de recarga (10 hs).
+	\item Medir tiempo restante estimado para recarga total de la batería (25 hs).
+	\item Cantidad de ciclos de carga/descarga acumulados (15 hs).
+	\item Estado de recarga (20 hs).
+	\end{itemize}
+	\item Tareas de software-ahorro (60 hs):
+	\begin{itemize}
+	\item Identificar los posibles valores de configuración para los parámetros de red (10 hs).
+	\item Definir el ciclo útil y la periodicidad de los reportes para el modo ahorro (5 hs).
+	\item Definir las funcionalidades reducidas para el modo ahorro (10 hs).
+	\item Desarrollar el algoritmo de ahorro de energía (15 hs).
+	\item Pruebas software-ahorro (20 hs).
+	\end{itemize}
+	\item Tareas de software-integración (20 hs):
+	\begin{itemize}
+	\item Integrar todas las funcionalidades de software (5 hs).
+	\item Pruebas software-integración (15 hs).  
+	\end{itemize}
+	\item Tareas de documentación y entregables (80 hs):
+	\begin{itemize}
+	\item Documentación de los diagramas de instalación (10 hs).
+	\item Documentación del informe de avance. (10 hs).
+	\item Documentación del manual de uso (20 hs).
+	\item Documentación del informe final (40 hs).
+	\end{itemize}
+	\item Procesos de cierre (20 hs).
+	\begin{itemize}
+	\item Seguimiento del Gantt (4 hs)
+	\item Organización de la presentación pública(3 hs)    
+	\item Documentación de lecciones aprendidas (4 hs)
+	\item Documentación de problemas y soluciones (4 hs)
+	\item Comparación de horas estimadas y empleadas (2 hs)
+	\item Organización de acto de agradecimiento (3 hs)
+	\end{itemize}
+\end{itemize}

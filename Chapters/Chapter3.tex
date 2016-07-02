@@ -7,10 +7,37 @@
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
+\section{Hardware}
+\label{sec:hard}
+En el mercado se consiguen distintas soluciones que se ajustan a las necesidades de cada aplicación. 
+ 
+\noindent El panel solar es de las siguientes características:
+\begin{itemize}
+\item Dimensiones: 304x352x22mm
+\item Peso: 1.36Kg
+\item Corriente: 0.58A
+\item Tensión: 17.4V
+\item Potencia: 10W
+\end{itemize}
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{Esquemático de extensión de circuito cargador}
+\label{sec:extensión}
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+\subsection{Diagrama de conexión}
+\label{sec:conexión}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
 
 \section{Arquitectura}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultricies lacinia euismod. Nam tempus risus in dolor rhoncus in interdum enim tincidunt. Donec vel nunc neque. In condimentum ullamcorper quam non consequat. Fusce sagittis tempor feugiat. Fusce magna erat, molestie eu convallis ut, tempus sed arcu. Quisque molestie, ante a tincidunt ullamcorper, sapien enim dignissim lacus, in semper nibh erat lobortis purus. Integer dapibus ligula ac risus convallis pellentesque.
+\label{sec:arq}
 
 %-----------------------------------
 %	SUBSECTION 1
@@ -22,74 +49,54 @@ Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum an
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
-
 \subsection{Arquitectura modular}
 
 Módulos, modelo de capas. APIs, interfaces.
 
-
-
 %----------------------------------------------------------------------------------------
-%	SECTION 2
+%	SECTION 3
 %----------------------------------------------------------------------------------------
+\section{Firmware}
+\label{sec:firm}
 
-\section{Software}
+\begin{itemize}
+	\item Implementación de funcionalidades en la subcapa MAC
 
+	\item Implementación de funcionalidades en la subcapa PHY
 
+	\item Implementación de funcionalidades a nivel de aplicación
+	
+\end{itemize}
 
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Ajustes a freeRTOS}
+\subsection{Ajustes a Microstack}
 
 
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
+\subsection{Diagramas de topologías implementadas}
 
-\subsection{Ajustes a lwIP}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.8\textwidth]{./Figures/topologia.jpg}
+	\label{fig:mote}
+	\caption{1) Topología estrella. 2)Topología Peer-to-Peer}
+\end{figure}
 
-Módulos, modelo de capas. APIs, interfaces.
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.8\textwidth]{./Figures/cluster.jpg}
+	\label{fig:mote}
+	\caption{Topología árbol de cluster}
+\end{figure}
 
 %-----------------------------------
 %	SUBSECTION 3
 %-----------------------------------
-\subsection{Interfaz web embebida}
-\label{sec:interfaz-web}
+\subsection{Principales funciones}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=1\textwidth]{./Figures/interfaz}
-	\label{fig:interfaz}
-	\caption{Interfaz web}
-\end{figure}
-
-%-----------------------------------
-%	SUBSECTION 4
-%-----------------------------------
-
-\subsection{Server Side Includes}
-
-SSI
-
-%-----------------------------------
-%	SUBSECTION 5
-%-----------------------------------
-\subsection{Common Gateway Interface}
-
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
-
-%-----------------------------------
-%	SUBSECTION 6
-%-----------------------------------
-
-\subsection{AJAX}
-
-Descripción de AJAX y cómo está implementado
-
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
-
-\section{Hardware}
+Funciones
 

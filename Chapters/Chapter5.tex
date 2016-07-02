@@ -4,89 +4,65 @@
 
 \label{Chapter5} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
 
-
-%----------------------------------------------------------------------------------------
+Se diseñó un \textit{harware} que funcionan como Generador Eléctrico Solar Autónomo (GESA) y un \textit{firmware} que permite controlar a sus dispositivos para evitar que el problema se manifieste y si eventualmente se manifiesta, detectarlo e informarlo para tomar las acciones necesarias. En conjunto aportan una solución a un problema de disponibilidad de nodos debido a su autonomía energética.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Conclusiones del trabajo realizado}
-
-En la presente memoria de tesis se ha documentado el Trabajo Final para la obtención del grado de \degreename.  
-
-Se obtuvo un firmware que permite controlar un acuario en forma remota mediante una interfaz web embebida en la plataforma CIAA-NXP. Se aplicaron simplificaciones al modelo de acuario, principalmente debido a las restricciones de tiempo establecidas para la finalización del trabajo y a la ejecución de acciones de contingencia de riesgos identificados al comienzo de la planificación del trabajo, a saber:
-
-\begin{itemize}
-	\item Riesgo: No contar con un subsidio para la adquisición de sensores y actuadores de acuario.
-	\item Riesgo: No disponer de una CIAA-NXP a tiempo para el comienzo del proyecto.
-	\item Contingencia:  Simular sensores y actuadores del modelo de acuario.
-\end{itemize}
-
-Con las mencionadas simplificaciones se obtuvo una ``planta piloto'' que permitió avanzar en el desarrollo del firmware de control y cumplir con los requerimientos de tiempo de finalización.
-
-Se pudo integrar el \textit{stack} TCP/IP lwIP con el RTOS freeRTOS al firmware de control sobre la base de un \textit{port} desarrollado por NXP, fabricante del microcontrolador LPC4337.
+\section{Lecciones aprendidas}
 
 \medskip
-
-Durante el desarrollo de este Trabajo Final se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos.  Si bien el conjunto total de asignaturas cursadas  aportaron conocimientos necesarios para la práctica profesional en el área de los Sistemas Embebidos, se quiere dejar constancia en particular, de las asignaturas con mayor relevancia para el trabajo presentado.
+Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos. Principalmente de las siguientes asignaturas: 
 
 \begin{itemize}
 \item
-\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \keyword{CIAA-NXP} y el uso de los periféricos.
+\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \textit{Mote LSE} y su interacción con los periféricos.
 
 \item
-\textbf{Programación de microprocesadores}. Se utilizaron buenas prácticas de programación en Lenguaje C para microcontroladores y periféricos, aprendidas en esta asignatura. Se usó un formato de código consistente: comentarios en las declaraciones de funciones y partes importantes del código, constantes en mayúsculas, \textit{camelCase} para poner nombres significativos a funciones y variables. Se utilizaron APIs\footnote{\textit{Application Program Interface}} para abstraer distintas capas del código. Se obtuvo un código más legible y reutilizable que puede ser portado a distintas plataformas con menor esfuerzo.
+\textbf{Programación de microprocesadores}. Se utilizaron los principios de programación en Lenguaje C para microcontroladores y periféricos. Utilizando el principio de diseño KISS\footnote{\textit{del inglés Keep It Simple, Stupid!: «¡Manténlo simple, estúpido!»}} que establece a la simplicidad como objetivo clave de diseño de cualquier sistema y cualquier complejidad innecesaria debe ser evitada. Mas aún cuando el ahorro de energía es un tema crítico para la aplicación y se desea evitar un mayor consumo en la operación. 
 
 \item
-\textbf{Ingeniería de Software en Sistemas Embebidos}. Se utilizaron técnicas provenientes de la Ingeniería de Software. Siempre que fue posible se utilizó un método sistemático e iterativo de desarrollo pensando en el ciclo de vida del software. Se hizo uso extensivo de Git como sistema de control de versiones del software.  Asimismo, se aplicaron metodologías de ensayo de \textit{software} aprendidas en esta asignatura.
-
-\item
-\textbf{Gestión de Proyectos en Ingeniería}. Resultó de mucha utilidad elaborar un Plan de Proyecto para organizar el Trabajo Final.  Parte del material elaborado en esta asignatura se encuentra en la presente memoria.
-
-\item
-\textbf{Sistemas Operativos de Tiempo Real (I y II)}. Se aplicaron los conocimientos adquiridos sobre freeRTOS respecto a tareas, cambios de contexto, manejo de colas, semáforos y mutex entre otras cosas.  Asimismo, se utilizaron herramientas de desarrollo propias de freeRTOS para medir el uso de las pilas de las tareas creadas y optimizar el uso de la memoria.
+\textbf{Gestión de Proyectos en Ingeniería}. El Plan de Proyecto Final, llevó a organizar el trabajo metódicamente. Se emplearon buenas practicas de gestión de proyectos que pueden llevarse a cabo en cualquier ámbito de la ingeniería, tanto laboral como académico.
 
 \item 
-\textbf{Protocolos de Comunicación}. Se aplicaron ampliamente los conocimientos obtenidos en el área de Ethernet. En particular, resultó de mucha utilidad el material sobre el \textit{stack} TCP/IP lwip.
+\textbf{Protocolos de Comunicación}. Se aplicaron los conocimientos obtenidos sobre los protocolos de comunicación SPI, USB y 802.15.4.
 
-\item
-\textbf{Diseño de Sistemas Críticos}. Siempre que fue posible se utilizaron técnicas de programación defensiva para que el comportamiento del firmware resulte lo más predecible posible.  Se buscó obtener un sistema de control que no falle en primer lugar, y que si lo hace, falle en forma segura evitando daños a los seres vivos dentro y fuera del acuario y la propiedad. \textbf{Algo sobre Utilización de estándares, MISRA C, C99 y buenas prácticas de programación}.
+\item 
+\textbf{Introducción a WSN}. .
 \end{itemize}
-
-
 
 \medskip
 
-\noindent Asimismo, durante el desarrollo del trabajo final se adquirieron conocimientos en las áreas de:
+\noindent Además, durante el desarrollo del trabajo final también se adquirieron conocimientos en:
 
 \begin{itemize}
-	\item Programación en HTML5.
-	\item Programación en Javascript.  
-	\item Utilización de \textit{linker scripts} para el entorno de desarrollo LPCXpresso.
+	\item Sistema de control de versiones de software.
+	\item Red eléctrica inteligente (o REI; \textit{Smart Grid} en inglés).
+	\item Energías alternativas.	
 \end{itemize}
-
 
 \medskip
 
-Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo han sido alcanzados satisfactoriamente, y además, se han obtenido conocimientos valiosos para la formación profesional del autor.
+Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo han sido alcanzados satisfactoriamente, cumpliendo con el requerimiento de mas alta prioridad: Presentar un trabajo final con la finalización del proyecto.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
-\clearpage
-\section{Trabajo futuro}
+\section{Análisis de costos}
 
-Se considera oportuno identificar las lineas de trabajo futuro para dar continuidad al esfuerzo invertido.  Se listan a continuación las principales.
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+\section{Implementación de otros algoritmos}
+De interés en el área de Sistemas Embebidos
+%----------------------------------------------------------------------------------------
+%	SECTION 4
+%----------------------------------------------------------------------------------------
+\section{Próximos pasos}
 
 \begin{itemize}
-	\item Trabajar con una planta piloto real, con sensores y actuadores de acuario.  Caracterizar la dinámica del entorno real y ajustar la lógica de control si fuera necesario.
-	\vspace{5px}
-	\item Escalar el firmware desarrollado para obtener un \textit{framework} que posibilite cambiar el dominio de aplicación a otras áreas de control donde el modelo de ``medir, alertar y actuar'' aplique.
-	\vspace{5px}
-	\item Permitir la introducción de nuevos sensores y actuadores debidamente parametrizados mediante la interfaz de usuario.
-	\vspace{5px}
-	\item Mejorar la portabilidad de la interfaz web utilizando técnicas de RWD (\textit{Responsive Web Design}) para que permita su correcta visualización en distintos dispositivos, navegadores y resoluciones de pantalla.
+	\item Hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA (Computadora Industrial Abierta Argentina)y de esta manera brindarle autonomía solar a aplicaciones industriales que no tengan disponibilidad de redes de distribución eléctrica .
 \end{itemize}
 
 
