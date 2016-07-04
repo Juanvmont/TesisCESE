@@ -75,7 +75,7 @@ LPCxpresso es un toolchain que está compuesto por un IDE basado en eclipse, com
 \item Sensor de temperatura.
 \end{itemize}
 
-Instrumentos de medición. Soluciones existentes y estado del arte de paneles y baterías.
+Instrumentos de medición. 
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -84,7 +84,7 @@ Instrumentos de medición. Soluciones existentes y estado del arte de paneles y 
 \section{Costo energético}
 \label{sec:costo}
 consumos en cada modo de operación
-comparacion de tramas y throughput
+comparación de tramas y throughput
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
@@ -97,7 +97,7 @@ comparacion de tramas y throughput
 \noindent Requerimientos de hardware:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ Compatibilidad con nodos Mote LSE.
-	\item \textbf{REQ2:}\\ Agregar al nodo Mote LSE la extensión de circuito cargador a partir de panel solar de 12V x 0.5A (10W).
+	\item \textbf{REQ2:}\\ Agregar al nodo Mote LSE la extensión de circuito cargador a partir de panel solar de 12V x 0.5A.
 \end{itemize}
 	
 \noindent Requerimientos de software:
@@ -145,78 +145,127 @@ comparacion de tramas y throughput
 
 \section{Tareas a realizar}
 \label{sec:tareas}
-\begin{itemize}
-	\item Planificación del proyecto (40 hs)
-	\item Tareas de hardware (55 hs):
-	\begin{itemize}
-	\item Análisis del hardware nodo Mote LSE y LPC-Link (20 hs).
-	\item Adaptación de circuito cargador a partir de panel solar (35 hs).
-	\end{itemize}
-	\item Tareas de software-topologías (40 hs):
-	\begin{itemize}
-	\item Organizar los nodos en topología de tipo estrella (10 hs).
-	\item Organizar los nodos en topología de tipo peer-to-peer (10 hs).
-	\item Organizar los nodos en topología de tipo árbol de cluster (20 hs).
-	\end{itemize}
-	\item Tareas de software-memoria (25 hs):
-	\begin{itemize}
-	\item Memoria no volátil (10 hs).
-	\item Escribir y leer en forma remota (15 hs).    
-	\end{itemize}
-	\item Tareas de software-energía (60 hs):
-	\begin{itemize}
-	\item Medir la tensión que entrega el panel solar (5 hs).
-	\item Cambio de modos (batería/panel) (10 hs).
-	\item Proyección de batería restante (20 hs).
-	\item Recarga de batería (25 hs).
-	\end{itemize}
-	\item Tareas de software-monitoreo (80 hs):
-	\begin{itemize}
-	\item Medir consumo de corriente (5 hs).
-	\item Modo de funcionamiento (20 hs).
-	\item Medir temperatura ambiente (15 hs).
-	\item Alarmas de temperatura (2) (20 hs).
-	\item Medir tiempo de funcionamiento (20 hs).
-	\end{itemize}
-	\item Tareas de software-batería (50 hs):
-	\begin{itemize}
-	\item Salud de batería (20 hs).
-	\item Generar alarmas (4) (30 hs).
-	\end{itemize}
-	\item Tareas de software-panel (70 hs):
-	\begin{itemize}
-	\item Estado del sistema de recarga (10 hs).
-	\item Medir tiempo restante estimado para recarga total de la batería (25 hs).
-	\item Cantidad de ciclos de carga/descarga acumulados (15 hs).
-	\item Estado de recarga (20 hs).
-	\end{itemize}
-	\item Tareas de software-ahorro (60 hs):
-	\begin{itemize}
-	\item Identificar los posibles valores de configuración para los parámetros de red (10 hs).
-	\item Definir el ciclo útil y la periodicidad de los reportes para el modo ahorro (5 hs).
-	\item Definir las funcionalidades reducidas para el modo ahorro (10 hs).
-	\item Desarrollar el algoritmo de ahorro de energía (15 hs).
-	\item Pruebas software-ahorro (20 hs).
-	\end{itemize}
-	\item Tareas de software-integración (20 hs):
-	\begin{itemize}
-	\item Integrar todas las funcionalidades de software (5 hs).
-	\item Pruebas software-integración (15 hs).  
-	\end{itemize}
-	\item Tareas de documentación y entregables (80 hs):
-	\begin{itemize}
-	\item Documentación de los diagramas de instalación (10 hs).
-	\item Documentación del informe de avance. (10 hs).
-	\item Documentación del manual de uso (20 hs).
-	\item Documentación del informe final (40 hs).
-	\end{itemize}
-	\item Procesos de cierre (20 hs).
-	\begin{itemize}
-	\item Seguimiento del Gantt (4 hs)
-	\item Organización de la presentación pública(3 hs)    
-	\item Documentación de lecciones aprendidas (4 hs)
-	\item Documentación de problemas y soluciones (4 hs)
-	\item Comparación de horas estimadas y empleadas (2 hs)
-	\item Organización de acto de agradecimiento (3 hs)
-	\end{itemize}
-\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1.2\textwidth]{./Figures/AON.PNG}
+	\label{fig:AON}
+	\caption{Diagrama de \textit{Activity On Node}}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/WBS1.PNG}
+	\label{fig:GANTT2}
+	\caption{WBS parte 1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/gantt1.PNG}
+	\label{fig:GANTT3}
+	\caption{Diagrama de GANTT parte 1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/WBS2.PNG}
+	\label{fig:GANTT2}
+	\caption{WBS parte 2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/gantt2.PNG}
+	\label{fig:GANTT3}
+	\caption{Diagrama de GANTT parte 2}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/WBS3.PNG}
+	\label{fig:GANTT2}
+	\caption{WBS parte 3}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/gantt3.PNG}
+	\label{fig:GANTT3}
+	\caption{Diagrama de GANTT parte 3}
+\end{figure}
+%\begin{itemize}
+%	\item Planificación del proyecto (40 hs)
+%	\item Tareas de hardware (55 hs):
+%	\begin{itemize}
+%	\item Análisis del hardware nodo Mote LSE y LPC-Link (20 hs).
+%	\item Adaptación de circuito cargador a partir de panel solar (35 hs).
+%	\end{itemize}
+%	\item Tareas de software-topologías (40 hs):
+%	\begin{itemize}
+%	\item Organizar los nodos en topología de tipo estrella (10 hs).
+%	\item Organizar los nodos en topología de tipo peer-to-peer (10 hs).
+%	\item Organizar los nodos en topología de tipo árbol de cluster (20 hs).
+%	\end{itemize}
+%	\item Tareas de software-memoria (25 hs):
+%	\begin{itemize}
+%	\item Memoria no volátil (10 hs).
+%	\item Escribir y leer en forma remota (15 hs).    
+%	\end{itemize}
+%	\item Tareas de software-energía (60 hs):
+%	\begin{itemize}
+%	\item Medir la tensión que entrega el panel solar (5 hs).
+%	\item Cambio de modos (batería/panel) (10 hs).
+%	\item Proyección de batería restante (20 hs).
+%	\item Recarga de batería (25 hs).
+%	\end{itemize}
+%	\item Tareas de software-monitoreo (80 hs):
+%	\begin{itemize}
+%	\item Medir consumo de corriente (5 hs).
+%	\item Modo de funcionamiento (20 hs).
+%	\item Medir temperatura ambiente (15 hs).
+%	\item Alarmas de temperatura (2) (20 hs).
+%	\item Medir tiempo de funcionamiento (20 hs).
+%	\end{itemize}
+%	\item Tareas de software-batería (50 hs):
+%	\begin{itemize}
+%	\item Salud de batería (20 hs).
+%	\item Generar alarmas (4) (30 hs).
+%	\end{itemize}
+%	\item Tareas de software-panel (70 hs):
+%	\begin{itemize}
+%	\item Estado del sistema de recarga (10 hs).
+%	\item Medir tiempo restante estimado para recarga total de la batería (25 hs).
+%	\item Cantidad de ciclos de carga/descarga acumulados (15 hs).
+%	\item Estado de recarga (20 hs).
+%	\end{itemize}
+%	\item Tareas de software-ahorro (60 hs):
+%	\begin{itemize}
+%	\item Identificar los posibles valores de configuración para los parámetros de red (10 hs).
+%	\item Definir el ciclo útil y la periodicidad de los reportes para el modo ahorro (5 hs).
+%	\item Definir las funcionalidades reducidas para el modo ahorro (10 hs).
+%	\item Desarrollar el algoritmo de ahorro de energía (15 hs).
+%	\item Pruebas software-ahorro (20 hs).
+%	\end{itemize}
+%	\item Tareas de software-integración (20 hs):
+%	\begin{itemize}
+%	\item Integrar todas las funcionalidades de software (5 hs).
+%	\item Pruebas software-integración (15 hs).  
+%	\end{itemize}
+%	\item Tareas de documentación y entregables (80 hs):
+%	\begin{itemize}
+%	\item Documentación de los diagramas de instalación (10 hs).
+%	\item Documentación del informe de avance. (10 hs).
+%	\item Documentación del manual de uso (20 hs).
+%	\item Documentación del informe final (40 hs).
+%	\end{itemize}
+%	\item Procesos de cierre (20 hs).
+%	\begin{itemize}
+%	\item Seguimiento del Gantt (4 hs)
+%	\item Organización de la presentación pública(3 hs)    
+%	\item Documentación de lecciones aprendidas (4 hs)
+%	\item Documentación de problemas y soluciones (4 hs)
+%	\item Comparación de horas estimadas y empleadas (2 hs)
+%	\item Organización de acto de agradecimiento (3 hs)
+%	\end{itemize}
+%\end{itemize}

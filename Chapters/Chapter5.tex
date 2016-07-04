@@ -9,15 +9,17 @@
 %----------------------------------------------------------------------------------------
 \section{Conclusiones generales}
 
-La presente investigación apunta a la concepcion y realizacion de un sistema fotovoltaico, para lo cual se diseñó un \textit{harware} que funcionan como Generador Eléctrico Solar Autónomo (GESA) y un \textit{firmware} que permite controlar dispositivos para evitar que el problema se manifieste y si eventualmente se manifiesta, detectarlo e informarlo para tomar las acciones necesarias. En conjunto aportan una solución a un problema de disponibilidad de nodos debido a su autonomía energética.
+La presente investigación apunta a la concepción y realización de un sistema fotovoltaico, para lo cual se diseñó un \textit{harware} que funcionan como un circuito GESA (Generador Eléctrico Solar Autónomo) para el nodo \textit{Mote LSE} desplegado en una red WSN y un \textit{firmware} que permite controlar dispositivos para evitar que el problema se manifieste y si eventualmente se manifiesta, detectarlo e informarlo para tomar las acciones necesarias. En conjunto aportan una solución a un problema de disponibilidad de nodos debido a su autonomía energética.
 
-Estos sistemas fotovoltáicos se presentan como una solución portable y de bajo costo que puede ser utilizada para alimentar dispositivos electrónicos, como componentes programables, microcontroladores, FPGA, computadoras industriales y sistemas embebidos en general.
+El presente trabajo es de interés en el área de Sistemas Embebidos para la implementación de otros algoritmos donde el tema de energía sea crítico. Estos sistemas fotovoltáicos se presentan como una solución portable y de bajo costo que puede ser utilizada para alimentar dispositivos electrónicos, como componentes programables, microcontroladores, FPGAs, computadoras industriales y sistemas embebidos en general.
 
-El presente trabajo es de interés en el área de Sistemas Embebidos para la implementación de otros algoritmos donde el tema de energía sea crítico. Para ello es necesario lograr ciclos de trabajo eficientes y resulta esencial emplear protocolos de sincronización de reloj, ya sea con corrección de reloj o con una tabla de traducción de tiempo, ya que su desempeño es proporcional a la exactitud de dicha sincronización.
+A partir del proyecto realizado se deduce que, es necesario analizar el comportamiento del protocolo MAC basado en el tipo de tráfico que se tiene que manejar y un uso eficiente del radio, con la finalidad que dos nodos no se interfieran en sus transmisiones y buscando una solución para cuando suceda. Además se concluye que mientras mas corto sea el encabezado MAC, mayor puede ser la carga útil de la transmisión, favoreciendo a la velocidad real de transporte de datos; no en tanto el encabezado PHY, que se presenta como una cantidad fija de bytes. Así mismo, al requerir ciclos de trabajo eficientes, resulta esencial emplear protocolos de sincronización de reloj, ya sea con corrección de reloj o con una tabla de traducción de tiempo, ya que su desempeño será proporcional a la exactitud de dicha sincronización. Todo esto, influyendo directamente en el rendimiento, la vida útil y el costo de la solución.
 
-A partir del trabajo realizado, se deduce que resulta necesario analizar el comportamiento del protocolo MAC basado en el tipo de tráfico que se tiene que manejar y un uso eficiente del radio, con la finalidad que dos nodos no se interfieran en sus transmisiones y buscando una solución para cuando suceda. Así mismo, se concluye que mientras mas corto sea el encabezado MAC, mayor puede ser la carga útil de la transmisión, favoreciendo a la velocidad real de transporte de datos; no en tanto el encabezado PHY, que se presenta como una cantidad fija de bytes.
+buen dise;o bajo consumo  del nodo robusto aun en condiciones climaticas adversas performace
 
-A su vez, son buenas prácticas documentarse debidamente antes de comenzar el diseno (Manuales de referencia técnica, ejercicios o ejemplos de casos de exito, hojas de datos, manual de usuarios) y analizar los avances de la investigación ejecutando la aplicación en casos prácticos.
+en base a lo observado del comportamiento del circuito aplicacion carga y descarga de la bateria estimacion de vida util, firmware inteligente cuidado con la carga durabilidad de la bat
+
+A su vez, son buenas prácticas documentarse debidamente antes de comenzar el diseño (manuales de referencia técnica, ejercicios o ejemplos de casos de éxito, hojas de datos, manual de usuarios) y analizar los avances de la investigación ejecutando la aplicación en casos prácticos.
 
 Análisis de costos
 
@@ -27,10 +29,10 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 
 \begin{itemize}
 \item
-\textbf{Arquitectura de microprocesadores}. Resultó necesario tener conocimientos sobre la Arquitectura ARM Cortex M para la programación de la plataforma \textit{Mote LSE} y su interacción con los periféricos.
+\textbf{Arquitectura de microprocesadores}. Sobre la Arquitectura ARM Cortex M para la programación de la plataforma \textit{Mote LSE} y su interacción con los periféricos.
 
 \item
-\textbf{Programación de microprocesadores}. Se utilizaron los principios de programación en Lenguaje C para microcontroladores y periféricos. Sistema de control de versiones de software. Diseño con el principio KISS\footnote{\textit{del inglés Keep It Simple, Stupid!: «¡Manténlo simple, estúpido!»}} donde el objetivo clave de diseño de cualquier sistema es la simplicidad y cualquier complejidad innecesaria debe ser evitada. Mas aún cuando el ahorro de energía es un tema crítico para la implementación y se desea evitar un mayor consumo en la operación. 
+\textbf{Programación de microprocesadores}. Se utilizaron los principios de programación en Lenguaje C para microcontroladores y periféricos. Sistema de control de versiones de software. Diseño con el principio KISS\footnote{del inglés \textit{Keep It Simple, Stupid!}: ¡Manténlo simple, estúpido!}, donde el objetivo clave de diseño de cualquier sistema es la simplicidad y cualquier complejidad innecesaria debe ser evitada. Mas aún cuando el ahorro de energía es un tema crítico para la implementación y se desea evitar un mayor consumo en la operación. 
 
 \item
 \textbf{Gestión de Proyectos en Ingeniería}. El Plan de Proyecto Final, llevó a organizar el presente trabajo metódicamente. Se emplearon buenas practicas de gestión de proyectos que pueden llevarse a cabo en cualquier ámbito de la ingeniería, tanto laboral como académico.
@@ -39,7 +41,7 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 \textbf{Protocolos de Comunicación}. Se aplicaron los conocimientos obtenidos sobre los protocolos de comunicación SPI, USB y 802.15.4.
 
 \item 
-\textbf{Introducción a Redes de Sensores Inalámbricos}. .
+\textbf{Introducción a Redes de Sensores Inalámbricos}. Definiciones fundamentales, protocolos y principios de diseño de algoritmos WSN.
 \end{itemize}
 
 \medskip
@@ -47,12 +49,12 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 \noindent Además, durante la cursada de la carrera y el desarrollo del trabajo final también se adquirieron conocimientos en:
 
 \begin{itemize}
-	\item Red eléctrica inteligente (o REI; \textit{Smart Grid} en inglés).
+	\item REI (Red eléctrica inteligente\footnote{\textit{Smart Grid} en inglés}).
 	\item Energías alternativas.	
 	\item GNU/Linux.
-	\item \LaTeX http://www.latex-project.org/
-	\item TeX Live http://www.tug.org/texlive/
-	\item BibTeX
+	\item \LaTeX \citep{LaTeX}
+	\item TeX Live \citep{TeX Live}
+	\item BibTeX \citep{BibTeX}
 	
 \end{itemize}
 
@@ -67,7 +69,7 @@ Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo h
 
 Se plantea hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA \citep{CIAA} (Computadora Industrial Abierta Argentina)y de esta manera brindarle autonomía solar a aplicaciones industriales que no tengan disponibilidad de redes de distribución eléctrica.
 
-Desarrollar una implementación donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización por parejas (por ejemplo TPSN y RBS) o a nivel de red (TDP, extensiones de TPSN y RBS).
+Desarrollar implementaciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización por parejas (por ejemplo \textit{T} (TPSN) y \textit{R} (RBS)) o a nivel de red (\textit{Time Diffussion Protocol} (TDP), extensiones de TPSN y RBS), algoritmos de consenso, así como con futuros algoritmos de interés en el área.
 
 
 

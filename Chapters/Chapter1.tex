@@ -24,15 +24,15 @@ El nodo \textit{Mote LSE}. Sus características principales se tratan en la secc
 \section{Motivación}
 \label{sec:Motivación}
 
-La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o temperatura de entorno de nodos \textit{Mote LSE} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
+La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
 
-La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \footnote{IEEE Standard for Local and metropolitan area networks--Part 15.4: Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la IEEE Standards Association \footnote{https://standards.ieee.org/about/get/802/802.15.html}. El cual define:
+La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \footnote{IEEE Standard for Local and metropolitan area networks--Part 15.4: Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la IEEE Standards Association \footnote{https://standards.ieee.org/about/get/802/802.15.html}. El cual define su operación basado en un modelo simple de capas:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
 		\end{itemize}
 
-\noindent Las principales características son:
+\noindent Sus principales características son:
 		\begin{itemize}
 			\item Uso doméstico e industrial.
 			\item Comunicaciones simples de bajo costo. 
@@ -42,7 +42,18 @@ La necesidad surge como complemento en el despliegue de nodos que soportan el es
 			\item Opera en una banda de frecuencia sin licencia.
 		\end{itemize}
 
-La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, como lo son los dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, proponiendo un modelo de muy pocas capas (dos: PHY y MAC) y al controlar ciclo de trabajo para que el dispositivo permanezca en el modo activo el menor tiempo posible y en modo inactivo la mayor parte del tiempo.
+La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, como lo son los dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, proponiendo un modelo de muy pocas capas (dos: PHY y MAC) y al controlar el ciclo de trabajo.
+
+El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos. 
+		
+Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
+
+El trabajo propuesto es de interés en el área de Sistemas Embebidos para implementar conjuntamente con otro algoritmos en redes WSN.
+
+\section{¿Qué es WSN?}
+\label{sec:wsn}
+
+WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Sensores Inalámbricos, no es mas que una serie de dispositivos sensores para monitorear fenómenos físicos, desplegados en una red y conectados inalámbricamente.
 
 \noindent Las áreas de aplicación pueden ser:
 		\begin{itemize}
@@ -53,22 +64,14 @@ La intensión de este estándar fue establecer los lineamientos para aplicacione
 			\item Agricultura.
 		\end{itemize}
 
-El trabajo propuesto es de interés en el área de sistemas embebidos para implementar futuros algoritmos en redes de sensores inalámbricos. Con la extension del circuito cargador se aumenta la autonomía de alimentación del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
-
-\section{¿Qué es WSN?}
-\label{sec:wsn}
-
-WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}) no es mas que una serie de dispositivos sensores desplegados en una red y conectados inalámbricamente.
-
-
 \section{Implicaciones de energía}
 \label{sec:energía}
 
-Soluciones existentes y tecnología de baterías.
+Soluciones existentes y tecnología de baterías. Estado del arte de paneles y baterías.
 
 El módulo fotovoltáico, mas conocido como panel solar, se encarga de convertir la energía solar en electricidad a partir de la luz que incide sobre ellos mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por los módulos y una serie de elementos auxiliares tales como reguladores de carga de las baterías, regulador de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
-Son comúnmente usados para abastecer medianos a bajos consumos de energía eléctrica, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible libre de sombras la mayor parte del tiempo.
+Son comúnmente usados para abastecer medianos a bajos consumos de energía eléctrica, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
 
 
 %----------------------------------------------------------------------------------------

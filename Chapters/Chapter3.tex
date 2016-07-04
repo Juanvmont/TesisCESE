@@ -9,23 +9,50 @@
 %----------------------------------------------------------------------------------------
 \section{Hardware}
 \label{sec:hard}
-En el mercado se consiguen distintas soluciones que se ajustan a las necesidades de cada aplicación. 
- 
+En el mercado se consiguen distintas soluciones que se ajustan a las necesidades de cada aplicación. El sistema fotovoltaico propuesto originalmente estaba basado en módulos de voltaje de entre 0V y 12V y 0.5A, y un regulador de voltaje a la salida. Entre las interfaces para el usuario del nodo \textit{Mote LSE}, esta el puerto USB  el cual alimenta al circuito de control de carga bq24080 1-A con 5V(DC) a través de conector USB micro-B, para la carga de la batería de Li-ion de 3.7V y 900mAh.
+
+Como medida de mitigación de riesgos, se planteó emplear componentes disponibles en el mercado local, 
+
+ \begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/ks10t.jpg}
+	\label{fig:GANTT2}
+	\caption{Modulo Fotovoltaico policristalino de alto rendimiento KS10T}
+\end{figure}
+
 \noindent El panel solar es de las siguientes características:
 \begin{itemize}
 \item Dimensiones: 304x352x22mm
 \item Peso: 1.36Kg
 \item Corriente: 0.58A
 \item Tensión: 17.4V
-\item Potencia: 10W
+\item Potencia nominal: 10Wp
 \end{itemize}
 
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/mecanicas.JPG}
+	\label{fig:GANTT2}
+	\caption{Características mecánicas}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/curva.JPG}
+	\label{fig:GANTT3}
+	\caption{Características eléctricas}
+\end{figure}
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
 \subsection{Esquemático de extensión de circuito cargador}
 \label{sec:extensión}
-
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/circuito.jpg}
+	\label{fig:GANTT3}
+	\caption{Extensión de circuito cargador diseñado}
+\end{figure}
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
