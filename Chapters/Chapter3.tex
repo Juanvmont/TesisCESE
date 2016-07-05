@@ -9,50 +9,67 @@
 %----------------------------------------------------------------------------------------
 \section{Hardware}
 \label{sec:hard}
-En el mercado se consiguen distintas soluciones que se ajustan a las necesidades de cada aplicación. El sistema fotovoltaico propuesto originalmente estaba basado en módulos de voltaje de entre 0V y 12V y 0.5A, y un regulador de voltaje a la salida. Entre las interfaces para el usuario del nodo \textit{Mote LSE}, esta el puerto USB  el cual alimenta al circuito de control de carga bq24080 1-A con 5V(DC) a través de conector USB micro-B, para la carga de la batería de Li-ion de 3.7V y 900mAh.
-
-Como medida de mitigación de riesgos, se planteó emplear componentes disponibles en el mercado local, 
+El sistema fotovoltaico propuesto originalmente estaba basado en módulos con voltaje de 12V y 0.5A. En el mercado existen distintas soluciones comerciales que se ajustan a las necesidades de cada aplicación. Sin embargo, como medida de mitigación de riesgos, se planteó emplear componentes disponibles en el mercado local, y luego de tener en cuenta factores como costos, tiempo de entrega, soporte pos-venta y al ser de Industria Argentina, se seleccionó el \textit{módulo fotovoltaico policristalino de alto rendimiento KS10T} \footnote{http://www.solartec.com.ar/documentos/productos/3-25wp/SOLARTEC-KS10T-v13.pdf} de la figura \ref{fig:ks10t} de Solartec \footnote{http://www.solartec.com.ar/}.
 
  \begin{figure}[h!]
 	\centering
     \includegraphics[width=1\textwidth]{./Figures/ks10t.jpg}
-	\label{fig:GANTT2}
-	\caption{Modulo Fotovoltaico policristalino de alto rendimiento KS10T}
+	\label{fig:ks10t}
+	\caption{Módulo Fotovoltaico policristalino de alto rendimiento KS10T}
 \end{figure}
 
-\noindent El panel solar es de las siguientes características:
-\begin{itemize}
-\item Dimensiones: 304x352x22mm
-\item Peso: 1.36Kg
-\item Corriente: 0.58A
-\item Tensión: 17.4V
-\item Potencia nominal: 10Wp
-\end{itemize}
+Se trata de paneles fabricados en base a celdas de silicio policristalino de alta eficiencia. La eficiencia de estas celdas es superior al 14\%. Sus características se listan en la tabla \ref{tab:ks10t}
+
+\vspace{10px}
+
+\begin{table}[ht]
+	\centering
+	\caption{Características del módulo fotovoltaico KS10T}
+	\begin{tabular}{@{} l *2c @{}}    \toprule
+		\emph{\textbf{Características}} & \emph{\textbf{Valor}} & \emph{\textbf{Unidad}}\\
+		\midrule
+		Potencia nominal	& 10 	& Wp	\\	
+		Tensión a PN		& 17.4	& V\\
+		Corriente a PN	& 0.58		& A\\
+		Dimensiones		& 301x352x22 	& mm\\
+		Peso				& 0.58		& Kg	\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:ks10t}
+\end{table}
 
 \begin{figure}[h!]
 	\centering
-    \includegraphics[width=1\textwidth]{./Figures/mecanicas.JPG}
-	\label{fig:GANTT2}
-	\caption{Características mecánicas}
+    \includegraphics[width=0.7\textwidth]{./Figures/mecanicas.JPG}
+	\label{fig:mecanicas}
+	\caption{Características mecánicas. Todas las distancias están expresadas en mm.}
 \end{figure}
+
+Los valores y la curva están dados para las condiciones de insolación de 1 KW/m2, masa atmosférica 1.5 y temperatura de celda de 25 \grados C.
 
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.7\textwidth]{./Figures/curva.JPG}
-	\label{fig:GANTT3}
+	\label{fig:curva}
 	\caption{Características eléctricas}
 \end{figure}
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Esquemático de extensión de circuito cargador}
+\subsection{Extensión de circuito cargador}
 \label{sec:extensión}
+Entre las interfaces para el usuario del nodo \textit{Mote LSE} esta el puerto USB, el cual alimenta al circuito de control de carga \textit{bq24080 1-A} con 5V(DC) a través de conector USB micro-B. Este circuito es el empleado para la carga de la batería de Li-ion de 3.7V y 900mAh.
+
+Es por esto, que es necesario emplear una etapa reguladora de voltaje a la salida del panel. Para la cual se utiliza el clásico regulador de Fairchild \textit{LM7805} \footnote{https://www.fairchildsemi.com/datasheets/LM/LM7805.pdf} de 1A. Que con unos pocos componentes (un condensador electrolítico como filtro a tierra para señales continuas para moderar la tensión eléctrica y las fluctuaciones de corriente y un condensador de poliéster para filtrar las señales espúreas de alta frecuencia, a la entrada y a la salida), entrega una salida de voltaje entre 4.75V y 5.25V. Además, ofrece protección contra sobrecarga térmica y cortocircuitos y opera entre -40 \grados C y +125 \grados C.
+
 \begin{figure}[h!]
 	\centering
-    \includegraphics[width=0.7\textwidth]{./Figures/circuito.jpg}
-	\label{fig:GANTT3}
+    \includegraphics[width=1\textwidth]{./Figures/circuito.jpg}
+	\label{fig:circuito}
 	\caption{Extensión de circuito cargador diseñado}
 \end{figure}
+
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
@@ -69,16 +86,16 @@ Como medida de mitigación de riesgos, se planteó emplear componentes disponibl
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
+\subsection{Modelo de Capas}
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
 \subsection{Diagrama en bloques}
 
-Nunc posuere quam at lectus tristique eu ultrices augue venenatis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Vivamus sodales tortor eget quam adipiscing in vulputate ante ullamcorper. Sed eros ante, lacinia et sollicitudin et, aliquam sit amet augue. In hac habitasse platea dictumst.
+Arquitectura modular. Módulos. APIs, interfaces.
 
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-\subsection{Arquitectura modular}
 
-Módulos, modelo de capas. APIs, interfaces.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
