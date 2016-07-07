@@ -17,6 +17,11 @@ A partir del proyecto realizado se deduce que, es necesario analizar el comporta
 
 Entre las ventajas que ofrece el diseño del nodo \textit{Mote LSE} mas el circuito de extensión de carga solar, destacan su bajo costo de implementación, que a su vez disminuye costos de operación y mantenimiento de redes WSN, su muy bajo consumo y su rendimiento robusto aún en condiciones climáticas adversas. El firmware implementado le aporta inteligencia al circuito cargador, cuidando la durabilidad de la bateria al controlar los ciclos de carga y descarga y operar en modo solar la mayor parte del tiempo posible.
 
+%para implementar este tipo de sistemas en otros proyectos estudiantiles o de la industria y criterio de seleccion de componentes, con la idea que este sea el primero de muchos otros proyectos gracias a la exposicion y la articulacion con la industria y otras universidades de la region, donde el tema de WSN y 802.15.4 es un topico de interes creciente.
+%En este sentido, tal vez me podrias ayudar, obviamente haciendo la debida referencia que corresponda, compartiendome algunos datos tecnicos, aparte de la hoja de datos, como para sustentar la seleccion del modulo de SOLARTEC, como puede ser algun grafico de potencia o voltaje vs distintas intensidades de luz (Lux), u otro que justifique la eficiencia de conversion de 14porciento. Asi como otra documentacion que consideres oportuna, que tambien puede sustentar la seleccion desde el punto de vista economico.
+
+Conclusión de costo energético y aporte de los requerimientos
+
 Por otra parte, son buenas prácticas documentarse debidamente antes de comenzar el diseño (manuales de referencia técnica, ejercicios o ejemplos de casos de éxito, hojas de datos, manual de usuarios) y analizar los avances de la investigación ejecutando la aplicación en casos prácticos.
 
 \medskip
@@ -37,8 +42,13 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 
 \item 
 \textbf{Introducción a Redes de Sensores Inalámbricos}. Definiciones fundamentales, protocolos y principios de diseño de algoritmos WSN.
-\end{itemize}
 
+\item 
+\textbf{Electrónica para la industria}. IRAM.
+
+\item 
+\textbf{Diseño para la manufacturabilidad}. Protección del panel solar. PCB.
+\end{itemize}
 \medskip
 
 \noindent Además, durante la cursada de la carrera y el desarrollo del trabajo final también se adquirieron conocimientos en:
@@ -64,7 +74,9 @@ Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo h
 
 Se plantea hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA \citep{CIAA} (Computadora Industrial Abierta Argentina)y de esta manera brindarle autonomía solar a aplicaciones industriales que no tengan disponibilidad de redes de distribución eléctrica.
 
-Desarrollar implementaciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización por parejas (por ejemplo \textit{T} (TPSN) y \textit{R} (RBS)) o a nivel de red (\textit{Time Diffussion Protocol} (TDP), extensiones de TPSN y RBS), algoritmos de consenso, así como con futuros algoritmos de interés en el área.
+Desarrollar implementaciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización de reloj (por ejemplo \textit{Timing-sync Protocol for Sensor Networks} (TPSN) y \textit{Reference Broadcast Synchronization} (RBS)), algoritmos de consenso, así como con futuros algoritmos de interés en el área.
+
+%Mesh vs Mobile sink is proposed to save sensor energy for multihop communication in transferring data to a base station (sink) in wireless sensor networks.
 
 
 

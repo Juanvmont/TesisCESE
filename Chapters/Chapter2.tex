@@ -2,13 +2,14 @@
 
 \label{Chapter2}
 
+Este capitulo contiene describe los objetivos del trabajo \ref{sec:trabajo}, las herramientas a utilizar \ref{sec:herramientas} y consideraciones de costo energético según el modo de operación y el tipo de trama \ref{sec:costo}. A continuación se muestran los requerimientos agrupados en \textit{hardware, software} y documentación y entregables\ref{sec:requerimientos} y un diagrama con la planificación del proyecto con un detalle de las tareas a realizar: AON y Diagrama de Gantt \ref{sec:tareas}.
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
 \section{Descripción del trabajo}
 \label{sec:trabajo}
-\noindent Los objetivos del proyecto son los siguientes:
+\noindent Los objetivos del trabajo son los siguientes:
 
 \begin{itemize}
 	\item Agregar al nodo \textit{Mote LSE} un circuito cargador a partir de un panel solar.
@@ -99,7 +100,7 @@ comparación de tramas y throughput
 \noindent Requerimientos de hardware:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ Compatibilidad con nodos Mote LSE.
-	\item \textbf{REQ2:}\\ Agregar al nodo Mote LSE la extensión de circuito cargador a partir de panel solar de 12V x 0.5A.
+	\item \textbf{REQ2:}\\ Agregar al nodo \textit{Mote LSE} la extensión de circuito cargador a partir de panel solar de 12V x 0.5A.
 \end{itemize}
 	
 \noindent Requerimientos de software:
@@ -116,7 +117,7 @@ comparación de tramas y throughput
 		\item REQ7\_B: Temperatura ambiente.
 		\item REQ7\_C: Tensión que entrega el panel solar.
 		\item REQ7\_D: Modo de funcionamiento (batería/panel solar).
-		\item REQ7\_E: Alarmas cuando la temperatura ambiente es mayor o menor a un determinado
+		\item REQ7\_E: Alarmas cuando la temperatura ambiente es mayor o menor a determinados valores.
 		\item REQ7\_F: Tiempo total que lleva el nodo funcionando.
 		\end{itemize}
 	\item \textbf{REQ8:}\\Los nodos en modo batería deben monitorear:
@@ -133,7 +134,7 @@ comparación de tramas y throughput
 	\item \textbf{REQ10:}\\Se debe implementar un algoritmo de ahorro de energía en los nodos en estado de alarma (prioridad baja).
 \end{itemize}
 
-\noindent Requerimientos de documentacion y entregables:
+\noindent Requerimientos de documentación y entregables:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ El manual de uso debe especificar los parámetros de red configurables para implementar el sistema.
 	\item \textbf{REQ2:}\\ Los diagramas de instalación debe contemplar las tres topologías posibles de acuerdo a 802.15.4.
@@ -147,6 +148,14 @@ comparación de tramas y throughput
 
 \section{Tareas a realizar}
 \label{sec:tareas}
+
+\pagebreak[4]
+\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 90}
+\includegraphics[width=1.1\paperwidth, angle = 90 ]{./Figures/gantt1.PNG}
+\clearpage
+\pagebreak[4]\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 0}
+
+
 
 \begin{figure}[h!]
 	\centering

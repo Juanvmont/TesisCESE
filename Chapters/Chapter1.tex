@@ -26,7 +26,9 @@ El nodo \textit{Mote LSE}. Sus características principales se tratan en la secc
 
 La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
 
-La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \footnote{IEEE Standard for Local and metropolitan area networks--Part 15.4: Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la IEEE Standards Association \footnote{https://standards.ieee.org/about/get/802/802.15.html}. El cual define su operación basado en un modelo simple de capas:
+La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802.15.4} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}.
+
+El cual define su operación basado en un modelo simple de capas:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
@@ -57,23 +59,66 @@ WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Se
 
 \noindent Las áreas de aplicación pueden ser:
 		\begin{itemize}
+			\item Medición inteligente.
+	%	\item Comunicaciones y Control de ferrocarril
+	%	\item Redes de monitoreo de infraestructuras criticas
 			\item Domótica y seguridad.
 			\item Productos electrónicos de consumo.
 			\item Cuidado de la salud.
 			\item Control y monitoreo de vehículos.
 			\item Agricultura.
 		\end{itemize}
+		
+Estas redes pueden ir desde Wireless PANs a Wireless Regional Area Networks y una vez centralizada gateway
+%In computing, a sink, event sink or data sink is a class or function designed to receive incoming events from another object or function. This is commonly implemented in C++ as callbacks. Object-oriented languages, such as Java and C#, have built-in support for sinks by allowing events to be fired to delegate functions.
+
+%Due to lack of formal definition, a sink is often miscontrued with a gateway which is a similar construct but the latter is usually either an end-point or allows bi-direction communication between dissimilar systems, as opposed to just an event input point[citation needed]. This is often seen in C++ and hardware-related programming[citation needed], thus the choice of nomenclature by a developer usually depends on whether the agent acting on a sink is a producer or consumer of the sink content.
+
+La tabla \ref{tab:802} lista los estándares del proyecto IEEE 802 o LMSC (LAN/MAN Standards Committee).
+
+\vspace{10px}
+
+\begin{table}[ht]
+	\centering
+	\caption{Estandares 802®}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Estandares 802®}} \\
+		%& \emph{\textbf{Valor}} & \emph{\textbf{Unidad}
+		\midrule
+%		Potencia nominal	& 10 	& Wp	\\	
+%		Tensión a PN		& 17.4	& V\\
+%		Corriente a PN	& 0.58		& A\\
+%		Dimensiones		& 301x352x22 	& mm\\
+%		Peso				& 0.58		& Kg	\\
+        802: Overview & Architecture\\
+        802.1: Bridging & Management\\
+        802.2: Logical Link Control\\
+        802.3: Ethernet\\
+        802.11: Wireless LANs\\
+        802.15: Wireless PANs\\
+        802.16: Broadband Wireless MANs\\
+        802.17: Resilient Packet Rings\\
+        802.19: TV White Space Coexistence Methods\\
+        802.20: Mobile Broadband Wireless Access\\
+        802.21: Media Independent Handover Services\\
+        802.22: Wireless Regional Area Networks\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:802}
+\end{table}
+
 
 \section{Implicaciones de energía}
 \label{sec:energía}
 
 Soluciones existentes y tecnología de baterías. Estado del arte de paneles y baterías.
 
-El módulo fotovoltáico, mas conocido como panel solar, se encarga de convertir la energía solar en electricidad a partir de la luz que incide sobre ellos mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por los módulos y una serie de elementos auxiliares tales como reguladores de carga de las baterías, regulador de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
+El módulo fotovoltáico, mas conocido como panel solar, se encarga de convertir la energía solar en electricidad a partir de la luz que incide sobre él, mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por el (los) módulo (s) y una serie de elementos auxiliares tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
 Son comúnmente usados para abastecer medianos a bajos consumos de energía eléctrica, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
 
-Los avances en la investigación en el area han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolucion del precio entre 1977 y 2015/footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
+Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolución del precio entre 1977 y 2015 \footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
 
 
 \begin{figure}[h!]
