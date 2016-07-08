@@ -18,9 +18,11 @@
 %----------------------------------------------------------------------------------------
 
 %\section{Introducción}
-El nodo \textit{Mote LSE}. Sus características principales se tratan en la sección \ref{sec:herramientas}.
+Este capítulo pretende poner en contexto al lector. Primero, en la sección \ref{sec:Motivación} da una justificación del proyecto, aclarando a qué necesidades brinda una solución. Luego da una descripción teórica del tipo de red que se implementa en \ref{sec:wsn}, y describe el estado del arte de la solución energética implicada en \ref{sec:energía}.
 
-
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
 \section{Motivación}
 \label{sec:Motivación}
 
@@ -44,20 +46,21 @@ El cual define su operación basado en un modelo simple de capas:
 			\item Opera en una banda de frecuencia sin licencia.
 		\end{itemize}
 
-La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, como lo son los dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, proponiendo un modelo de muy pocas capas (dos: PHY y MAC) y al controlar el ciclo de trabajo.
+La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, generalmente de dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, proponiendo un modelo de muy pocas capas (dos: PHY y MAC) y al controlar el ciclo de trabajo.
 
 El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos. 
 		
 Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
 
-El trabajo propuesto es de interés en el área de Sistemas Embebidos para implementar conjuntamente con otro algoritmos en redes WSN.
+Todo esto, sumado a la flexibilidad, tolerancia a fallas, bajo costo y rápido despliegue, hacen que este trabajo propuesto sea de interés en el área de Sistemas Embebidos para implementar conjuntamente con otro algoritmos en redes WSN.
 
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
 \section{¿Qué es WSN?}
 \label{sec:wsn}
 
-WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Sensores Inalámbricos, no es mas que una serie de dispositivos sensores para monitorear fenómenos físicos, desplegados en una red y conectados inalámbricamente.
-
-\noindent Las áreas de aplicación pueden ser:
+WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Sensores Inalámbricos, no es mas que una serie de dispositivos sensores, desplegados en una red y conectados inalámbricamente, para monitorear fenómenos físicos (Ver figura \ref{fig:wsn}). Los avances tecnológicos en sistemas micro-electro-mecánicos (MEMS) han logrado convertir a las WSN en parte de nuestra vida cotidiana. Las áreas de aplicación pueden ser:
 		\begin{itemize}
 			\item Medición inteligente.
 	%	\item Comunicaciones y Control de ferrocarril
@@ -67,20 +70,27 @@ WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Se
 			\item Cuidado de la salud.
 			\item Control y monitoreo de vehículos.
 			\item Agricultura.
+			\item Comunicación Militar.
 		\end{itemize}
 		
-Estas redes pueden ir desde Wireless PANs a Wireless Regional Area Networks y una vez centralizada gateway
+ \begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.7\textwidth]{./Figures/WSN.jpg}
+	\label{fig:wsn}
+	\caption{Red WSN}
+\end{figure}
+		
+Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional Area Networks} (Ver tabla \ref{tab:802}) y una vez centralizada la información, es posible organizar una red distribuida, con redes WSN dispuestas en campos de estudio (Ver figura \ref{fig:distrib}). Un sumidero, diseñado para recibir eventos de la WSN, toma ventaja de la corta distancia entre un largo numero de nodos sensores para proveer una comunicación de múltiples saltos y minimizar el consumo de potencia. Otra opción mas compleja es implementar la movilidad de los nodos para colectar la información. Los usuarios se conectan a través de un nodo de gestión de tareas con acceso a Internet y/o redes satelitales y de esta manera lograr conectividad de variables remotas.
+
 %In computing, a sink, event sink or data sink is a class or function designed to receive incoming events from another object or function. This is commonly implemented in C++ as callbacks. Object-oriented languages, such as Java and C#, have built-in support for sinks by allowing events to be fired to delegate functions.
 
 %Due to lack of formal definition, a sink is often miscontrued with a gateway which is a similar construct but the latter is usually either an end-point or allows bi-direction communication between dissimilar systems, as opposed to just an event input point[citation needed]. This is often seen in C++ and hardware-related programming[citation needed], thus the choice of nomenclature by a developer usually depends on whether the agent acting on a sink is a producer or consumer of the sink content.
-
-La tabla \ref{tab:802} lista los estándares del proyecto IEEE 802 o LMSC (LAN/MAN Standards Committee).
 
 \vspace{10px}
 
 \begin{table}[ht]
 	\centering
-	\caption{Estandares 802®}
+	\caption{Estándares del proyecto IEEE 802 o LMSC (LAN/MAN Standards Committee).}
 	\begin{tabular}{@{} l *1c @{}}    \toprule
 		\emph{\textbf{Estandares 802®}} \\
 		%& \emph{\textbf{Valor}} & \emph{\textbf{Unidad}
@@ -108,15 +118,44 @@ La tabla \ref{tab:802} lista los estándares del proyecto IEEE 802 o LMSC (LAN/M
 	\label{tab:802}
 \end{table}
 
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.5\textwidth]{./Figures/RedDistribuida.png}
+	\label{fig:distrib}
+	\caption{Red Distribuida de WSN con interfaz de usuario a través de un sumidero.}
+\end{figure} 
 
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
 \section{Implicaciones de energía}
 \label{sec:energía}
 
-Soluciones existentes y tecnología de baterías. Estado del arte de paneles y baterías.
+Estado del arte de baterías...
 
 El módulo fotovoltáico, mas conocido como panel solar, se encarga de convertir la energía solar en electricidad a partir de la luz que incide sobre él, mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por el (los) módulo (s) y una serie de elementos auxiliares tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
 Son comúnmente usados para abastecer medianos a bajos consumos de energía eléctrica, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
+
+Los características de estos paneles dependen de la disposición del diseño, la carga de nieve o de viento y principalmente de la pureza del material, que influye directamente en la eficiencia de conversión. Además es necesario considerar el material de la estructura de soporte, que para soportar condiciones ambientales de la intemperie son generalmente de aluminio anodizado o acero galvanizado por inmersión en caliente. La instalación requiere de una posición adecuada, fijando su orientación respecto del norte geográfico y la inclinación dependerá de la latitud del lugar de instalación (Ver tabla \ref{tab:inclina}). Esta solución requiere muy poco mantenimiento (inspección eléctrica y limpieza del vidrio frontal del modulo cada tres meses)
+
+\begin{table}[ht]
+	\centering
+	\caption{Inclinación del panel solar con respecto a la horizontal}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Latitud del lugar (\grados)}} & \emph{\textbf{Ángulo de inclinación}}\\
+		\midrule
+		0 - 15	& 15\grados	\\	
+		15 - 25 	& Igual a la Latitud\\
+		25 - 30	& Latitud +5\grados\\
+		30 - 35	& Latitud +10\grados\\
+		35 - 40	& Latitud +15\grados\\
+		más de 40	& Latitud +20\grados\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:inclina}
+\end{table}
 
 Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolución del precio entre 1977 y 2015 \footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
 
@@ -127,4 +166,5 @@ Los avances en la investigación en el área han logrado disminuir el precio de 
 	\label{fig:swanson}
 	\caption{Evolución del precio de células fotovoltaicas de silicio cristalino (USD/Wp)}
 \end{figure}
+
 %----------------------------------------------------------------------------------------

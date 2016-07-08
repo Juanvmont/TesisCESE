@@ -2,7 +2,7 @@
 
 \label{Chapter2}
 
-Este capitulo contiene describe los objetivos del trabajo \ref{sec:trabajo}, las herramientas a utilizar \ref{sec:herramientas} y consideraciones de costo energético según el modo de operación y el tipo de trama \ref{sec:costo}. A continuación se muestran los requerimientos agrupados en \textit{hardware, software} y documentación y entregables\ref{sec:requerimientos} y un diagrama con la planificación del proyecto con un detalle de las tareas a realizar: AON y Diagrama de Gantt \ref{sec:tareas}.
+Este capítulo describe los objetivos del trabajo \ref{sec:trabajo}, las herramientas a utilizar \ref{sec:herramientas} y consideraciones de costo energético según el modo de operación y el tipo de trama \ref{sec:costo}. A continuación se muestran los requerimientos agrupados en \textit{hardware, software} y documentación y entregables\ref{sec:requerimientos} y un diagrama con la planificación del proyecto con un detalle de las tareas a realizar: AON y Diagrama de Gantt \ref{sec:tareas}.
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ Este capitulo contiene describe los objetivos del trabajo \ref{sec:trabajo}, las
 \section{Herramientas}
 \label{sec:herramientas}
 
-LPCxpresso es un toolchain que está compuesto por un IDE basado en eclipse, compiler y linker GNU, GDB debugger y también una herramienta que incluye un programador y debugger (LPC-Link) que es usado para programar el nodo \textit{Mote LSE}.
+LPCxpresso es un toolchain que está compuesto por un IDE basado en eclipse, compiler y linker GNU, GDB debugger y también una herramienta que incluye un programador y debugger (LPC-Link) que es usado para programar el nodo \textit{Mote LSE}(Ver figura \ref{fig:mote}).
 
 \vspace{10px}
 
@@ -145,17 +145,11 @@ comparación de tramas y throughput
 %----------------------------------------------------------------------------------------
 %	SECTION 5
 %----------------------------------------------------------------------------------------
-
+\clearpage
 \section{Tareas a realizar}
 \label{sec:tareas}
 
-\pagebreak[4]
-\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 90}
-\includegraphics[width=1.1\paperwidth, angle = 90 ]{./Figures/gantt1.PNG}
-\clearpage
-\pagebreak[4]\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 0}
-
-
+La secuencia de tareas y sus duraciones se muestran en la figura \ref{fig:AON} 
 
 \begin{figure}[h!]
 	\centering
@@ -164,47 +158,55 @@ comparación de tramas y throughput
 	\caption{Diagrama de \textit{Activity On Node}}
 \end{figure}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=1\textwidth]{./Figures/WBS1.PNG}
-	\label{fig:WBS1}
-	\caption{WBS parte 1}
-\end{figure}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=0.7\textwidth]{./Figures/gantt1.PNG}
-	\label{fig:gantt1}
-	\caption{Diagrama de GANTT parte 1}
-\end{figure}
+\pagebreak[4]
+\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 90}
+\includegraphics[width=1.1\paperwidth, angle = 90 ]{./Figures/GANTT.png}
+\clearpage
+\pagebreak[4]\global\pdfpageattr\expandafter{\the\pdfpageattr/Rotate 0}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=1\textwidth]{./Figures/WBS2.PNG}
-	\label{fig:WBS2}
-	\caption{WBS parte 2}
-\end{figure}
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=0.7\textwidth]{./Figures/gantt2.PNG}
-	\label{fig:gantt2}
-	\caption{Diagrama de GANTT parte 2}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=1\textwidth]{./Figures/WBS3.PNG}
-	\label{fig:WBS3}
-	\caption{WBS parte 3}
-\end{figure}
-
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=0.7\textwidth]{./Figures/gantt3.PNG}
-	\label{fig:gantt3}
-	\caption{Diagrama de GANTT parte 3}
-\end{figure}
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=1\textwidth]{./Figures/WBS1.PNG}
+%	\label{fig:WBS1}
+%	\caption{WBS parte 1}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=0.7\textwidth]{./Figures/gantt1.PNG}
+%	\label{fig:gantt1}
+%	\caption{Diagrama de GANTT parte 1}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=1\textwidth]{./Figures/WBS2.PNG}
+%	\label{fig:WBS2}
+%	\caption{WBS parte 2}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=0.7\textwidth]{./Figures/gantt2.PNG}
+%	\label{fig:gantt2}
+%	\caption{Diagrama de GANTT parte 2}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=1\textwidth]{./Figures/WBS3.PNG}
+%	\label{fig:WBS3}
+%	\caption{WBS parte 3}
+%\end{figure}
+%
+%\begin{figure}[h!]
+%	\centering
+%    \includegraphics[width=0.7\textwidth]{./Figures/gantt3.PNG}
+%	\label{fig:gantt3}
+%	\caption{Diagrama de GANTT parte 3}
+%\end{figure}
 %\begin{itemize}
 %	\item Planificación del proyecto (40 hs)
 %	\item Tareas de hardware (55 hs):
