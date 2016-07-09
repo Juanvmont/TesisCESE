@@ -28,9 +28,7 @@ Este capítulo pretende poner en contexto al lector. Primero, en la sección \re
 
 La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
 
-La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802.15.4} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}.
-
-El cual define su operación basado en un modelo simple de capas:
+La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802.15.4} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}\footnote{https://standards.ieee.org/}. El cual define su operación basado en un modelo simple de capas:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
@@ -50,7 +48,7 @@ La intensión de este estándar fue establecer los lineamientos para aplicacione
 
 El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos. 
 		
-Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
+Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar, en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
 
 Todo esto, sumado a la flexibilidad, tolerancia a fallas, bajo costo y rápido despliegue, hacen que este trabajo propuesto sea de interés en el área de Sistemas Embebidos para implementar conjuntamente con otro algoritmos en redes WSN.
 
@@ -73,11 +71,11 @@ WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Se
 			\item Comunicación Militar.
 		\end{itemize}
 		
- \begin{figure}[h!]
+\begin{figure}[h!]
 	\centering
     \includegraphics[width=0.7\textwidth]{./Figures/WSN.jpg}
+    	\caption{Red WSN}
 	\label{fig:wsn}
-	\caption{Red WSN}
 \end{figure}
 		
 Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional Area Networks} (Ver tabla \ref{tab:802}) y una vez centralizada la información, es posible organizar una red distribuida, con redes WSN dispuestas en campos de estudio (Ver figura \ref{fig:distrib}). Un sumidero, diseñado para recibir eventos de la WSN, toma ventaja de la corta distancia entre un largo numero de nodos sensores para proveer una comunicación de múltiples saltos y minimizar el consumo de potencia. Otra opción mas compleja es implementar la movilidad de los nodos para colectar la información. Los usuarios se conectan a través de un nodo de gestión de tareas con acceso a Internet y/o redes satelitales y de esta manera lograr conectividad de variables remotas.
@@ -90,16 +88,10 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 
 \begin{table}[ht]
 	\centering
-	\caption{Estándares del proyecto IEEE 802 o LMSC (LAN/MAN Standards Committee).}
+	\caption{Estándares del proyecto IEEE 802 o LMSC (\textit{LAN/MAN Standards Committee}).}
 	\begin{tabular}{@{} l *1c @{}}    \toprule
 		\emph{\textbf{Estandares 802®}} \\
-		%& \emph{\textbf{Valor}} & \emph{\textbf{Unidad}
 		\midrule
-%		Potencia nominal	& 10 	& Wp	\\	
-%		Tensión a PN		& 17.4	& V\\
-%		Corriente a PN	& 0.58		& A\\
-%		Dimensiones		& 301x352x22 	& mm\\
-%		Peso				& 0.58		& Kg	\\
         802: Overview & Architecture\\
         802.1: Bridging & Management\\
         802.2: Logical Link Control\\
@@ -121,8 +113,8 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.5\textwidth]{./Figures/RedDistribuida.png}
+    	\caption{Red Distribuida de WSN con interfaz de usuario a través de un sumidero.}
 	\label{fig:distrib}
-	\caption{Red Distribuida de WSN con interfaz de usuario a través de un sumidero.}
 \end{figure} 
 
 %----------------------------------------------------------------------------------------
@@ -157,14 +149,14 @@ Los características de estos paneles dependen de la disposición del diseño, l
 	\label{tab:inclina}
 \end{table}
 
-Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolución del precio entre 1977 y 2015 \footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
+Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolución de su precio entre 1977 y 2015 \footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
 
 
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.7\textwidth]{./Figures/SwansonEffect.png}
+    	\caption{Evolución del precio de células fotovoltaicas de silicio cristalino (USD/Wp).}
 	\label{fig:swanson}
-	\caption{Evolución del precio de células fotovoltaicas de silicio cristalino (USD/Wp)}
 \end{figure}
 
 %----------------------------------------------------------------------------------------
