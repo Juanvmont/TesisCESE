@@ -17,14 +17,12 @@ Entre las ventajas que ofrece el diseño del nodo \textit{Mote LSE} mas el circu
 
 Conclusión de costo energético y aporte de los requerimientos
 
-El bajo consumo de potencia puede llevar a otras características favorables para el dispositivo, como menor disipación de calor, baterías mas pequeñas, menos peso, menor tamaño y diseños mecánicos mas simples.
+Ofrece mayor seguridad sobre los sistemas descentralizados porque todo el procesamiento es controlado en una localización central. Además, si un terminal se daña, el usuario simplemente puede ir a otro terminal y logearse de nuevo, y todos sus archivos seguirán siendo accesibles. Dependiendo del sistema, puede incluso reanudar su sesión desde el punto en que estaba antes como si no hubiera sucedido nada.” (Wikipedia Centralizado, 2011).
 
 A partir del proyecto realizado se deduce que, es necesario analizar el comportamiento del protocolo MAC basado en el tipo de tráfico que se tiene que manejar y un uso eficiente del radio, con la finalidad que dos nodos no se interfieran en sus transmisiones y buscando una solución para cuando suceda. Además se concluye que mientras mas corto sea el encabezado MAC, mayor puede ser la carga útil de la transmisión, favoreciendo a la velocidad real de transporte de datos; no en tanto el encabezado PHY, que se presenta como una cantidad fija de bytes. Así mismo, al requerir ciclos de trabajo eficientes, resulta esencial emplear protocolos de sincronización de reloj, ya sea con corrección de reloj o con una tabla de traducción de tiempo, ya que su desempeño será proporcional a la exactitud de dicha sincronización. Todo esto, influyendo directamente en el rendimiento, la vida útil y el costo de la solución.
 
 %para implementar este tipo de sistemas en otros proyectos estudiantiles o de la industria y criterio de seleccion de componentes, con la idea que este sea el primero de muchos otros proyectos gracias a la exposicion y la articulacion con la industria y otras universidades de la region, donde el tema de WSN y 802.15.4 es un topico de interes creciente.
 %En este sentido, tal vez me podrias ayudar, obviamente haciendo la debida referencia que corresponda, compartiendome algunos datos tecnicos, aparte de la hoja de datos, como para sustentar la seleccion del modulo de SOLARTEC, como puede ser algun grafico de potencia o voltaje vs distintas intensidades de luz (Lux), u otro que justifique la eficiencia de conversion de 14porciento. Asi como otra documentacion que consideres oportuna, que tambien puede sustentar la seleccion desde el punto de vista economico.
-
-Por otra parte, son buenas prácticas documentarse debidamente antes de comenzar el diseño (manuales de referencia técnica, ejercicios o ejemplos de casos de éxito, hojas de datos y manual de usuarios) y analizar los avances de la investigación ejecutando la aplicación en casos prácticos.
 
 \medskip
 Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adquiridos a lo largo de la Carrera de Especialización en Sistemas Embebidos. Principalmente de las siguientes asignaturas: 
@@ -46,10 +44,11 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 \textbf{Introducción a Redes de Sensores Inalámbricos}. Definiciones fundamentales, protocolos y principios de diseño de algoritmos WSN.
 
 \item 
-\textbf{Electrónica para la Industria}. Protección del panel solar. PCB.
+\textbf{Electrónica para la Industria}. Diseño de sistemas embebidos para ambientes industriales y criterios de selección de componentes.
 
 \item 
-\textbf{Diseño para la Manufacturabilidad}. Normas IRAM.
+\textbf{Diseño para la Manufacturabilidad}. Que brindó conocimientos sobre criterios, Normas, Estándares y Certificaciones, nacionales e internacionales. 
+%para la fabricación de PCB (IPC & ANSI)
 \end{itemize}
 \medskip
 
@@ -60,7 +59,7 @@ Durante el desarrollo de este trabajo integrador se aplicaron conocimientos adqu
 	\item Energías alternativas.	
 	\item GNU/Linux.
 	\item \LaTeX \citep{LaTeX}
-	\item TeX Live \citep{TeX Live}
+	\item TeX Live \citep{TeXLive}
 	\item BibTeX \citep{BibTeX}
 	
 \end{itemize}
@@ -76,9 +75,9 @@ Por lo tanto, se concluye que los objetivos planteados al comienzo del trabajo h
 
 Se propone hacer la adaptación necesaria del sistema para ser soportado por las plataformas disponibles del Proyecto CIAA \citep{CIAA} (Computadora Industrial Abierta Argentina) y de esta manera brindarle autonomía solar a aplicaciones industriales para cuando no tengan disponibilidad de red de distribución eléctrica.
 
-Implementar soluciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización de reloj (por ejemplo las implementaciones en el \textit{Mote LSE} de [] y [] de \textit{Timing-sync Protocol for Sensor Networks} (TPSN) y \textit{Reference Broadcast Synchronization} (RBS)), algoritmos de localización (Ver Anexo E de \citep{802.15.4}), \textit{clustering dinámico}, algoritmos de consenso, así como con futuros algoritmos de interés en el área.
+Implementar soluciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización de reloj (por ejemplo las implementaciones en el \textit{Mote LSE} de \citep{sync1} y \citep{sync2} de \textit{Timing-sync Protocol for Sensor Networks} (TPSN) y \textit{Reference Broadcast Synchronization} (RBS)), algoritmos de localización (Ver Anexo E de \citep{802154}), \textit{clustering dinámico}, algoritmos de consenso, así como con futuros algoritmos de interés en el área.
 
-Seguir los lienamientos del diseno para manufacturabilidad del estandar IPC (desarrollada por Disenadores de PCB, abricantes y ensambladores, de modulos electronicos; elaboradas para disenadores, (IPC 2221A Generic Standard on printed board Design, ANSI/IPC A-610D Acceptability of Electronic Assemblies, ANSI/IPC A-600G Acceptability of Printed Board, IPC C-406 Requirement for Power Conversion Decive for the computer and Telecommunication Industries
+Seguir los lineamientos del diseño para manufacturabilidad del estándar IPC, desarrollada por Diseñadores de PCB, fabricantes y ensambladores, de módulos electrónicos; elaboradas para diseñadores (IPC 2221A Generic Standard on printed board Design, ANSI/IPC A-610D Acceptability of Electronic Assemblies, ANSI/IPC A-600G Acceptability of Printed Board, IPC C-406 Requirement for Power Conversion Decive for the computer and Telecommunication Industries).
 
 
 

@@ -18,7 +18,7 @@
 %----------------------------------------------------------------------------------------
 
 %\section{Introducción}
-Este capítulo pretende poner en contexto al lector. Primero, en la sección \ref{sec:Motivación} da una justificación del proyecto, aclarando a qué necesidades brinda una solución. Luego da una descripción teórica del tipo de red que se implementa en \ref{sec:wsn}, y describe el estado del arte de la solución energética implicada en \ref{sec:energía}.
+Este capítulo pretende poner en contexto al lector. Primero, en la sección \ref{sec:Motivación} se presenta una justificación del proyecto, aclarando a qué necesidades se brinda una solución. Luego se da una descripción teórica del tipo de red que se implementa en \ref{sec:wsn}, y se describe el estado del arte de la solución energética implicada en \ref{sec:energía}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
@@ -26,9 +26,9 @@ Este capítulo pretende poner en contexto al lector. Primero, en la sección \re
 \section{Motivación}
 \label{sec:Motivación}
 
-La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
+La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} \citep{mote} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
 
-La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802.15.4} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}\footnote{https://standards.ieee.org/}. El cual define su operación basado en un modelo simple de capas:
+La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802154} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}\footnote{https://standards.ieee.org/}. El cual define su operación basado en un modelo simple de capas:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
@@ -47,6 +47,8 @@ La necesidad surge como complemento en el despliegue de nodos que soportan el es
 La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, generalmente de dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, proponiendo un modelo de muy pocas capas (dos: PHY y MAC) y al controlar el ciclo de trabajo.
 
 El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos. 
+
+El bajo consumo de potencia puede llevar a otras características favorables para el dispositivo, como menor disipación de calor, baterías mas pequeñas, menos peso, menor tamaño y diseños mecánicos mas simples
 		
 Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} desarrollado el nodo será capaz de determinar el modo de operación entre batería y panel solar, en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
 
@@ -123,8 +125,6 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 \section{Implicaciones de energía}
 \label{sec:energía}
 
-Estado del arte de baterías...
-
 El módulo fotovoltáico, mas conocido como panel solar, se encarga de convertir la energía solar en electricidad a partir de la luz que incide sobre él, mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por el (los) módulo (s) y una serie de elementos auxiliares tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
 Son comúnmente usados para abastecer medianos a bajos consumos de energía eléctrica, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
@@ -149,14 +149,8 @@ Los características de estos paneles dependen de la disposición del diseño, l
 	\label{tab:inclina}
 \end{table}
 
-Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. La figura \ref{fig:swanson} muestra la evolución de su precio entre 1977 y 2015 \footnote{fuente: Bloomberg New Energy Finance. De Hanjin - Trabajo propio, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=29498744}.
+Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. Un estudio reciente \citep{Bloomberg} muestra la evolución de su precio entre 1977 y 2013, disminuyendo de 76.67 a 0.30 USD/Watt.
 
 
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=0.7\textwidth]{./Figures/SwansonEffect.png}
-    	\caption{Evolución del precio de células fotovoltaicas de silicio cristalino (USD/Wp).}
-	\label{fig:swanson}
-\end{figure}
 
 %----------------------------------------------------------------------------------------

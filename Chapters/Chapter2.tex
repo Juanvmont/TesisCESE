@@ -27,7 +27,7 @@ Este capítulo describe los objetivos del trabajo \ref{sec:trabajo}, las herrami
 \section{Herramientas}
 \label{sec:herramientas}
 
-LPCxpresso es un \textit{toolchain} que está compuesto por un IDE \footnote{http://www.nxp.com/products/software-and-tools/software-development-tools/software-tools/lpc-microcontroller-utilities/lpcxpresso-ide:LPCXPRESSO} (\textit{Integrated Development Environment}) basado en eclipse, \textit{compiler} y \textit{linker} GNU, GDB \textit{debugger} y también una herramienta que incluye un programador y \textit{debugger} (\textit{LPC-Link}) que es usado para programar el nodo \textit{Mote LSE}(Ver figura \ref{fig:mote}).
+LPCxpresso es un \textit{toolchain} que está compuesto por un IDE (\textit{Integrated Development Environment})\citep{IDE} basado en eclipse, \textit{compiler} y \textit{linker} GNU, GDB \textit{debugger} y también una herramienta que incluye un programador y \textit{debugger} (\textit{LPC-Link}) que es usado para programar el nodo \textit{Mote LSE}(Ver figura \ref{fig:mote}).
 
 \vspace{10px}
 
@@ -40,13 +40,13 @@ LPCxpresso es un \textit{toolchain} que está compuesto por un IDE \footnote{htt
 
 \noindent Esta plataforma se compone de:
 \begin{itemize}
-\item Microcontrolador NXP LPC1343 \footnote{http://www.nxp.com/}.
+\item Microcontrolador NXP LPC1343 \citep{1343}.
    \begin{itemize}
    \item Procesador ARM Cortex-M3 de 32 bits @72MHz. 
    \item 32kB de memoria Flash.
    \item 8kB de memoria SRAM.
    \end{itemize}
-\item Transceptor TI-2520 \footnote{http://www.ti.com/}.
+\item Transceptor TI-2520 \citep{2520}.
 		\begin{itemize}
 			\item 2394-2507 MHz.
 			\item VCO, LNA, PA y filtros On-chip.
@@ -66,7 +66,7 @@ LPCxpresso es un \textit{toolchain} que está compuesto por un IDE \footnote{htt
 			\end{itemize}
 		\end{itemize}
 \item Extensor de rango TI-2591.
-\item Circuito de control de carga bq24080 1-A.
+\item Circuito de control de carga bq24080 1-A \citep{bq}.
 		\begin{itemize}
 			\item Alimentación de 5V(DC) a través de conector USB micro-B.
 			\item La carga de la batería termina basada en una corriente mínima.
@@ -97,13 +97,13 @@ comparación de tramas y throughput
 \section{Requerimientos}
 \label{sec:requerimientos}
 
-\noindent Requerimientos de hardware:
+\noindent Los requerimientos del hardware son los siguientes:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ Compatibilidad con nodos Mote LSE.
 	\item \textbf{REQ2:}\\ Agregar al nodo \textit{Mote LSE} la extensión de circuito cargador a partir de panel solar de 12V x 0.5A.
 \end{itemize}
 	
-\noindent Requerimientos de software:
+\noindent Los requerimientos def software son los siguientes:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ El sistema de monitoreo debe poder trabajar con una cantidad \textit{n} de nodos simultáneamente.
 	\item \textbf{REQ2:}\\ El sistema debe soportar topologías de tipo estrella, peer-to-peer y árbol de cluster.
@@ -134,7 +134,7 @@ comparación de tramas y throughput
 	\item \textbf{REQ10:}\\Se debe implementar un algoritmo de ahorro de energía en los nodos en estado de alarma (prioridad baja).
 \end{itemize}
 
-\noindent Requerimientos de documentación y entregables:
+\noindent Los requerimientos de documentación y entregables son los siguientes:
 \begin{itemize}
 	\item \textbf{REQ1:}\\ El manual de uso debe especificar los parámetros de red configurables para implementar el sistema.
 	\item \textbf{REQ2:}\\ Los diagramas de instalación debe contemplar las tres topologías posibles de acuerdo a 802.15.4.
@@ -146,10 +146,13 @@ comparación de tramas y throughput
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \clearpage
-\section{AON y GANTT}
+\section{Diagramas AON y de GANTT}
 \label{sec:tareas}
+A continuación se presenta la planificación del presente trabajo, realizada en la materia Gestión de Proyectos en Ingeniería.
 
-La secuencia de tareas y sus duraciones se muestran en la figura \ref{fig:AON}. Si bien muchas de estas tareas pueden realizarse en paralelo, se organizaron secuencialmente porque el responsable a cargo de cada una era la misma persona.
+AON (\textit{Activity on Node}) es un término de gestión de proyectos, que se refiere a un método que diagrama la secuencia de tareas, mediante nodos y especifica sus duraciones. Este diagrama se muestra en la figura \ref{fig:AON}. Si bien muchas de estas tareas pueden realizarse en paralelo, se organizaron secuencialmente porque el responsable a cargo de cada una era la misma persona.
+
+El diagrama de Gantt, es otra herramienta de planificación que ofrece una información mas detallada de los tiempos, recursos y subtareas de un proyecto. Para realizarlo se utilizó la herramienta libre basada en la web, Gantter \citep{gantter}.
 
 \begin{figure}[h!]
 	\centering
