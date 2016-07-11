@@ -27,6 +27,8 @@ Se trata de paneles fabricados en base a celdas de silicio policristalino de alt
 Cuenta con certificado IRAM (Instituto Argentino de Normalización y Certificación), certificados CE (European Union: IEC61215 \textit{Photovoltaic Solar Testing Specifications} y IEC 61730 {\textit{Photovoltaic (PV) Module Safety Qualification}) y RoHs (\textit{DIRECTIVE 2002/95/EC: Restriction of Hazardous Substances}). Éste último le agrega ventaja frente a líderes del mercado internacional que no cumplen con la restricción de determinadas sustancias peligrosas. Sus características se muestran en la tabla \ref{tab:ks10t}. 
 %y figura \ref{fig:mecanicas}\footnote{Fuente: SOLARTEC S.A. Todas las distancias están expresadas en mm.}.
 
+La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocircuito y la tensión máxima a circuito abierto del módulo \textit{KS10T}. Nótese que es capaz de entregar la tensión hasta exigir el máximo de corriente. Los valores y la curva están dados para condiciones de insolación de 1 KW/m2, masa atmosférica 1.5 y temperatura de celda de 25 \grados C\citep{solar}.
+
  \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.6\textwidth]{./Figures/panel.png}
@@ -53,7 +55,6 @@ Cuenta con certificado IRAM (Instituto Argentino de Normalización y Certificaci
 	\label{tab:ks10t}
 \end{table}
 
-La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocircuito y la tensión máxima a circuito abierto del módulo \textit{KS10T}. Nótese que es capaz de entregar la tensión hasta exigir el máximo de corriente. Los valores y la curva están dados para condiciones de insolación de 1 KW/m2, masa atmosférica 1.5 y temperatura de celda de 25 \grados C.\footnote{Fuente: SOLARTEC S.A.}
 
 %\begin{figure}[h]
 %\centering
@@ -92,6 +93,7 @@ La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocirc
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
+\clearpage
 \subsection{Extensión de Circuito Cargador}
 \label{subsec:extensión}
 Entre las interfaces para el usuario del nodo \textit{Mote LSE} esta el puerto USB, el cual alimenta al circuito de control de carga \textit{bq24080 1-A} con 5V(DC) a través de un conector USB micro-B. Este circuito es el empleado para la carga de la batería de Li-ion de 3.7V y 900mAh.
@@ -112,47 +114,22 @@ Un diseño de circuito alternativo, de montaje superficial, puede hacerse emplea
 %-----------------------------------
 %	SUBSECTION 3
 %-----------------------------------
-\subsection{Diagrama de conexión}
+\subsection{Diagrama de Conexión}
 \label{subsec:conexión}
+El siguiente diagrama muestra la conexión entre el panel solar, la extensión del circuito cargador y el nodo \textit{Mote LSE}.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Arquitectura}
 \label{sec:arq}
-Cuando se diseña adecuadamente, los drivers del hardware están abstraídos del hardware en sí. Para que los usuarios finales, en este caso desarrolladores de software a nivel de aplicación, puedan controlar el hardware cuando una rutina en particular es llamada con el parámetro apropiado (API-CAPI \footnote{Application Programming Interface - Common Application Programming Interface}). Esto se refiere a la interfaz que las aplicaciones pueden usar para comunicarse directamente con el \textit{Mote LSE}.
+Cuando se diseña adecuadamente, los drivers de un dispositivo están abstraídos del hardware en sí, para que los usuarios finales, en este caso desarrolladores de software a nivel de aplicación, puedan controlar el hardware cuando una rutina en particular es llamada con el parámetro apropiado (API-CAPI \footnote{Application Programming Interface - Common Application Programming Interface}). Esto se refiere a la interfaz que las aplicaciones pueden usar para comunicarse directamente con el \textit{Mote LSE}.
 
 Primero se usa la función del CMSIS, luego se define en código el handler de la excepción correspondiente, escribiendo en cada entrada del vector la dirección de memoria del handler asociado a la excepción.
 
-El modelo propuesto consiste en una arquitectura de capas, a continuación se describe los niveles de abstracción desde los registros primitivos del hardware hasta la aplicación implementada (Ver subsección \ref{subsec:capas}), que incluye varios algoritmos y procedimientos (Ver subsección \ref{subsec:bloques}) que son usados para decidir de forma autónoma el modo de operación, si es necesario cargar la batería y generar alarmas de salud.
+A continuación se describe los niveles de abstracción de la arquitectura del firmware, desde los registros primitivos del hardware hasta la aplicación implementada, que incluye varios algoritmos y procedimientos (Ver subsección \ref{subsec:bloques}) que son usados para decidir de forma autónoma el modo de operación, si es necesario cargar la batería y generar alarmas de salud.
 
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-\subsection{Modelo de capas}
-\label{subsec:capas} 
-Los niveles de abstracción se describen en las siguientes capas:
-cc2520.c
-Implementa las funciones de acceso al transceiver cc2520
-cc2520.h
-contiene todas las macro que contro 
-
-cc2520-mac.h
-Define el tipo de datos necesarios para completar la trama (MHR, MAC Payload y MFR y PHR). Todos definidas en cc2520-task, mientras que el MFR (RSSI y CRC) y el SHR (secuencia de preambulo y start of frame delimiter) es implementado por hardware por el cc2520 y completa la trama. 
-Especifica el tipo de trama, el modo de direccionamiento MAC (short o extended, 16 o 64 bits) y la estructura de los octetos que forman el PSDU.
-cc2520-mac.c
-Implementa las funciones de acceso al medio, arma el frame control field
-CSMA/CA
-
-cc2520-task.c
-Esta funcion arma una trama de tipo DATA (formada con los parametros relativos al 802.15.4 de cc2520-mac.c) y la guarda en el buffer de salida. Los parametros de entrada son la direccion de destino y el payload que contiene todos las mediciones y estados de alarmas. 
-y llama la funcion ccTx del cc2520-mac, que se fija en el buffer de tx si contiene un frame y lo transmite
-Luego en ccTask implementa una FSM con los estados de enviar, recibir y esperar.
-cc2520-task.h
-Se incluyeron los estados de operacion referentes al transceiver (idle, dataRequest, waitingData, etc)
-y la funcion FrameForming para ser utilizada por las capas de aplicacion superiores
-se define la variable MAX RETRIES y las direcciones del coordinado, local y el PAN ID
-
+El modelo propuesto consiste en una arquitectura de capas (Ver figura \ref{fig:capas}). Los componentes de drivers de dispositivos que dan acceso a los diferentes recursos de hardware del \textit{Mote LSE} y sus funcionalidades están divididos en tres categorías. Los niveles de abstracción se describen en las siguientes capas:
 
 \begin{figure}[h!]
 	\centering
@@ -160,16 +137,72 @@ se define la variable MAX RETRIES y las direcciones del coordinado, local y el P
     	\caption{Modelo de Capas del Sistema.}
 	\label{fig:capas}
 \end{figure}
+
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{HAL}
+\label{subsec:hal} 
+
+La capa de abstracción de hardware (en inglés, Hardware Abstraction Layer o HAL) implementa la portabilidad del sistema a otro \textit{hardware} distinto, siendo accesible en un único formato.
+
+\noindent La HAL esta compuesta de:
+\begin{itemize}
+\item Hardware:
+	\begin{itemize}
+	\item CMSISv2p00 LPC13xx :Implementa las funciones de acceso al LPC1343.	
+	\end{itemize}
+\item Board Drivers:
+	\begin{itemize}
+	\item cc2520.c : Implementa las funciones de acceso al transceiver cc2520.
+	\item cc2520.h : Contiene todas las macro que controlan el pin CSn.
+	\item ledpul.c : Implementa las funciones de acceso a los leds de la placa.
+	\item ledpul.h : Contiene todas las macro que controlan los leds.
+	\item bq.c : Implementa las funciones de lectura de estado y control del bq24080.
+	\item bq.h : Contiene todas las macro que controla los pines del bq24080.
+	\end{itemize}
+\end{itemize}
+		
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
-\subsection{Diagrama en bloques}
-\label{subsec:bloques} 
-Diagrama funcional.
-Alarmas.
-Modos.
-%Módulos. 
-%GPIO configurable al recibir un frame de determinadas características (puede esperar tramas de una serie de direcciones - frame filtering)
+\subsection{HIL}
+\label{subsec:hil}
+La funcionalidad de la HIL no se ve limitada a las plataformas disponibles en la HAL, esto quiere decir que es implementada de una manera que sea independiente del hardware.
+
+\noindent La HAL esta compuesta de:
+\begin{itemize}
+\item 802.15.4:
+	\begin{itemize}
+	\item cc2520-mac.c : Implementa las funciones de acceso al medio, arma el FCF e implementa los mecanismos de CSMA/CA.
+	\item cc2520-mac.h : Define el tipo de datos necesarios para completar la trama (MHR, MAC Payload, MFR y PHR (Ver figura \ref{fig:data}) asignados en cc2520-task, mientras que el MFR (RSSI y CRC) y el SHR (secuencia de preámbulo y SFD) es implementado por el software embebido del transceiver cc2520 y completa la trama. Especifica el tipo de trama, el modo de direccionamiento MAC (short o extended: 16 o 64 bits) y la estructura de los octetos que forman el PSDU.
+	\end{itemize}
+\end{itemize}
+
+
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1\textwidth]{./Figures/data.jpg}
+    	\caption{Esquema del formato de la trama de Datos IEEE 802.15.4.}
+	\label{fig:data}
+\end{figure}
+
+%-----------------------------------
+%	SUBSECTION 2
+%-----------------------------------
+\subsection{APP}
+\label{subsec:app}
+La capa APP	o de aplicación
+	
+cc2520-task.c
+Esta funcion arma una trama de tipo DATA (formada con los parametros relativos al 802.15.4 de cc2520-mac.c) y la guarda en el buffer de salida. Los parametros de entrada son la direccion de destino y el payload que contiene todos las mediciones y estados de alarmas. 
+y llama la funcion ccTx del cc2520-mac, que se fija en el buffer de tx si contiene un frame y lo transmite
+Luego en ccTask implementa una FSM con los estados de enviar, recibir y esperar.
+cc2520-task.h
+Se incluyeron los estados de operacion referentes al transceiver (idle, dataRequest, waitingData, etc)
+y la funcion FrameForming para ser utilizada por las capas de aplicacion superiores
+se define la variable MAX RETRIES y las direcciones del coordinado, local y el PAN ID.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 3
@@ -178,7 +211,7 @@ Modos.
 \label{sec:firm}
 El software embebido, llamado firmware en adelante, fue implementado en lenguaje de programación C y assembler.
 
-Es por una de las 6 alarmas: La temperatura de la bateria, sobre la medición de temperatura de batería, el bq24080 no es capaz de medir la temperatura de la batería (el bq24081 si). Un método para medir la temperatura de la batería sin sensores de temperatura es el método de medición basado en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementaría en el firmware una simple asignación de temperatura basada en la impedancia, pero con el bq24080 tampoco es posible medir la impedancia.
+Es por una de las 6 alarmas: La temperatura de la batería, sobre la medición de temperatura de batería, el bq24080 no es capaz de medir la temperatura de la batería (el bq24081 si). Un método para medir la temperatura de la batería sin sensores de temperatura es el método de medición basado en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementaría en el firmware una simple asignación de temperatura basada en la impedancia, pero con el bq24080 tampoco es posible medir la impedancia.
 
 Como la hoja de datos del bq24080 y 1 estan en el mismo doc, no me habia percatado que era solo uno de los dos con el que podía medir la temp de la bateria.
 Obviamente, podría agregarle sensores al Mote LSE, pero modificarlo no es parte del presente trabajo, por las implicaciones de diseño.
@@ -189,10 +222,24 @@ En rigor, esta medición en especifico no es uno de los objetivos, pero si un re
 
 %La función main siempre es llamada cuando el programa se ejecuta por primera vez. De ahi se llama a otras funciones
 
+Similarmente, esta es la abstracción para el circuito controlador de carga:
+
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
-\subsection{Descripción}
+\subsection{Diagrama en Bloques}
+\label{subsec:bloques} 
+Diagrama funcional.
+Alarmas.
+Modos.
+Inter PAN
+%Módulos. 
+%GPIO configurable al recibir un frame de determinadas características (puede esperar tramas de una serie de direcciones - frame filtering)
+
+%-----------------------------------
+%	SUBSECTION 1
+%-----------------------------------
+\subsection{Descripción de Operaciones}
 \label{subsec:desc} 
 
 Configuración de cada nodo (Tabla con Parámetros y valores)
@@ -213,7 +260,7 @@ Para ver una descripción del firmware en pseudocódigo y sus principales funcio
 %-----------------------------------
 %	SUBSECTION 2
 %-----------------------------------
-\subsection{Funcionalidades por capas}
+\subsection{Funcionalidades por Capas}
 \label{subsec:func} 
 \begin{itemize}
 	\item Implementación de funcionalidades en la subcapa PHY
