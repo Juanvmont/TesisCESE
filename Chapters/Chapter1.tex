@@ -26,9 +26,9 @@ Este capítulo pretende poner en contexto al lector. Primero, en la sección \re
 \section{Motivación}
 \label{sec:Motivación}
 
-La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad debido a fallas de energía o a temperatura de entorno de nodos \textit{Mote LSE} \citep{mote} con sistema autónomo de batería, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
+La justificación de este proyecto es proponer una solución preventiva a la falta de disponibilidad en la red de nodos \textit{Mote LSE} \citep{mote} con sistema autónomo de batería, debido a fallas de energía o a temperatura de entorno, que reporte alarmas de salud a un nodo central y tome acciones para el ahorro de energía.
 
-La necesidad surge como complemento en el despliegue de nodos que soportan el estándar IEEE 802.15.4 \citep{802154} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}\footnote{https://standards.ieee.org/}. El cual define su operación basado en un modelo simple de capas:
+La necesidad surge como complemento en el despliegue de nodos que soportan el estándar \textit{IEEE 802.15.4} \citep{802154} para \textit{Low-Rate Wireless Personal Area Networks (LR-WPANs)} de la \textit{IEEE Standards Association}\footnote{https://standards.ieee.org/}. El cual define su operación basado en un modelo simple de capas:
 		\begin{itemize}
 			\item Nivel físico (PHY)
 			\item Control de acceso al medio (MAC)
@@ -44,13 +44,13 @@ La necesidad surge como complemento en el despliegue de nodos que soportan el es
 			\item Opera en una banda de frecuencia sin licencia.
 		\end{itemize}
 
-La intensión de este estándar fue establecer los lineamientos para aplicaciones con limitaciones de potencia, generalmente de dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, al proponer un modelo de muy pocas capas (dos: PHY y MAC) y controlar el ciclo de trabajo.
+La intensión del LMSC (LAN/MAN Standards Committee) de la IEEE (Institute of Electrical and Electronics Engineers) fue establecer los lineamientos para aplicaciones con limitaciones de potencia, generalmente de dispositivos con fuente de alimentación autónoma, como por ejemplo baterías, paneles solares y otras fuentes de energía alternativas. Para lograrlo, el estándar hace énfasis en el ahorro de energía gracias a la simplicidad de su estructura principalmente, al proponer un modelo de muy pocas capas (dos: PHY y MAC), en contraste con el Modelo OSI (Open System Interconnection) de la ISO (International Organization for Standardization).
 
-El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos. 
+La solución que viene a unirse al estándar, es la de controlar el ciclo de trabajo de los terminales. El tiempo de transmisión como una proporción del intervalo de tiempo entre transmisiones, es llamado ciclo de trabajo. El uso de la batería es optimizado con 802.15.4 al usar ciclos de trabajo extremadamente bajos.
 
-El bajo consumo de potencia puede llevar a otras características favorables para el dispositivo, como menor disipación de calor, baterías mas pequeñas, menos peso, menor tamaño y diseños mecánicos mas simples
+Lograr un bajo consumo de potencia puede llevar a otras características favorables para el dispositivo, como menor disipación de calor, baterías mas pequeñas, menos peso, menor tamaño y diseños mecánicos mas simples. 
 		
-Con la extensión del circuito cargador se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} implementado el nodo será capaz de determinar el modo de operación entre batería y panel solar, en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
+Con la extensión de un circuito cargador basado en energía solar se aumenta la autonomía del nodo \textit{Mote LSE} y con el \textit{firmware} implementado el nodo será capaz de determinar el modo de operación entre batería y panel solar, en función de la tensión que entrega el circuito cargador del panel y la proyección de batería restante.
 
 Todo esto, sumado a la flexibilidad, tolerancia a fallas, bajo costo y rápido despliegue, hacen que este trabajo sea de interés en el área de Sistemas Embebidos para implementar conjuntamente con otro algoritmos en redes WSN.
 
@@ -60,7 +60,7 @@ Todo esto, sumado a la flexibilidad, tolerancia a fallas, bajo costo y rápido d
 \section{¿Qué es WSN?}
 \label{sec:wsn}
 
-WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Sensores Inalámbricos, no es mas que una serie de dispositivos sensores, desplegados en una red y conectados inalámbricamente, para monitorear fenómenos físicos (Ver figura \ref{fig:wsn}). Los avances tecnológicos en sistemas micro-electro-mecánicos (MEMS) han logrado convertir a las WSN en parte de nuestra vida cotidiana. Las áreas de aplicación pueden ser:
+WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Sensores Inalámbricos, no es mas que una serie de dispositivos sensores, desplegados en una red y conectados inalámbricamente, para monitorear fenómenos físicos (Ver figura \ref{fig:wsn}). Los avances tecnológicos en sistemas micro-electro-mecánicos (MEMS) han logrado convertir a las WSN en parte de nuestra vida cotidiana. Abarcan un amplio rango de aplicaciones en distintas áreas, entre las que destacan:
 		\begin{itemize}
 			\item Medición inteligente.
 	%	\item Comunicaciones y Control de ferrocarril
@@ -82,7 +82,7 @@ WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Se
 	\label{fig:wsn}
 \end{figure}
 		
-Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional Area Networks} (Ver tabla \ref{tab:802}) y una vez centralizada la información, es posible organizar una red distribuida, con redes WSN dispuestas en campos de estudio. Un sumidero, diseñado para recibir eventos de la WSN, toma ventaja de la corta distancia entre un largo número de nodos sensores para proveer una comunicación de múltiples saltos y minimizar el consumo de potencia (Ver figura \ref{fig:distrib}). Otra opción mas compleja es implementar la movilidad de los nodos para colectar la información. Los usuarios se conectan a través de un nodo de gestión de tareas con acceso a Internet y/o redes satelitales y de esta manera lograr conectividad de variables remotas.
+Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional Area Networks} (Ver tabla \ref{tab:802}) y una vez centralizada la información, es posible organizar una red distribuida, con redes WSN dispuestas en campos de estudio. Un sumidero, diseñado para recibir eventos de la WSN, toma ventaja de la corta distancia entre un largo número de nodos sensores para proveer una comunicación de múltiples saltos y minimizar el consumo de potencia (Ver figura \ref{fig:distrib}). Los usuarios se conectan a través de un nodo de gestión de tareas con acceso a Internet y/o redes satelitales y de esta manera lograr conectividad de variables remotas. Otra opción mas compleja es implementar la movilidad de los nodos para colectar la información.
 
 %In computing, a sink, event sink or data sink is a class or function designed to receive incoming events from another object or function. This is commonly implemented in C++ as callbacks. Object-oriented languages, such as Java and C#, have built-in support for sinks by allowing events to be fired to delegate functions.
 
@@ -127,11 +127,11 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 \section{Implicaciones de energía}
 \label{sec:energía}
 
-El módulo fotovoltáico, se encarga de convertir la energía solar en electricidad, a partir de la luz que incide sobre él mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por dicho(s) módulo(s) y una serie de elementos auxiliares, tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
+El presente trabajo se enfoca en aplicaciones de redes WSN alimentados a energía solar. En este escenario, un módulo fotovoltáico se encarga de convertir la energía solar en electricidad, a partir de la luz que incide sobre él mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por dicho(s) módulo(s) y una serie de elementos auxiliares, tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
 Son comúnmente usados para abastecer medianos a bajos consumos de energía, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
 
-Los características de estos paneles dependen de la disposición del diseño, la carga de nieve o de viento y principalmente de la pureza del material, que influye directamente en la eficiencia de conversión. Además es necesario considerar el material de la estructura de soporte, que para soportar condiciones ambientales de la intemperie son generalmente de aluminio anodizado o acero galvanizado por inmersión en caliente. La instalación requiere de una posición adecuada, fijando su orientación respecto del norte geográfico y la inclinación dependerá de la latitud del lugar de instalación (Ver tabla \ref{tab:inclina}). Esta solución requiere muy poco mantenimiento (inspección eléctrica y limpieza del vidrio frontal del modulo cada tres meses)
+Las características de estos paneles dependen de la disposición del diseño, la carga de nieve o de viento y principalmente de la pureza del material, que influye directamente en la eficiencia de conversión. Además es necesario considerar el material de la estructura de soporte, que para soportar condiciones ambientales de la intemperie son generalmente de aluminio anodizado o acero galvanizado por inmersión en caliente. La instalación requiere de una posición adecuada, fijando su orientación respecto del norte geográfico y la inclinación dependerá de la latitud del lugar de instalación (Ver tabla \ref{tab:inclina}). Esta solución requiere muy poco mantenimiento (inspección eléctrica y limpieza del vidrio frontal del modulo cada tres meses)
 
 \begin{table}[ht]
 	\centering
