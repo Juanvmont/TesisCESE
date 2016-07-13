@@ -27,6 +27,7 @@ Cuenta con certificado IRAM (Instituto Argentino de Normalización y Certificaci
 
 La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocircuito y la tensión máxima a circuito abierto del módulo \textit{KS10T}. Nótese que es capaz de entregar la tensión hasta exigir el máximo de corriente. Los valores y la curva están dados para condiciones de insolación de 1 KW/m2, masa atmosférica 1.5 y temperatura de celda de 25 \grados C\citep{solar}.
 
+\vspace{10px}
  \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.6\textwidth]{./Figures/panel.png}
@@ -34,8 +35,7 @@ La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocirc
 	\label{fig:ks10t}
 \end{figure}
 
-\vspace{10px}
-
+\vspace{30px}
 \begin{table}[ht]
 	\centering
 	\caption{Características del módulo fotovoltaico KS10T}
@@ -81,6 +81,7 @@ La curva de la figura \ref{fig:curva}, muestra la corriente máxima de cortocirc
 %	\label{fig:mecanicas}
 %\end{figure}
 
+\vspace{30px}
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=0.6\textwidth]{./Figures/curva.JPG}
@@ -98,6 +99,7 @@ Entre las interfaces para el usuario del nodo \textit{Mote LSE} esta el puerto U
 
 Es por esto que es necesario emplear una etapa reguladora de voltaje a la salida del panel, para la cual se utiliza el clásico regulador de Fairchild \textit{LM7805} de 1A \citep{7805}. Con unos pocos componentes (un condensador electrolítico como filtro a tierra para señales continuas para moderar la tensión eléctrica y las fluctuaciones de corriente y un condensador de poliéster para filtrar las señales espúreas de alta frecuencia, a la entrada y a la salida) entrega una salida de voltaje entre 4.75V y 5.25V. Además, ofrece protección contra sobrecarga térmica y cortocircuitos y opera entre -40 \grados C y +125 \grados C.
 
+\vspace{30px}
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=1\textwidth]{./Figures/circuito.jpg}
@@ -169,7 +171,7 @@ La capa de abstracción de hardware (en inglés, Hardware Abstraction Layer o HA
 \label{subsec:hil}
 La funcionalidad de la HIL no se ve limitada a las plataformas disponibles en la HAL, esto quiere decir que es implementada de una manera que sea independiente del hardware.
 
-\noindent La HAL esta compuesta por:
+\noindent La HIL esta compuesta por:
 \begin{itemize}
 \item 802.15.4:
 	\begin{itemize}
@@ -182,7 +184,7 @@ La funcionalidad de la HIL no se ve limitada a las plataformas disponibles en la
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=1\textwidth]{./Figures/data.jpg}
-    	\caption{Esquema del formato de la trama de Datos IEEE 802.15.4.}
+    	\caption{Esquema del formato de la trama de Datos IEEE 802.15.4 \citep{802154}}
 	\label{fig:data}
 \end{figure}
 
@@ -211,7 +213,7 @@ La capa APP	o de aplicación esta compuesta por:
 \label{sec:firm}
 El software embebido, llamado firmware en adelante, fue implementado en lenguaje de programación C y assembler. Éste implementa todas las funciones descriptas en la sección anterior.
  
-Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de la clase práctica de la asignatura Protocolos de Comunicación del Ing. Pablo Ridolfi y se realizaron las modificaciones a nivel de HAL, para soportar el circuito controlador de carga bq24080. Ver \ref{AppendixC}.
+Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de la clase práctica de la asignatura Protocolos de Comunicación del Ing. Pablo Ridolfi y se realizaron las modificaciones a nivel de HAL para soportar el circuito controlador de carga bq24080. Ver \ref{AppendixC}.
 
 \begin{table}[ht]
 	\centering
@@ -257,11 +259,12 @@ Se implementaron las funciones para reconocer el estado del circuito según el e
 %	\label{fig:modules}
 %\end{figure}
 
-Se implementó las funcionalidades de topologías de red WSN en cc2520-task y se agregó otra capa de aplicación que implementa las mediciones y activa las alarmas en el nodo. Todos estos datos son transmitidos al nodo coordinador, para ello emplea la función ccFrameTx, primero guarda los datos de medición en el payload y asigna la dirección del coordinador como dirección destino y guarda la trama formada en el buffer de salida.
+Se implementó las funcionalidades de topologías de red WSN en cc2520-task y se agregó otra capa de aplicación que hace las mediciones y controla las alarmas en el nodo. Todos estos datos son transmitidos al nodo coordinador, primero emplea la función ccFrameForming, que guarda los valores de las mediciones en el payload y asigna la dirección del coordinador como dirección destino, luego ccFrameTx guarda la trama formada en el buffer de salida.
+
+A su vez se define un ciclo de trabajo, utlizando un contador junto con el SysTickHandler para iniciar periódicamente la comunicación entre los nodos. 
 
 Para cumplir con el requerimiento de almacenar en una memoria no volátil los datos de alarma, parámetros monitoreados, tiempo total de uso, y cantidad de ciclos de carga/descarga, éstos son almacenados en la memoria Flash del microcontrolador (la memoria SRAM necesita energía para que perduren los datos). 
 
-A su vez se define un ciclo de trabajo , utlizando un contador junto con el SysTickHandler para iniciar periódicamente la comunicación entre los nodos. 
 
 \noindent La Alarmas que reporta son:
 	\begin{itemize}
@@ -278,7 +281,7 @@ Una opción era emplear un método para medir la temperatura de la batería sin 
 
 Otra opción sería agregarle sensores al Mote LSE, pero modificarlo no es parte del presente trabajo, por las implicaciones de diseño y el tiempo que tomaría su armado y ensamblado. Por lo que se plantea implementar algún otro método en trabajos futuros.
 
-Para ver una descripción del firmware en pseudocódigo y sus principales funciones, ver \ref{AppendixC}.
+Para ver una descripción del firmware en pseudocódigo y sus principales funciones, ver \ref{AppendixB}.
 
 %Algunas tareas tienen deadlines, otras pueden no tener o pueden tener poca penalidad si no se cumplen.
 

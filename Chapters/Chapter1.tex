@@ -73,7 +73,7 @@ WSN (por sus siglas en inglés \textit{Wireless Sensor Networks}), o Redes de Se
 			\item Comunicación Militar.
 		\end{itemize}
 
-\vspace{10px}
+%\vspace{10px}
 		
 \begin{figure}[h!]
 	\centering
@@ -96,8 +96,8 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 	\begin{tabular}{@{} l *1c @{}}    \toprule
 		\emph{\textbf{Estandares 802®}} \\
 		\midrule
-        802: Overview & Architecture\\
-        802.1: Bridging & Management\\
+        802: Overview \& Architecture\\
+        802.1: Bridging \& Management\\
         802.2: Logical Link Control\\
         802.3: Ethernet\\
         802.11: Wireless LANs\\
@@ -129,29 +129,29 @@ Estas redes pueden ir desde \textit{Wireless PANs} a \textit{Wireless Regional A
 
 El presente trabajo se enfoca en aplicaciones de redes WSN alimentados a energía solar. En este escenario, un módulo fotovoltáico se encarga de convertir la energía solar en electricidad, a partir de la luz que incide sobre él mediante el efecto fotoeléctrico. Junto con otros pocos componentes, como el banco de baterías para acumular la energía generada por dicho(s) módulo(s) y una serie de elementos auxiliares, tales como reguladores de carga de las baterías, reguladores de voltaje, inversores de corriente y otros según el tipo de aplicación y el consumo al que estén destinados, funcionan como Generadores Eléctricos Solares Autónomos (GESA).
 
-Son comúnmente usados para abastecer medianos a bajos consumos de energía, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. Para lograrlo es necesario dar al generador solar la posición adecuada: orientación norte, inclinación de acuerdo al lugar geográfico y en lo posible, libre de sombras la mayor parte del tiempo.
+Son comúnmente usados para abastecer medianos a bajos consumos de energía, donde no hay red de distribución eléctrica o el acceso al mismo es reducido. La instalación de los módulos requieren orientación e inclinación de acuerdo al lugar geográfico o en lo posible, libre de sombras la mayor parte del tiempo.
 
-Las características de estos paneles dependen de la disposición del diseño, la carga de nieve o de viento y principalmente de la pureza del material, que influye directamente en la eficiencia de conversión. Además es necesario considerar el material de la estructura de soporte, que para soportar condiciones ambientales de la intemperie son generalmente de aluminio anodizado o acero galvanizado por inmersión en caliente. La instalación requiere de una posición adecuada, fijando su orientación respecto del norte geográfico y la inclinación dependerá de la latitud del lugar de instalación (Ver tabla \ref{tab:inclina}). Esta solución requiere muy poco mantenimiento (inspección eléctrica y limpieza del vidrio frontal del modulo cada tres meses)
+Las características de estos paneles dependen de la disposición del diseño, la carga de nieve o de viento y principalmente de la pureza del material, que influye directamente en la eficiencia de conversión. Además es necesario considerar el material de la estructura de soporte, que para soportar condiciones ambientales de la intemperie son generalmente de aluminio anodizado o acero galvanizado por inmersión en caliente. Esta solución requiere muy poco mantenimiento (inspección eléctrica y limpieza del vidrio frontal del módulo cada tres meses)
 
-\begin{table}[ht]
-	\centering
-	\caption{Inclinación del panel solar con respecto a la horizontal}
-	\begin{tabular}{@{} l *1c @{}}    \toprule
-		\emph{\textbf{Latitud del lugar (\grados)}} & \emph{\textbf{Ángulo de inclinación}}\\
-		\midrule
-		0 - 15	& 15\grados	\\	
-		15 - 25 	& Igual a la Latitud\\
-		25 - 30	& Latitud +5\grados\\
-		30 - 35	& Latitud +10\grados\\
-		35 - 40	& Latitud +15\grados\\
-		más de 40	& Latitud +20\grados\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:inclina}
-\end{table}
+%\begin{table}[ht]
+%	\centering
+%	\caption{Inclinación del panel solar con respecto a la horizontal}
+%	\begin{tabular}{@{} l *1c @{}}    \toprule
+%		\emph{\textbf{Latitud del lugar (\grados)}} & \emph{\textbf{Ángulo de inclinación}}\\
+%		\midrule
+%		0 - 15	& 15\grados	\\	
+%		15 - 25 	& Igual a la Latitud\\
+%		25 - 30	& Latitud +5\grados\\
+%		30 - 35	& Latitud +10\grados\\
+%		35 - 40	& Latitud +15\grados\\
+%		más de 40	& Latitud +20\grados\\
+%		\bottomrule
+%		\hline
+%	\end{tabular}
+%	\label{tab:inclina}
+%\end{table}
 
-Los avances en la investigación en el área han logrado disminuir el precio de las células de silicio cristalino. Un estudio reciente \citep{Bloomberg} muestra la evolución de su precio entre 1977 y 2013, disminuyendo de 76.67 a 0.30 USD/Watt.
+Los avances en la investigación en el área han logrado disminuir el precio de las celdas de silicio cristalino. Un estudio reciente \citep{Bloomberg} muestra la evolución de su precio entre 1977 y 2013, disminuyendo de 76.67 a 0.30 USD/Watt.
 
 
 
