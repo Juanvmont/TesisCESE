@@ -151,7 +151,7 @@ La capa de abstracción de hardware (en inglés, Hardware Abstraction Layer o HA
 \begin{itemize}
 \item Hardware:
 	\begin{itemize}
-	\item CMSISv2p00 LPC13xx :Implementa las funciones de acceso al LPC1343.	
+	\item Libreria de Cortex ARM, \textit{Cortex Microcontroller Software Interface Standard} \citep{arm} (CMSISv2p00 LPC13xx) :Implementa las funciones de acceso al LPC1343.	
 	\end{itemize}
 \item Board Drivers:
 	\begin{itemize}
@@ -242,10 +242,6 @@ Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de
 %\end{figure}
 
 
-%Algunas tareas tienen deadlines, otras pueden no tener o pueden tener poca penalidad si no se cumplen.
-
-%La función main siempre es llamada cuando el programa se ejecuta por primera vez. De ahi se llama a otras funciones
-
 %-----------------------------------
 %	SUBSECTION 1
 %-----------------------------------
@@ -257,6 +253,7 @@ Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de
 %Inter PAN
 %Módulos. 
 %GPIO configurable al recibir un frame de determinadas características (puede esperar tramas de una serie de direcciones - frame filtering)
+La función main() siempre es llamada cuando el programa se ejecuta por primera vez. De ahí se llama a otras funciones.
 
 Se implementaron las funciones para reconocer el estado del circuito según el estado de los pines como figura en la tabla \ref{tab:bq}.
 
@@ -270,77 +267,53 @@ Se implementaron las funciones para reconocer el estado del circuito según el e
 		%Carga rápida en progreso	&  ON & OFF \\
 		Carga completa &  OFF & ON \\
 		Modo sleep &  OFF & OFF \\
-
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:bq}
+	\label{tab:STAT}
 \end{table}
 
 Se implementó las funcionalidades de topologías de red WSN en cc2520-task y se agregó otra capa de aplicación que hace las mediciones y controla las alarmas en el nodo. Todos estos datos son transmitidos al nodo coordinador, primero emplea la función ccFrameForming, que guarda los valores de las mediciones en el payload y asigna la dirección del coordinador como dirección destino, luego ccFrameTx guarda la trama formada en el buffer de salida.
 
-A su vez se define un ciclo de trabajo, utilizando un contador junto con el SysTickHandler para iniciar periódicamente la comunicación entre los nodos. 
+A su vez se define un ciclo de trabajo, utilizando un contador junto con el SysTickHandler para iniciar periódicamente la comunicación entre los nodos. Esto permite al diseñador escoger el fragmento de tiempo del ciclo activo para diferentes tipos de WSNs dependiendo del propósito de la aplicación, analizando la relación de compromiso entre la periodicidad del proceso de medición y el consumo de energía implicado.
+
+La autonomía del sistema permite que la WSN obtenga un conjunto de mediciones que es independiente del tiempo usado por servidores, pero también se podría implementar una interfaz a un servidor de tiempo para traducir el tiempo de la WSN a un tiempo común a los usuarios.
 
 Para cumplir con el requerimiento de almacenar en una memoria no volátil los datos de alarma, parámetros monitoreados, tiempo total de uso, y cantidad de ciclos de carga/descarga, éstos son almacenados en la memoria Flash del microcontrolador (la memoria SRAM necesita energía para que perduren los datos). 
 
 \noindent La Alarmas que reporta son:
 	\begin{itemize}
-	\item TempAmbaja : Reporta temperatura de ambiente baja.
-	\item TempAmbalta : Reporta temperatura de ambiente alta.
-	\item ProyBatrest : En Modo Batería, el nodo calcula la autonomía y utiliza un contador junto con el SysTickHandler con el cual va restando el los pasos del reloj y esta alarma se activa cuando llega a un umbral prefijado.
-	\item TensionBat : Se activa cuando la tensión de la batería es menor aun valor prefijado.
-	\item NodOffline : Se activa en el nodo coordinador cuando no obtiene respuesta de un nodo.
+	\item TempAmbaja (1) : Reporta temperatura de ambiente baja.
+	\item TempAmbalta (2) : Reporta temperatura de ambiente alta.
+	\item ProyBatrest (3): En Modo Batería, el nodo calcula la autonomía y utiliza un contador junto con el SysTickHandler con el cual va restando el los pasos del reloj y esta alarma se activa cuando llega a un umbral prefijado.
+	\item TensionBat (4): Se activa cuando la tensión de la batería es menor aun valor prefijado.
+	\item NodOffline (5): Se activa en el nodo coordinador cuando no obtiene mensajes de estado de un nodo.
 	\end{itemize}
+	
+Estas alarmas (1 a 4) son interpretadas por el nodo coordinador al hacer la lectura de los primeros cuatro bits del payload (MSB), que en forma de flag, indican con un 1 si la alarma esta activa y con un 0 si esta desactivada. Los valores de temperatura de ambiente baja, alta y la tension de batería baja son configurables con macros en monitoreoWsn.c.
 
-Desde un comienzo se había planificado medir la temperatura de la batería con el bq24080, pero al entrar en detalle de desarrollo con la hoja de datos se encontró que esta funcionalidad no es soportada por la versión utilizada por el hardware, sino la version bq24081, descripto en la misma hoja de datos.
+De la misma manera, el sexto bit (MSB) indica el modo de operación, con un 1 si el nodo esta en modo panel solar y un 0 para modo batería.
 
-Una opción es aplicar un método para medir la temperatura de la batería sin sensores, se trata de la medición basada en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementa en el firmware una simple asignación de temperatura basada en la impedancia (conociendo la tension y la corriente de la batería) y el tipo de batería.
+VBAT y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente.
+The Voltage Output pin (VOUT) can be directly connected to the ADC input of a microcontroller
+
+\noindent No es posible realizar el monitoreo de las siguientes variables:
+\begin{itemize}
+\item Consumo de corriente del circuito:
+
+\item Temperatura de la batería: Desde un comienzo se había planificado medir la temperatura de la batería con el bq24080, pero al entrar en detalle de desarrollo con la hoja de datos se encontró que esta funcionalidad no es soportada por la versión utilizada por el hardware, sino la version bq24081, descripto en la misma hoja de datos. Una opción es aplicar un método para medir la temperatura de la batería sin sensores, se trata de la medición basada en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementaría en el firmware una simple asignación de temperatura basada en la impedancia (conociendo la tension y la corriente de la batería) y el tipo de batería.
+
+\item Corriente de carga de la batería: El circuito controlador de carga bq24080 tiene un funcionalidad de monitoreo de esta corriente. Cuando la funcion de carga esta habilitada, el circuito genera una corriente proporcional a la corriente de carga en el pin ISET.  Y cuando se aplica esta corriente a la resistencia externa programadora de la corriente de carga (R ISET genera un voltaje anologico que puede ser monitoreado con un microcontrolador externo para calcular la corriente del pin OUT. Pero el microcontrolador no tiene un pin ruteado a este nodo del circuito.
+
+\end{itemize}
+
 
 Para ver una descripción del firmware en pseudocódigo y sus principales funciones, ver \ref{AppendixB}.
 
-%-----------------------------------
-%	SUBSECTION 1
-%-----------------------------------
-%\subsection{Descripción de Operaciones}
-%\label{subsec:desc} 
-%\item en Modo:
-%	\begin{itemize}
-%	\item cc2520.c : Implementa las funciones de acceso al transceiver cc2520.
-%	\item cc2520.h : Contiene todas las macro que controlan el pin CSn.
-%	\item ledpul.c : Implementa las funciones de acceso a los leds de la placa.
-%	\item ledpul.h : Contiene todas las macro que controlan los leds.
-%	\item bq.c : Implementa las funciones de lectura de estado y control del circuito controlador de carga bq24080.
-%	\item bq.h : Contiene todas las macro que controla los pines del bq24080.
-%	\end{itemize}
-%\end{itemize}
-%Configuración de cada nodo (Tabla con Parámetros y valores)
-%Master: %Configurar como MASTER %Parámetros a ingresar %Diagrama de algoritmo
-%Device: %Configurar como DEVICE %Parámetros a ingresar %Diagrama de algoritmo
-
-    
-%No se programan tareas con prioridades, es decir que la ejecución de una tarea no sera detenida por el procesador, sin prevaciado y no se implementa tail-chaining ni late-arriving.
-%Arquitectura RISK. Modelo Hardvard: Buses separados, pero un unico mapa de memoria que esta predefinido por la arquitectura. Permite agrupar a los perifeicos por funcion y prioridad, lo que simplifica el diseno del microcontrolador y optimiza la velocidad de acceso al mismo.
 
 %Como premisa, modo sleep,
 %\textit{wait for interrupt} buena practica
 %%(_WFI)
-
-
-
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-%\subsection{Funcionalidades por Capas}
-%\label{subsec:func} 
-%\begin{itemize}
-%	\item Implementación de funcionalidades en la subcapa PHY
-%	
-%	\item Implementación de funcionalidades en la subcapa MAC
-%
-%	\item Implementación de funcionalidades a nivel de aplicación
-%	
-%\end{itemize}
-
 
 %-----------------------------------
 %	SUBSECTION 4
@@ -355,6 +328,8 @@ Las topologías posibles de implementar son las siguientes \citep{802154}:
     	\caption{1) Topología estrella. 2)Topología Peer-to-Peer.}
 	\label{fig:topo}
 \end{figure}
+
+En cuanto a la topología de árbol de cluster, no es posible su implementación, ya que la limitación de 4 nodos operativos disponibles no permite la configuración de una red de estas condiciones, por no cumplir con la densidad mínima de nodos (Ver \ref{fig:clust}. Los escenarios posibles, de tres nodos en una PAN y uno en otra, o dos nodos por PAN, no satisfacen los requerimientos. 
 
 \begin{figure}[h!]
 	\centering
