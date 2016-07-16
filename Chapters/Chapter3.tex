@@ -127,7 +127,7 @@ Cuando se diseña adecuadamente, los drivers de un dispositivo están abstraído
 
 Primero se usa la función del CMSIS, luego se define en código el handler de la excepción correspondiente, escribiendo en cada entrada del vector la dirección de memoria del handler asociado a la excepción.
 
-A continuación se describe los niveles de abstracción de la arquitectura del firmware, desde los registros primitivos del hardware hasta la aplicación implementada, que incluye varios algoritmos y procedimientos (Ver subsección \ref{subsec:bloques}) que son usados para decidir de forma autónoma el modo de operación, si es necesario cargar la batería y generar alarmas de salud.
+A continuación se describe los niveles de abstracción de la arquitectura del firmware, desde los registros primitivos del hardware hasta la aplicación implementada, que incluye varios algoritmos que son usados para decidir de forma autónoma el modo de operación, si es necesario cargar la batería y generar alarmas de salud.
 
 El modelo propuesto consiste en una arquitectura de capas (Ver figura \ref{fig:capas}). Los componentes de drivers de dispositivos que dan acceso a los diferentes recursos de hardware del \textit{Mote LSE} y sus funcionalidades están divididos en tres categorías. Los niveles de abstracción se describen en las siguientes capas:
 
@@ -162,17 +162,6 @@ La capa de abstracción de hardware (en inglés, Hardware Abstraction Layer o HA
 	\item bq.c : Implementa las funciones de lectura de estado y control del circuito controlador de carga bq24080.
 	\item bq.h : Contiene todas las macro que controla los pines del bq24080.
 	\end{itemize}
-\end{itemize}
-		
-%-----------------------------------
-%	SUBSECTION 2
-%-----------------------------------
-\subsection{HIL}
-\label{subsec:hil}
-La funcionalidad de la HIL no se ve limitada a las plataformas disponibles en la HAL, esto quiere decir que es implementada de una manera que sea independiente del hardware.
-
-\noindent La HIL esta compuesta por:
-\begin{itemize}
 \item 802.15.4:
 	\begin{itemize}
 	\item cc2520-mac.c : Implementa las funciones de acceso al medio, arma el FCF e implementa los mecanismos de CSMA/CA.
@@ -219,13 +208,12 @@ Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de
 	\centering
 	\caption{Asignación de puertos bq24080 - LPC1343}
 	\begin{tabular}{@{} l *3c @{}}    \toprule
-		\emph{\textbf{Nombre del puerto bq24080}} & \emph{\textbf{Nombre del puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
 		\midrule
 		CE &  PIO3\_ 0 & 36 & 9	\\	
 		PG	&  PIO3\_ 1 & 37 & 8\\
 		STAT1 &  PIO1\_ 4 & 40 & 3\\
 		STAT2 &  PIO2\_ 3 & 38 & 4\\
-
 		\bottomrule
 		\hline
 	\end{tabular}
@@ -297,18 +285,10 @@ De la misma manera, el sexto bit (MSB) indica el modo de operación, con un 1 si
 VBAT y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente.
 The Voltage Output pin (VOUT) can be directly connected to the ADC input of a microcontroller
 
-\noindent No es posible realizar el monitoreo de las siguientes variables:
-\begin{itemize}
-\item Consumo de corriente del circuito:
-
-\item Temperatura de la batería: Desde un comienzo se había planificado medir la temperatura de la batería con el bq24080, pero al entrar en detalle de desarrollo con la hoja de datos se encontró que esta funcionalidad no es soportada por la versión utilizada por el hardware, sino la version bq24081, descripto en la misma hoja de datos. Una opción es aplicar un método para medir la temperatura de la batería sin sensores, se trata de la medición basada en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementaría en el firmware una simple asignación de temperatura basada en la impedancia (conociendo la tension y la corriente de la batería) y el tipo de batería.
-
-\item Corriente de carga de la batería: El circuito controlador de carga bq24080 tiene un funcionalidad de monitoreo de esta corriente. Cuando la funcion de carga esta habilitada, el circuito genera una corriente proporcional a la corriente de carga en el pin ISET.  Y cuando se aplica esta corriente a la resistencia externa programadora de la corriente de carga (R ISET genera un voltaje anologico que puede ser monitoreado con un microcontrolador externo para calcular la corriente del pin OUT. Pero el microcontrolador no tiene un pin ruteado a este nodo del circuito.
-
-\end{itemize}
+Se optó por no hacer tal cosa, consumo del circuito por
 
 
-Para ver una descripción del firmware en pseudocódigo y sus principales funciones, ver \ref{AppendixB}.
+Para ver una descripción mas detallada del firmware en pseudocódigo y sus principales funciones, ver \ref{AppendixB}.
 
 
 %Como premisa, modo sleep,

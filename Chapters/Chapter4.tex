@@ -7,7 +7,6 @@
 
 Como crítica empírica se mostrarán la consistencias o inconsistencias de la teoría.
 %Simulation is used when uncertainty of outcomes is high. La mayor desventaja de una simulación es que solo simula el procesador y la interacción con perifericos en un sistema embebido, a veces puede ser imitado con scripts de simulación y otras soluciones , pero a menudo estas soluciones son mas problemáticas de crear que el valor de la simulación. Por esta razon, la energia que provee el panel solar es simulada como fuente de voltaje de 12V activa entre las 9 y 17 hs.
-
 %
 %Plataforma Host y Procesador Target
 %
@@ -32,29 +31,77 @@ Alcance? (con visión directa en condiciones indoor/outdoor).
 %	\label{tab:1alarma}
 %\end{table}
 
+\begin{table}[ht]
+	\centering
+	\caption{Asignación de puertos bq24080 - LPC1343}
+	\begin{tabular}{@{} l *3c @{}}    \toprule
+		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+		\midrule
+		CE &  PIO3\_ 0 & 36 & 9	\\	
+		PG	&  PIO3\_ 1 & 37 & 8\\
+		STAT1 &  PIO1\_ 4 & 40 & 3\\
+		STAT2 &  PIO2\_ 3 & 38 & 4\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:bq}
+\end{table}
+
 %----------------------------------------------------------------------------------------
 %	SECTION 2
 %----------------------------------------------------------------------------------------
 \section{Medición de consumos}
 \label{sec:Medición}
 
+\begin{table}[ht]
+	\centering
+	\caption{Medición de consumo por estado}
+	\begin{tabular}{@{} l *3c @{}}    \toprule
+		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+		\midrule
+		CE &  PIO3\_ 0 & 36 & 9	\\	
+		PG	&  PIO3\_ 1 & 37 & 8\\
+		STAT1 &  PIO1\_ 4 & 40 & 3\\
+		STAT2 &  PIO2\_ 3 & 38 & 4\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:bq}
+\end{table}
+
+
+\begin{table}[ht]
+	\centering
+	\caption{Contraste de mediciones del firmware vs voltímetro}
+	\begin{tabular}{@{} l *3c @{}}    \toprule
+		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+		\midrule
+		CE &  PIO3\_ 0 & 36 & 9	\\	
+		PG	&  PIO3\_ 1 & 37 & 8\\
+		STAT1 &  PIO1\_ 4 & 40 & 3\\
+		STAT2 &  PIO2\_ 3 & 38 & 4\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:bq}
+\end{table}
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
-\section{Análisis del tiempo de vida}
-\label{sec:vida}
+\section{Análisis del tiempo de recarga}
+\label{sec:recarga}
+Gráfica tension/tiempo y estados superpuestos
 
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
-\section{Análisis del tiempo de recarga}
-\label{sec:recarga}
-
+\section{Análisis del tiempo de vida}
+\label{sec:vida}
 %----------------------------------------------------------------------------------------
 %	SECTION 5
 %----------------------------------------------------------------------------------------
 \section{Estado del sistema}
 \label{sec:estado}
-
+breakpoints
 
 

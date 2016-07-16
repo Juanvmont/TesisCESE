@@ -77,6 +77,16 @@ Se propone hacer la adaptación necesaria del sistema para ser soportado por las
 
 Implementar soluciones donde conviva el sistema propuesto con otros algoritmos, como pueden ser protocolos de sincronización de reloj (por ejemplo las implementaciones en el \textit{Mote LSE} de \citep{sync1} y \citep{sync2} de \textit{Timing-sync Protocol for Sensor Networks} (TPSN) y \textit{Reference Broadcast Synchronization} (RBS)), algoritmos de localización (Ver Anexo E de \citep{802154}), \textit{clustering dinámico}, algoritmos de consenso, así como con futuros algoritmos de interés en el área.
 
+\noindent No es posible realizar el monitoreo de las siguientes variables:
+\begin{itemize}
+\item Consumo de corriente del circuito:
+
+\item Temperatura de la batería: Desde un comienzo se había planificado medir la temperatura de la batería con el bq24080, pero al entrar en detalle de desarrollo con la hoja de datos se encontró que esta funcionalidad no es soportada por la versión utilizada por el hardware, sino la version bq24081, descripto en la misma hoja de datos. Una opción es aplicar un método para medir la temperatura de la batería sin sensores, se trata de la medición basada en espectroscopia de impedancia electroquímica\citep{metodo}. Para lo cual se implementaría en el firmware una simple asignación de temperatura basada en la impedancia (conociendo la tension y la corriente de la batería) y el tipo de batería.
+
+\item Corriente de carga de la batería: El circuito controlador de carga bq24080 tiene un funcionalidad de monitoreo de esta corriente. Cuando la funcion de carga esta habilitada, el circuito genera una corriente proporcional a la corriente de carga en el pin ISET.  Y cuando se aplica esta corriente a la resistencia externa programadora de la corriente de carga (R ISET genera un voltaje anologico que puede ser monitoreado con un microcontrolador externo para calcular la corriente del pin OUT. Pero el microcontrolador no tiene un pin ruteado a este nodo del circuito.
+
+\end{itemize}
+
 Seguir los lineamientos del diseño para manufacturabilidad del estándar IPC, desarrollada por Diseñadores de PCB, fabricantes y ensambladores, de módulos electrónicos; elaboradas para diseñadores (IPC 2221A Generic Standard on printed board Design, ANSI/IPC A-610D Acceptability of Electronic Assemblies, ANSI/IPC A-600G Acceptability of Printed Board, IPC C-406 Requirement for Power Conversion Decive for the computer and Telecommunication Industries).
 
 
