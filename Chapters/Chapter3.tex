@@ -263,15 +263,62 @@ Para cumplir con el requerimiento de almacenar en una memoria no volátil los da
 	\item NodOffline (5): Se activa en el nodo coordinador cuando no obtiene mensajes de estado de un nodo.
 	\end{itemize}
 	
-Estas alarmas (1 a 4) son interpretadas por el nodo coordinador al hacer la lectura de los primeros cuatro bits del payload (MSB), que en forma de flag, indican con un 1 si la alarma esta activa y con un 0 si esta desactivada. Los valores de temperatura de ambiente baja, alta y la tension de batería baja son configurables con macros en monitoreoWsn.c.
-
-De la misma manera, el sexto bit (MSB) indica el modo de operación, con un 1 si el nodo esta en modo panel solar y un 0 para modo batería.
-
-La siguiente tabla, muestra como esta estructurado el payload de la trama que envía el dispositivo al coordinador.
+Estas alarmas (1 a 4) son interpretadas por el nodo coordinador al hacer la lectura del primer byte del payload (MSB), de acuerdo a la siguiente tabla. 
 
 \begin{table}[ht]
 	\centering
-	\caption{Indicadores de salud del nodo en el payload}
+	\caption{Descripción del byte de Estado de Alarma}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\midrule
+		00000000 & TempAmbaja\\	
+		00000001 & TempAmbalta\\
+		00000010 & ProyBatrest\\
+		00000001 & TensionBat\\
+		Otros & Reservado\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:bq}
+\end{table}
+
+De la misma manera, el segundo byte (MSB) indica el modo de operación de acuerdo a la siguiente tabla.
+
+\begin{table}[ht]
+	\centering
+	\caption{Descripción del byte de Estado de Operación}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\midrule
+		00000000 &  Modo Batería\\
+		11111111 &  Modo Panel\\
+		Otros & Reservado\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:STAT}
+\end{table}
+
+Se implementa el modo de direccionamiento corto, de esta manera quedan 128 bytes disponibles para el payload. La siguiente tabla, muestra como esta estructurado el payload de la trama que envía el dispositivo al coordinador.
+
+\begin{table}[ht]
+	\centering
+	\caption{Descripción de la estructura del payload (Disp$\rightarrow$Coord)}
+	\begin{tabular}{@{} l *5c @{}}    \toprule
+		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3-4}} & \emph{\textbf{5-127}}\\
+		\midrule
+		Significado & Edo. Alarma & Edo. Operación & Temp. Amb. & Voltaje Bat. & Datos\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:STAT}
+\end{table}
+
+Se implementaron las funciones para reconocer el estado del circuito controlador de carga según el estado de los pines como indica la tabla \ref{tab:bq}.
+
+\begin{table}[ht]
+	\centering
+	\caption{Indicador de estado de los pines de estado del \textit{bq2480}}
 	\begin{tabular}{@{} l *3c @{}}    \toprule
 		\emph{\textbf{Estado}} & \emph{\textbf{STAT1}} & \emph{\textbf{STAT2}}\\
 		\midrule
@@ -285,27 +332,27 @@ La siguiente tabla, muestra como esta estructurado el payload de la trama que en
 	\label{tab:STAT}
 \end{table}
 
-Se implementaron las funciones para reconocer el estado del circuito según el estado de los pines como indica la tabla \ref{tab:bq}.
+Cantidad de ciclos de carga se implementa con un contador que va aumentando cada vez que los estados de los pines STAT1 y STAT2 indican la carga completa de la batería.
+
+El pin PG del \textit{bq24080} determina el modo de operación en función de su valor de entrada
+
+VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente. Para medir la temperatura se emplea el termistor lineal activo de baja potencia MCP9700 de Microchip \citep{termis} 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería se emplea la siguiente formula: \[V_{Batería}=2xVBAT_{mon}\]
+
+Los valores de temperatura de ambiente baja, alta y la tension de batería baja son configurables en el firmware y pueden ser modificados por el coordinador cuando le envía una trama al dispositivo remoto. La siguiente tabla, muestra como esta estructurado el payload de la trama que envía el coordinador al dispositivo.
 
 \begin{table}[ht]
 	\centering
-	\caption{Indicador de estado de los pines}
-	\begin{tabular}{@{} l *3c @{}}    \toprule
-		\emph{\textbf{Estado}} & \emph{\textbf{STAT1}} & \emph{\textbf{STAT2}}\\
+	\caption{Descripción de la estructura del payload (Coord$\rightarrow$Disp)}
+	\begin{tabular}{@{} l *6c @{}}    \toprule
+		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3}} & \emph{\textbf{4}} & \emph{\textbf{5-127}}\\
 		\midrule
-		Precarga en progreso &  ON & ON \\	
-		%Carga rápida en progreso	&  ON & OFF \\
-		Carga completa &  OFF & ON \\
-		Modo sleep &  OFF & OFF \\
+		Significado & Set & Ciclo & Threshold & Threshold & Threshold & Datos\\
+		 & Alarma & de Trabajo & Voltaje & Temp. Alta & Temp. Baja & \\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:STAT}
 \end{table}
-
-VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente. Para medir la temperatura se emplea el termistor lineal activo de baja potencia MCP9700 de Microchip \citep{termis} 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería 
-\[Voltaje_{Batería}=2xVBAT_{mon}\]
-
 
 Se optó por no hacer el sensado del consumo del circuito, primero porque no es posible realizar la medición de consumo de todos los componentes por el host, sino que los consumos pueden ser medidos en sus distintas etapas de operación (transmitiendo, recibiendo, modo sleep) con la ayuda de un instrumento externo (Ver capítulo \ref{Chapter4}) y segundo, porque comprometería aun mas la autonomía de un nodo de bajo consumo para transmitir información, si se quiere redundante.
 
