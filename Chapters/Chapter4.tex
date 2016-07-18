@@ -1,35 +1,26 @@
 % Chapter Template
 
 \chapter{Ensayos y Resultados} % Main chapter title
+\label{Chapter4} 
 
-\label{Chapter4} % Change X to a consecutive number; for referencing this chapter elsewhere, use \ref{ChapterX}
+%Como crítica empírica se mostrarán la consistencias o inconsistencias de la teoría.
+%Simulation is used when uncertainty of outcomes is high. La mayor desventaja de una simulación es que solo simula el procesador y la interacción con perifericos en un sistema embebido, a veces puede ser imitado con scripts de simulación y otras soluciones , pero a menudo estas soluciones son mas problemáticas de crear que el valor de la simulación.
 
-
-Como crítica empírica se mostrarán la consistencias o inconsistencias de la teoría.
-%Simulation is used when uncertainty of outcomes is high. La mayor desventaja de una simulación es que solo simula el procesador y la interacción con perifericos en un sistema embebido, a veces puede ser imitado con scripts de simulación y otras soluciones , pero a menudo estas soluciones son mas problemáticas de crear que el valor de la simulación. Por esta razon, la energia que provee el panel solar es simulada como fuente de voltaje de 12V activa entre las 9 y 17 hs.
-%
-%Plataforma Host y Procesador Target
-%
-%No hay manera de asegurarse que los procedimientos de pruebas son una comparación acertada o representa la realidad, pero estos cumplen con sus características determinísticas.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 1
 %----------------------------------------------------------------------------------------
-\section{Ensayo funcional de módulos}
+\section{Ensayo funcional}
 \label{sec:funcional}
 
-El alcance comprende resultados teóricos de contraste con la respuesta esperada por la extensión del circuito cargador y la batería y de prueba experimental lógica argumentativa. Para verificar que los resultados obtenidos contrastan con lo esperado teóricamente y comprobar la respuesta esperada por cada nodo.
+Se recurre a la metodología empírica analítica, o contraste empírico basado en la experimentación de la solución que se implementa en un despliegue real de red WSN.
 
-Se recurre a la metodología empírica analítica, o contraste empírico basado en la experimentación de la solución se implementa en un despliegue real de red WSN. En la I Etapa de experimentación, la implementación consta de una red WSN con topología de punto a punto y de estrella. Además se comprueba que los resultados son consistentes a medida que crece la red.
+El análisis comprende resultados de contraste con la respuesta esperada por la extensión del circuito cargador y la batería y de prueba experimental lógica argumentativa. Para verificar los resultados obtenidos y comprobar la respuesta esperada por cada nodo.
+
+En la I Etapa de experimentación, la implementación consta de una red WSN con topología de punto a punto y de estrella. Además se comprueba que los resultados son consistentes a medida que crece la red.
 
 Alcance? (con visión directa en condiciones indoor/outdoor).
 
-%\begin{table}[h]
-%	\centering
-%	\caption{Tabla de decisión para el control de una sóla alarma.}
-%   \includegraphics[height=.4\textheight]{./Figures/tabla1alarma.pdf}
-%	\label{tab:1alarma}
-%\end{table}
 
 \begin{table}[ht]
 	\centering
@@ -46,6 +37,10 @@ Alcance? (con visión directa en condiciones indoor/outdoor).
 	\end{tabular}
 	\label{tab:bq}
 \end{table}
+
+%Por esta razon, la energia que provee el panel solar es ensayada como fuente de voltaje de 12V activa entre las 9 y 17 hs.
+
+%No hay manera de asegurarse que los procedimientos de pruebas son una comparación acertada o representa la realidad, pero estos cumplen con sus características determinísticas.
 
 %----------------------------------------------------------------------------------------
 %	SECTION 2
