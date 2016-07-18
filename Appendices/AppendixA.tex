@@ -3,12 +3,16 @@
 \chapter{Manual de Usuario} % Main appendix title
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+Para implementar el "Sistema de Monitoreo de Salud de Nodos WSN Alimentados a Energía Solar" en el \textit{Mote LSE} es necesario establecer la conexión según el siguiente diagrama:
+\vspace{10px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.9\textwidth]{./Figures/conex.png}
+    	\caption{Diagrama de Conexión.}
+	\label{fig:conex}
+\end{figure}
 
-Nivel de Abstracción del Sistema
-
-Diagrama de Conexiones
-
-Para implementar el sistema en el \textit{Mote LSE} se deben seguir los siguientes pasos:
+Se deben seguir los siguientes pasos:
 \begin{itemize}
 	\item Descargar e instalar la versión v8 del LPCxpresso IDE adecuado según el sistema operativo de la estación de trabajo (Ver sección Downloads de \citep{IDE}).
 	\item Para completar el toolchain se hace uso del programador y debugger \textit{(LPC-Link)} conectado al \textit{Mote LSE}. (Ver detalle de los pines en la figura \ref{fig:10pin}).
@@ -21,7 +25,7 @@ Para implementar el sistema en el \textit{Mote LSE} se deben seguir los siguient
 	\item Para compilar el proyecto, coordinador o device, seleccionarlo en la perspectiva “Project Explorer”, en la ventana “Quick Start Window” aparecerán las opciones “Build”, “Clean”, “Debug” y “Edit project settings”.
 	\item Presionar primero “Build all projects” y luego en “Debug” en la perspectiva “QuickStart”. En la consola se podrán ver los mensajes durante el compilado de las librerías y la aplicación.
 	\item Seleccionar el emulador “LPC-Link Probe v1.3” y presionar “OK”. En caso que no reconozca el emulador, seleccionar "Search for any enabled emulator".
-	\item Para cambiar los parámetros, modificarlos según las siguientes tablas y repetir los ultimos 3 pasos.
+	\item Para cambiar los parámetros, modificarlos según las siguientes tablas (\ref{tab:paracoo} y \ref{tab:paradevi})y repetir los ultimos 3 pasos.
 	\end{itemize}
 
 \begin{figure}[h!]
@@ -44,7 +48,7 @@ Para configurar el nodo como coordinador, configurar los siguientes parámetros:
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:edoope}
+	\label{tab:paracoo}
 \end{table}
 
 Para configurar el nodo como dispositivo, configurar los siguientes parámetros:
@@ -60,9 +64,6 @@ Para configurar el nodo como dispositivo, configurar los siguientes parámetros:
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:edoope}
+	\label{tab:paradevi}
 \end{table}
-
-
-
 
