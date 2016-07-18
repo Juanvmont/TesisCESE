@@ -206,7 +206,7 @@ La capa APPS	o de aplicaciones esta compuesta por:
 \item cc2520Task:
 	\begin{itemize}
 	\item cc2520-task.c : Contiene la funcion framForming, que arma una trama de tipo DATA (formada con los parámetros relativos al 802.15.4 de cc2520-mac.c) y la guarda en el buffer de salida de cc2520. Los parámetros de entrada son la dirección de destino y el payload. Implementa las funciones de enviar y recibir datos.
-	\item cc2520-task.h : Se incluyeron las funciones de operación referentes al transceiver (idle, sendingData, waitingAck, etc)y la función FrameForming para ser utilizada por las capas de aplicación superiores, se define la variable MAXRETRIES que establece el máximo de retransmisiones de una trama y las variables de direccionamiento.
+	\item cc2520-task.h : Se incluyeron las funciones de operación referentes al transceiver (sendingData, waitingData)y la función FrameForming para ser utilizada por las capas de aplicación superiores, se define la variable MAXRETRIES que establece el máximo de retransmisiones de una trama y las variables de direccionamiento.
 	\end{itemize}
 \item monitoreoWsn:	
 	\begin{itemize}
@@ -248,23 +248,25 @@ Como punto de partida, se tomó el \textit{workspace} del Microstack 802.15.4 de
 %GPIO configurable al recibir un frame de determinadas características (puede esperar tramas de una serie de direcciones - frame filtering)
 La función main() siempre es llamada cuando el programa se ejecuta por primera vez y de ahí se llama a las otras funciones.
 
-Se define un ciclo de trabajo utilizando un contador junto con el SysTickHandler para iniciar periódicamente la comunicación entre los nodos. Esto permite al diseñador escoger el fragmento de tiempo del ciclo activo para diferentes tipos de WSNs dependiendo del propósito de la aplicación, analizando la relación de compromiso entre la periodicidad del proceso de medición y el consumo de energía implicado.
+Se define un ciclo de trabajo utilizando un contador decremental junto con el SysTick\_Handler para iniciar periódicamente la comunicación entre los nodos. Esto permite al diseñador escoger el fragmento de tiempo del ciclo activo para diferentes tipos de WSNs dependiendo del propósito de la aplicación, analizando la relación de compromiso entre la periodicidad del proceso de medición y el consumo de energía implicado.
 
-Se implementó las funcionalidades de topologías de red WSN en cc2520-task. Los datos son transmitidos al nodo coordinador, en una trama de datos 802.15.4, primero emplea la función ccFrameForming, que guarda los valores de las mediciones en el payload y asigna la dirección del coordinador como dirección destino, luego ccFrameTx guarda la trama formada en el buffer de salida.
+La comunicación la inicia el dispositivo con la interrupción del SysTick\_Handler y espera la respuesta del coordinador, que se asume sin limitaciones de energía, por lo que luego de transmitir, vuelve al estado de recepción para monitorear a los demás dispositivos.
 
-Para cumplir con el requerimiento de almacenar en una memoria no volátil los datos de alarma, parámetros monitoreados, tiempo total de uso, y cantidad de ciclos de carga/descarga, éstos son almacenados en la memoria Flash del microcontrolador (la memoria SRAM necesita energía para que perduren los datos). 
+Los datos son transmitidos al nodo coordinador en una trama de datos 802.15.4, primero emplea la función ccFrameForming, que guarda los valores de las mediciones en el payload y asigna la dirección del coordinador como dirección destino, luego ccFrameTx guarda la trama formada en el buffer de salida.
 
-\noindent La alarmas que reporta son:
+Para cumplir con el requerimiento de almacenar en una memoria no volátil los estados de alarma y los parámetros monitoreados, éstos son almacenados en la memoria Flash del microcontrolador (la memoria SRAM necesita energía para que perduren los datos). 
+
+\noindent La alarmas que reportan los dispositivos remotos son:
 	\begin{itemize}
 	\item TempAmbaja (1) : Reporta temperatura de ambiente baja.
 	\item TempAmbalta (2) : Reporta temperatura de ambiente alta.
 	\item ProyBatrest (3): En Modo Batería, el nodo calcula la autonomía y utiliza un contador junto con el SysTickHandler con el cual va restando el los pasos del reloj y esta alarma se activa cuando llega a un umbral prefijado.
 	\item TensionBat (4): Se activa cuando la tensión de la batería es menor aun valor prefijado.
-	\item NodOffline (5): Se activa en el nodo coordinador cuando no obtiene mensajes de estado de un nodo.
 	\end{itemize}
 	
-Estas alarmas (1 a 4) son interpretadas por el nodo coordinador al hacer la lectura del primer byte del payload (MSB), de acuerdo a la siguiente tabla. 
+Estas alarmas son interpretadas por el nodo coordinador al hacer la lectura del primer byte del payload (MSB).(Ver tabla \ref{tab:edoalarm}). De la misma manera, el segundo byte (MSB) indica el modo de operación. (Ver tabla \ref{tab:edoope}).
 
+\vspace{10px}
 \begin{table}[ht]
 	\centering
 	\caption{Descripción del byte de Estado de Alarma}
@@ -279,10 +281,8 @@ Estas alarmas (1 a 4) son interpretadas por el nodo coordinador al hacer la lect
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:bq}
+	\label{tab:edoalarm}
 \end{table}
-
-De la misma manera, el segundo byte (MSB) indica el modo de operación de acuerdo a la siguiente tabla.
 
 \begin{table}[ht]
 	\centering
@@ -296,25 +296,26 @@ De la misma manera, el segundo byte (MSB) indica el modo de operación de acuerd
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:STAT}
+	\label{tab:edoope}
 \end{table}
 
-Se implementa el modo de direccionamiento corto, de esta manera quedan 128 bytes disponibles para el payload. La siguiente tabla, muestra como esta estructurado el payload de la trama que envía el dispositivo al coordinador.
+A nivel de la capa MAC, se implementa el modo de direccionamiento corto, de esta forma quedan 128 bytes disponibles para el payload. La siguiente tabla, muestra la estructura del payload de la trama que envía el dispositivo al coordinador. De la misma manera, el segundo byte (MSB) indica el modo de operación. (Ver tabla \ref{tab:dispcoor}).
 
 \begin{table}[ht]
 	\centering
 	\caption{Descripción de la estructura del payload (Disp$\rightarrow$Coord)}
-	\begin{tabular}{@{} l *5c @{}}    \toprule
-		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3-4}} & \emph{\textbf{5-127}}\\
+	\begin{tabular}{@{} l *6c @{}}    \toprule
+		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3-4}} & \emph{\textbf{5}} & \emph{\textbf{6-127}}\\
 		\midrule
-		Significado & Edo. Alarma & Edo. Operación & Temp. Amb. & Voltaje Bat. & Datos\\
+		Significado & Edo. de & Edo. de & Temp. & Voltaje & Ciclos & Datos\\
+		 & Alarma & Operación & Amb. & Bat. & de Carga & \\
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:STAT}
+	\label{tab:dispcoor}
 \end{table}
 
-Se implementaron las funciones para reconocer el estado del circuito controlador de carga según el estado de los pines como indica la tabla \ref{tab:bq}.
+Se implementan las funciones para reconocer el estado del circuito controlador de carga según el estado de los pines como indica la tabla \ref{tab:STAT}.
 
 \begin{table}[ht]
 	\centering
@@ -332,13 +333,11 @@ Se implementaron las funciones para reconocer el estado del circuito controlador
 	\label{tab:STAT}
 \end{table}
 
-Cantidad de ciclos de carga se implementa con un contador que va aumentando cada vez que los estados de los pines STAT1 y STAT2 indican la carga completa de la batería.
+Un contador de cantidad de ciclos de carga se implementa con una variable que va aumentando cada vez que los estados de los pines STAT1 y STAT2 indican la carga completa de la batería y se desactiva el pin CE (\textit{Charge enable}) del \textit{bq24080}, el cual no es activado hasta que no alcance el límite de voltaje mínimo, controlando de esta manera la carga de la batería para preservar su vida útil. Mientras que el pin PG (\textit{Power good}) determina el modo de operación en función de su valor de entrada, que indica con un 0 (bajo) un voltaje de entrada válido, con lo cual establecerá el modo panel. 
 
-El pin PG del \textit{bq24080} determina el modo de operación en función de su valor de entrada
+VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente. Para medir la temperatura se emplea el termistor lineal activo de baja potencia \textit{MCP9700} de Microchip \citep{termis}, con 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería se emplea la siguiente fórmula (Ver Apéndice \ref{AppendixB}): \[V_{Bateria}=2xVBAT_{mon}\]
 
-VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente. Para medir la temperatura se emplea el termistor lineal activo de baja potencia MCP9700 de Microchip \citep{termis} 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería se emplea la siguiente formula: \[V_{Batería}=2xVBAT_{mon}\]
-
-Los valores de temperatura de ambiente baja, alta y la tension de batería baja son configurables en el firmware y pueden ser modificados por el coordinador cuando le envía una trama al dispositivo remoto. La siguiente tabla, muestra como esta estructurado el payload de la trama que envía el coordinador al dispositivo.
+Los límites de temperatura de ambiente baja, alta y la tensión de batería baja son configurables en el firmware y pueden ser modificados por el coordinador cuando le envía una trama al dispositivo remoto. La siguiente tabla, muestra la estructura del payload de la trama que envía el coordinador al dispositivo (Ver tabla \ref{tab:coordisp}).
 
 \begin{table}[ht]
 	\centering
@@ -346,15 +345,15 @@ Los valores de temperatura de ambiente baja, alta y la tension de batería baja 
 	\begin{tabular}{@{} l *6c @{}}    \toprule
 		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3}} & \emph{\textbf{4}} & \emph{\textbf{5-127}}\\
 		\midrule
-		Significado & Set & Ciclo & Threshold & Threshold & Threshold & Datos\\
+		Significado & Set & Ciclo & Límite & Límite & Límite & Datos\\
 		 & Alarma & de Trabajo & Voltaje & Temp. Alta & Temp. Baja & \\
 		\bottomrule
 		\hline
 	\end{tabular}
-	\label{tab:STAT}
+	\label{tab:coordisp}
 \end{table}
 
-Se optó por no hacer el sensado del consumo del circuito, primero porque no es posible realizar la medición de consumo de todos los componentes por el host, sino que los consumos pueden ser medidos en sus distintas etapas de operación (transmitiendo, recibiendo, modo sleep) con la ayuda de un instrumento externo (Ver capítulo \ref{Chapter4}) y segundo, porque comprometería aun mas la autonomía de un nodo de bajo consumo para transmitir información, si se quiere redundante.
+Se optó por no hacer el sensado del consumo del circuito, primero porque no es posible realizar la medición de consumo de todos los componentes por el host, sino que los consumos pueden ser medidos en sus distintas etapas de operación (transmitiendo, recibiendo, modo sleep) con la ayuda de un instrumento externo (Ver capítulo \ref{Chapter4}) y segundo, porque comprometería aun mas la autonomía de un nodo de bajo consumo por transmitir información, si se quiere redundante, por ser determinista.
 
 La autonomía del sistema permite que la WSN obtenga un conjunto de mediciones que es independiente del tiempo usado por servidores, pero también se podría implementar una interfaz a un servidor de tiempo para traducir el tiempo de la WSN a un tiempo común a los usuarios.
 
@@ -372,13 +371,13 @@ Las topologías posibles de implementar son las siguientes:
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=.8\textwidth]{./Figures/topologia.jpg}
-    	\caption{1) Topología estrella. 2)Topología Peer-to-Peer.\citep{802154}}
+    	\caption{Topología estrella y Peer-to-Peer.\citep{802154}}
 	\label{fig:topo}
 \end{figure}
 
-En cuanto a la topología de árbol de cluster, no es posible su implementación, ya que la limitación de 4 nodos operativos disponibles no permite la configuración de una red de estas condiciones, por no cumplir con la densidad mínima de nodos (Ver \ref{fig:clust}. Los escenarios posibles, de tres nodos en una PAN y uno en otra, o dos nodos por PAN, no satisfacen los requerimientos. 
+En cuanto a la topología de árbol de cluster, no es posible su implementación, ya que la limitación de 4 nodos operativos disponibles no permite la configuración de una red de estas condiciones, por no cumplir con la densidad mínima de nodos (Ver figura \ref{fig:clust}). Los escenarios posibles, de tres nodos en una PAN y uno en otra, o dos nodos por PAN, no satisfacen los requerimientos. 
 
-\begin{figure}[h!]
+\begin{figure}[!htbp]
 	\centering
     \includegraphics[width=.8\textwidth]{./Figures/cluster.jpg}
     	\caption{Topología árbol de cluster.\citep{802154}}
