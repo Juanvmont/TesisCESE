@@ -3,21 +3,65 @@
 \chapter{Manual de Usuario} % Main appendix title
 
 \label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
-En desarrollo...
 
 Nivel de Abstracción del Sistema
 
 Diagrama de Conexiones
 
-Master
-Configurar como MASTER
-Parámetros a ingresar
+Para implementar el sistema en el \textit{Mote LSE} se deben seguir los siguientes pasos:
+\begin{itemize}
+	\item Descargar e instalar la versión v8 del LPCxpresso IDE adecuado según el sistema operativo de la estación de trabajo (Ver sección Downloads de \citep{IDE}).
+	\item Para completar el toolchain se hace uso del programador y debugger \textit{(LPC-Link)} conectado al \textit{Mote LSE}. (Ver detalle de los pines en la figura \ref{fig:10pin}).
+	\item Para abrir el workspace del proyecto, obtener el archivo ws-wsn.rar y copiar el contenido del archivo descomprimido a su directorio de elección.
+	\item En el entorno de desarrollo, ir a File->Import, esto abre la ventana de importación.
+	\item Expandir la opción “General”, seleccionar “Existing projects into Workspace” y presionar “Next”.
+	\item Presionar “Browse” y seleccionar el directorio elegido para el ws, presionar “OK” En la ventana “Project Window” aparecerán varios proyectos, seleccionarlos todos con “select all”.
+	\item No seleccionar el cuadro “Copy projects into workspace”, porque los proyectos tienen paths relativos que se romperían al copiarse al workspace.
+	\item Presionar “Finish”, todos los proyectos del workspace deberían estar disponibles en la perspectiva “Project explorer” del entorno de desarrollo.
+	\item Para compilar el proyecto, coordinador o device, seleccionarlo en la perspectiva “Project Explorer”, en la ventana “Quick Start Window” aparecerán las opciones “Build”, “Clean”, “Debug” y “Edit project settings”.
+	\item Presionar primero “Build all projects” y luego en “Debug” en la perspectiva “QuickStart”. En la consola se podrán ver los mensajes durante el compilado de las librerías y la aplicación.
+	\item Seleccionar el emulador “LPC-Link Probe v1.3” y presionar “OK”. En caso que no reconozca el emulador, seleccionar "Search for any enabled emulator".
+	\item Para cambiar los parámetros, modificarlos según las siguientes tablas y repetir los ultimos 3 pasos.
+	\end{itemize}
 
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=.5\textwidth]{./Figures/pin.png}
+    	\caption{Conexión 10-Pin de ARM}
+	\label{fig:10pin}
+\end{figure}
 
-Device
-Configurar como DEVICE
-Parámetros a ingresar
+Para configurar el nodo como coordinador, configurar los siguientes parámetros:
+\begin{table}[ht]
+	\centering
+	\caption{Descripción del byte de Estado de Operación}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\midrule
+		00000000 &  Modo Batería\\
+		11111111 &  Modo Panel\\
+		Otros & Reservado\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:edoope}
+\end{table}
 
+Para configurar el nodo como dispositivo, configurar los siguientes parámetros:
+\begin{table}[ht]
+	\centering
+	\caption{Descripción del byte de Estado de Operación}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\midrule
+		00000000 &  Modo Batería\\
+		11111111 &  Modo Panel\\
+		Otros & Reservado\\
+		\bottomrule
+		\hline
+	\end{tabular}
+	\label{tab:edoope}
+\end{table}
 
 
 

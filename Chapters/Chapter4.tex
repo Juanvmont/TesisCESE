@@ -50,36 +50,45 @@ Alcance? (con visión directa en condiciones indoor/outdoor).
 
 \begin{table}[ht]
 	\centering
-	\caption{Medición de consumo por estado}
-	\begin{tabular}{@{} l *3c @{}}    \toprule
-		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+	\caption{Medición de consumo según estado del circuito}
+	\begin{tabular}{@{} l *1c @{}}    \toprule
+		\emph{\textbf{Estado}} & \emph{\textbf{Consumo}}\\
 		\midrule
-		CE &  PIO3\_ 0 & 36 & 9	\\	
-		PG	&  PIO3\_ 1 & 37 & 8\\
-		STAT1 &  PIO1\_ 4 & 40 & 3\\
-		STAT2 &  PIO2\_ 3 & 38 & 4\\
+		Rx &  PIO3\\	
+		Tx	&  PIO3\\
+		Sleep (Transceptor) &  PIO1\\
+		Sleep (Controlador de carga) &  PIO2\\
+		Sleep (Host) &  PIO2\\
+		Máximo &  PIO2\\
+		Mínimo &  PIO2\\
 		\bottomrule
 		\hline
 	\end{tabular}
 	\label{tab:bq}
 \end{table}
 
+%transceptor
+%RX: 18.5 - 22.3 mA.
+%TX: 25.8 - 33.6 mA.
+%Tx 162mA @22dBm Pout
+%Rx 39mA @-104dBm Sensibilidad
 
-\begin{table}[ht]
-	\centering
-	\caption{Contraste de mediciones del firmware vs voltímetro}
-	\begin{tabular}{@{} l *3c @{}}    \toprule
-		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
-		\midrule
-		CE &  PIO3\_ 0 & 36 & 9	\\	
-		PG	&  PIO3\_ 1 & 37 & 8\\
-		STAT1 &  PIO1\_ 4 & 40 & 3\\
-		STAT2 &  PIO2\_ 3 & 38 & 4\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:bq}
-\end{table}
+
+
+%\begin{table}[ht]
+%	\centering
+%	\caption{Contraste de mediciones del firmware vs testigo}
+%	\begin{tabular}{@{} l *3c @{}}    \toprule
+%		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+%		\midrule
+%		Temperatura ambiente &  36 & 9	\\	
+%		Voltaje de la batería	&  37 & 8\\
+%		\bottomrule
+%		\hline
+%	\end{tabular}
+%	\label{tab:bq}
+%\end{table}
+
 %----------------------------------------------------------------------------------------
 %	SECTION 3
 %----------------------------------------------------------------------------------------
@@ -92,6 +101,8 @@ Gráfica tension/tiempo y estados superpuestos
 %----------------------------------------------------------------------------------------
 \section{Análisis del tiempo de vida}
 \label{sec:vida}
+Gráfica tension/tiempo en descarga
+
 %----------------------------------------------------------------------------------------
 %	SECTION 5
 %----------------------------------------------------------------------------------------
