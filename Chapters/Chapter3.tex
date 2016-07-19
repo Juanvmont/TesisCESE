@@ -260,8 +260,8 @@ Para cumplir con el requerimiento de almacenar en una memoria no volátil los es
 	\begin{itemize}
 	\item TempAmbaja (1) : Reporta temperatura de ambiente baja.
 	\item TempAmbalta (2) : Reporta temperatura de ambiente alta.
-	\item ProyBatrest (3): En Modo Batería, el nodo calcula la autonomía y utiliza un contador junto con el SysTickHandler con el cual va restando el los pasos del reloj y esta alarma se activa cuando llega a un umbral prefijado.
-	\item TensionBat (4): Se activa cuando la tensión de la batería es menor aun valor prefijado.
+	\item ProyBatrest (3): En Modo Batería, el nodo hace un estimado experimental de la autonomía de la batería en base a la medición de su voltaje y le asigna un valor a un contador que se decrementa con cada interrupción del SysTickHandler. Esta alarma se activa cuando este contador llega a 0.
+	\item TensionBat (4): Se activa cuando la tensión de la batería es menor a un valor prefijado.
 	\end{itemize}
 	
 Estas alarmas son interpretadas por el nodo coordinador al hacer la lectura del primer byte del payload (MSB).(Ver tabla \ref{tab:edoalarm}). De la misma manera, el segundo byte (MSB) indica el modo de operación. (Ver tabla \ref{tab:edoope}).
@@ -335,7 +335,7 @@ Se implementan las funciones para reconocer el estado del circuito controlador d
 
 Un contador de cantidad de ciclos de carga se implementa con una variable que va aumentando cada vez que los estados de los pines STAT1 y STAT2 indican la carga completa de la batería y se desactiva el pin CE (\textit{Charge enable}) del \textit{bq24080}, el cual no es activado hasta que no alcance el límite de voltaje mínimo, controlando de esta manera la carga de la batería para preservar su vida útil. Mientras que el pin PG (\textit{Power good}) determina el modo de operación en función de su valor de entrada, que indica con un 0 (bajo) un voltaje de entrada válido, con lo cual establecerá el modo panel. 
 
-VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente. Para medir la temperatura se emplea el termistor lineal activo de baja potencia \textit{MCP9700} de Microchip \citep{termis}, con 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería se emplea la siguiente fórmula (Ver Apéndice \ref{AppendixB}): \[V_{Bateria}=2xVBAT_{mon}\]
+VBATmon y la temperatura ambiente son medidas con el conversor AD0 y AD1 respectivamente (Ver Apéndice (Ver Apéndice \ref{AppendixB}). Para medir la temperatura se emplea el termistor lineal activo de baja potencia \textit{MCP9700} de Microchip \citep{termis}, con 1\grados C/bit de resolución para un ADC de 8-bit. Para obtener el voltaje de la batería se emplea la siguiente fórmula: \[V_{Bateria}=2xVBAT_{mon}\]
 
 Los límites de temperatura de ambiente baja, alta y la tensión de batería baja son configurables en el firmware y pueden ser modificados por el coordinador cuando le envía una trama al dispositivo remoto. La siguiente tabla, muestra la estructura del payload de la trama que envía el coordinador al dispositivo (Ver tabla \ref{tab:coordisp}).
 

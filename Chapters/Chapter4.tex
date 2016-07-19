@@ -2,7 +2,7 @@
 
 \chapter{Ensayos y Resultados} % Main chapter title
 \label{Chapter4} 
-Se recurre a la metodología empírica analítica, o contraste empírico basado en la experimentación de la solución que se implementa en un despliegue real de red WSN y se mostrarán la consistencias o inconsistencias de la teoría.
+Para los ensayos se recurre a la metodología empírica analítica, o contraste empírico basado en la experimentación de la solución implementada en un despliegue real de red WSN y se mostrarán la consistencias o inconsistencias de los resultados esperados.
 %Simulation is used when uncertainty of outcomes is high. La mayor desventaja de una simulación es que solo simula el procesador y la interacción con perifericos en un sistema embebido, a veces puede ser imitado con scripts de simulación y otras soluciones , pero a menudo estas soluciones son mas problemáticas de crear que el valor de la simulación.
 
 
@@ -12,16 +12,29 @@ Se recurre a la metodología empírica analítica, o contraste empírico basado 
 \section{Ensayo funcional}
 \label{sec:funcional}
 
-El análisis comprende resultados de contraste con la respuesta esperada por el nodo con la extensión del circuito cargador y la batería 
+El análisis comprende resultados de contraste con la respuesta esperada por el nodo con la extensión del circuito cargador y la batería.
 
-y de prueba experimental lógica argumentativa. Para verificar los resultados obtenidos y comprobar la respuesta esperada por cada nodo.
-
-En la I Etapa de experimentación, la implementación consta de una red WSN con topología de punto a punto. Un dispositivo envia y recibe tramas del coordinador.
+En la I Etapa de experimentación, la implementación consta de una red WSN con topología de punto a punto. Un dispositivo envía y recibe tramas del coordinador.
 
 En la II Etapa se implementa la topología estrella y se comprueba que los resultados son consistentes a medida que crece la red.
 
-Alcance? (con visión directa en condiciones indoor/outdoor).
+Primero se hicieron ensayos de caja blanca, a medida que se iba desarrollando el firmware, con las funcionalidades del IDE, se hacia un proceso de depuración (\textit{debug}) para una ejecución controlada del código para seguir cada instrucción ejecutada y localizar fallas con la ayuda de la habilitación y deshabilitación de breakpoints ubicados en lineas estrategicas segun del orden de la lógica del firmware. Y monitoreando el valor de las variables.
 
+Se hicieron ensayos de caja negra, donde no se necesita saber el diseño del firmware.
+
+Se aprovechó de los tres leds del nodo para observar como de forma síncrona encendían los leds al transmitir y recibir una trama. Se disponía de los nodos alejados a una distancia larga y en ambientes separados y sin linea de vista, comenzando con una separación de 10m y se iban acercando los nodos hasta observar que los nodos se sincronizaban a nivel de la capa PHY al recibir una trama y los leds destellaban incluso sin linea de vista. La mayor distancia alcanzada fue de 6m en condiciones indoor con linea de vista. Se hicieron ensayos con con inserción de fallas y se comprobó que cuando los nodos estaban rodeados de otros dispositivos conectados a la red wifi (celulares y notebooks) la distancia entre los nodos debía ser menos para que se pudiera establecer la comunicación.
+
+Para verificar que el circuito es capaz de controlar la carga de la batería, con la alimentación en el puerto USB, se monitoreaba el estado del pin CE del bq24080 y la tensión de la batería. De esta manera se comprobó que la recarga no se habilitaba hasta llegar a un umbral que se iba modificando de acuerdo a la medición actual y observar que el aumento en la tension de la batería indicaba que estaba en estado de recarga. De los cuales se obtuvieron los resultados de la gráfica \ref{fig:carga}. Donde se observan los estados lógicos de los pines del circuito controlador de carga superpuestos la tensión de la batería. Notese que el pin CE (Charge enable) indica con un 0 lógico cuando comienza la carga de la batería mientras que STAT1 y STAT2 indican con un 1 que esta en estado de recarga y se observa que el voltaje va en aumento.
+
+\vspace{10px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1.2\textwidth]{./Figures/carga.png}
+    	\caption{Voltaje y Estados del Circuito Controlador de Carga vs Tiempo en estado de recarga}
+	\label{fig:carga}
+\end{figure}
+
+Otro ensayo consistía en monitorear la temperatura ambiente, en contraste de mediciones del nodo con un nodo testigo, se configuraba el umbral con un valor mayor a la temperatura actual y el nodo reportaba la alarma, mientras que el testigo no reportaba estado de alarma.
 
 \begin{table}[ht]
 	\centering
@@ -76,35 +89,18 @@ Alcance? (con visión directa en condiciones indoor/outdoor).
 %Tx 162mA @22dBm Pout
 
 
-
-
-%\begin{table}[ht]
-%	\centering
-%	\caption{Contraste de mediciones del firmware vs testigo}
-%	\begin{tabular}{@{} l *3c @{}}    \toprule
-%		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
-%		\midrule
-%		Temperatura ambiente &  36 & 9	\\	
-%		Voltaje de la batería	&  37 & 8\\
-%		\bottomrule
-%		\hline
-%	\end{tabular}
-%	\label{tab:bq}
-%\end{table}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 3
-%----------------------------------------------------------------------------------------
-\section{Análisis del tiempo de recarga}
-\label{sec:recarga}
-Gráfica tension/tiempo y estados superpuestos
-
 %----------------------------------------------------------------------------------------
 %	SECTION 4
 %----------------------------------------------------------------------------------------
 \section{Análisis del tiempo de vida}
 \label{sec:vida}
-Gráfica tension/tiempo en descarga
+\vspace{30px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1.2\textwidth]{./Figures/descarga.png}
+    	\caption{Voltaje y Estados del Circuito Controlador de Carga vs Tiempo en modo batería}
+	\label{fig:curva}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
 %	SECTION 5
