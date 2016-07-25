@@ -4,77 +4,95 @@
 \label{Chapter4} 
 Para los ensayos se recurre a la metodología empírica analítica, o contraste empírico basado en la experimentación de la solución implementada en un despliegue real de red WSN y se mostrarán la consistencias o inconsistencias de los resultados esperados.
 %Simulation is used when uncertainty of outcomes is high. La mayor desventaja de una simulación es que solo simula el procesador y la interacción con perifericos en un sistema embebido, a veces puede ser imitado con scripts de simulación y otras soluciones , pero a menudo estas soluciones son mas problemáticas de crear que el valor de la simulación.
-
-
-%----------------------------------------------------------------------------------------
-%	SECTION 1
-%----------------------------------------------------------------------------------------
-\section{Ensayo funcional}
-\label{sec:funcional}
-
 El análisis comprende resultados de contraste con la respuesta esperada por el nodo con la extensión del circuito cargador y la batería.
 
 En la I Etapa de experimentación, la implementación consta de una red WSN con topología de punto a punto. Un dispositivo envía y recibe tramas del coordinador.
 
 En la II Etapa se implementa la topología estrella y se comprueba que los resultados son consistentes a medida que crece la red.
 
-Primero se hicieron ensayos de caja blanca, a medida que se iba desarrollando el firmware, con las funcionalidades del IDE, se hacia un proceso de depuración (\textit{debug}) para una ejecución controlada del código para seguir cada instrucción ejecutada y localizar fallas con la ayuda de la habilitación y deshabilitación de breakpoints ubicados en lineas estrategicas segun del orden de la lógica del firmware. Y monitoreando el valor de las variables.
+Primero se hicieron ensayos de caja blanca, a medida que se iba desarrollando el firmware, con las funcionalidades del IDE, se hacia un proceso de depuración (\textit{debug}) para una ejecución controlada del código para seguir cada instrucción ejecutada y localizar fallas con la ayuda de la habilitación y deshabilitación de breakpoints ubicados en lineas estrategicas según del orden de la lógica del firmware y monitoreando el valor de las variables.
 
-Se hicieron ensayos de caja negra, donde no se necesita saber el diseño del firmware.
+%\vspace{10px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.6\textwidth]{./Figures/debu.jpg}
+    	\caption{Programación y depuración del firmware}
+	\label{fig:debu}
+\end{figure}
 
-Se aprovechó de los tres leds del nodo para observar como de forma síncrona encendían los leds al transmitir y recibir una trama. Se disponía de los nodos alejados a una distancia larga y en ambientes separados y sin linea de vista, comenzando con una separación de 10m y se iban acercando los nodos hasta observar que los nodos se sincronizaban a nivel de la capa PHY al recibir una trama y los leds destellaban incluso sin linea de vista. La mayor distancia alcanzada fue de 6m en condiciones indoor con linea de vista. Se hicieron ensayos con con inserción de fallas y se comprobó que cuando los nodos estaban rodeados de otros dispositivos conectados a la red wifi (celulares y notebooks) la distancia entre los nodos debía ser menos para que se pudiera establecer la comunicación.
+Se hicieron ensayos de caja negra, donde no se necesita saber el diseño del firmware. Se aprovechó de los tres leds del nodo para observar como de forma síncrona encendían los leds al transmitir y recibir una trama. Se disponía de los nodos alejados a una distancia larga y en ambientes separados y sin linea de vista, comenzando con una separación de 10m y se iban acercando los nodos hasta observar que los nodos se sincronizaban a nivel de la capa PHY al recibir una trama y los leds destellaban incluso sin linea de vista. La mayor distancia alcanzada fue de 6m en condiciones indoor con linea de vista. Se hicieron ensayos con con inserción de fallas y se comprobó que cuando los nodos estaban rodeados de otros dispositivos conectados a la red wifi (celulares y notebooks) la distancia entre los nodos debía ser menos para que se pudiera establecer la comunicación.
+
+Otro ensayo consistía en monitorear la temperatura ambiente, en contraste de mediciones del nodo con un nodo testigo, se configuraba el umbral con un valor mayor a la temperatura actual y el nodo reportaba la alarma, mientras que el testigo no reportaba estado de alarma.
+
+El banco de medición consistía en una sala con un mesón de 5x3m disponiendo los nodos en linea de vista. El instrumento de medición utilizado fue el Fluke 190 Series ScopeMeter \citep{fluke}.
 
 Para verificar que el circuito es capaz de controlar la carga de la batería, con la alimentación en el puerto USB, se monitoreaba el estado del pin CE del bq24080 y la tensión de la batería. De esta manera se comprobó que la recarga no se habilitaba hasta llegar a un umbral que se iba modificando de acuerdo a la medición actual y observar que el aumento en la tension de la batería indicaba que estaba en estado de recarga. De los cuales se obtuvieron los resultados de la gráfica \ref{fig:carga}. Donde se observan los estados lógicos de los pines del circuito controlador de carga superpuestos la tensión de la batería. Notese que el pin CE (Charge enable) indica con un 0 lógico cuando comienza la carga de la batería mientras que STAT1 y STAT2 indican con un 1 que esta en estado de recarga y se observa que el voltaje va en aumento.
 
-\vspace{10px}
+Para los efectos del ensayo, se simuló la fuente de alimentación de 5V del panel solar con un cargador estándar de celular conectado al puerto USB micro-B del nodo.
+%\vspace{10px}
 \begin{figure}[h!]
 	\centering
     \includegraphics[width=1.2\textwidth]{./Figures/carga.png}
     	\caption{Voltaje y Estados del Circuito Controlador de Carga vs Tiempo en estado de recarga}
 	\label{fig:carga}
 \end{figure}
-
-Otro ensayo consistía en monitorear la temperatura ambiente, en contraste de mediciones del nodo con un nodo testigo, se configuraba el umbral con un valor mayor a la temperatura actual y el nodo reportaba la alarma, mientras que el testigo no reportaba estado de alarma.
-
-\begin{table}[ht]
+%\vspace{10px}
+\begin{figure}[h!]
 	\centering
-	\caption{Asignación de puertos bq24080 - LPC1343}
-	\begin{tabular}{@{} l *3c @{}}    \toprule
-		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
-		\midrule
-		CE &  PIO3\_ 0 & 36 & 9	\\	
-		PG	&  PIO3\_ 1 & 37 & 8\\
-		STAT1 &  PIO1\_ 4 & 40 & 3\\
-		STAT2 &  PIO2\_ 3 & 38 & 4\\
-		\bottomrule
-		\hline
-	\end{tabular}
-	\label{tab:bq}
-\end{table}
+    \includegraphics[width=1.2\textwidth]{./Figures/cargando.jpg}
+    	\caption{Medición de tension de la batería en Modo Panel}
+	\label{fig:curva}
+\end{figure}
+
+
+%\begin{table}[ht]
+%	\centering
+%	\caption{Asignación de puertos bq24080 - LPC1343}
+%	\begin{tabular}{@{} l *3c @{}}    \toprule
+%		\emph{\textbf{Puerto bq24080}} & \emph{\textbf{Puerto LPC1343}} & \emph{\textbf{PIN LPC1343}} & \emph{\textbf{PIN bq24080}}\\
+%		\midrule
+%		CE &  PIO3\_ 0 & 36 & 9	\\	
+%		PG	&  PIO3\_ 1 & 37 & 8\\
+%		STAT1 &  PIO1\_ 4 & 40 & 3\\
+%		STAT2 &  PIO2\_ 3 & 38 & 4\\
+%		\bottomrule
+%		\hline
+%	\end{tabular}
+%	\label{tab:bq}
+%\end{table}
 
 %Por esta razon, la energia que provee el panel solar es ensayada como fuente de voltaje de 12V activa entre las 9 y 17 hs.
 
-%No hay manera de asegurarse que los procedimientos de pruebas son una comparación acertada o representa la realidad, pero estos cumplen con sus características determinísticas.
+%No hay manera de asegurarse que los procedimientos de pruebas son una comparación acertada o representa la realidad, pero estos cumplen con sus características determinísticas
 
-%----------------------------------------------------------------------------------------
-%	SECTION 2
-%----------------------------------------------------------------------------------------
-\section{Medición de consumos}
-\label{sec:Medición}
+Para ensayar el tiempo de vida de un nodo, el mismo fue desconectado de la alimentación y se monitorizaba la tensión con el pasar del tiempo. En la gráfica de la figura \ref{fig:modobat} se observa como llega un momento, donde no es capaz de alimentar al microprocesador y el nodo queda offline, de aqui en adelante, la descarga de la batería es mas lenta.
+
+\vspace{10px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=0.6\textwidth]{./Figures/des.jpg}
+    	\caption{Medición de tensión de batería en modo Batería}
+	\label{fig:curva}
+\end{figure}
+
+\vspace{10px}
+\begin{figure}[h!]
+	\centering
+    \includegraphics[width=1.2\textwidth]{./Figures/descarga.png}
+    	\caption{Voltaje y Estados del Circuito Controlador de Carga vs Tiempo en modo batería}
+	\label{fig:modobat}
+\end{figure}
+
+Para hacer las mediciones se consumo, se discrimino según el estado del circuito, nótese que en estado de recepción el nodo también tiene un consumo significativo.
 
 \begin{table}[ht]
 	\centering
 	\caption{Medición de consumo según estado del circuito}
 	\begin{tabular}{@{} l *1c @{}}    \toprule
-		\emph{\textbf{Estado}} & \emph{\textbf{Consumo}}\\
+		\emph{\textbf{Estado}} & \emph{\textbf{Consumo (mA)}}\\
 		\midrule
-		Rx &  PIO3\\	
-		Tx	&  PIO3\\
-		Sleep (Transceptor) &  PIO1\\
-		Sleep (Controlador de carga) &  PIO2\\
-		Sleep (Host) &  PIO2\\
-		Máximo &  PIO2\\
-		Mínimo &  PIO2\\
+		Rx &  75\\	
+		Tx	&  159\\
 		\bottomrule
 		\hline
 	\end{tabular}
@@ -87,26 +105,5 @@ Otro ensayo consistía en monitorear la temperatura ambiente, en contraste de me
 %nodo
 %Rx 39mA @-104dBm Sensibilidad
 %Tx 162mA @22dBm Pout
-
-
-%----------------------------------------------------------------------------------------
-%	SECTION 4
-%----------------------------------------------------------------------------------------
-\section{Análisis del tiempo de vida}
-\label{sec:vida}
-\vspace{30px}
-\begin{figure}[h!]
-	\centering
-    \includegraphics[width=1.2\textwidth]{./Figures/descarga.png}
-    	\caption{Voltaje y Estados del Circuito Controlador de Carga vs Tiempo en modo batería}
-	\label{fig:curva}
-\end{figure}
-
-%----------------------------------------------------------------------------------------
-%	SECTION 5
-%----------------------------------------------------------------------------------------
-\section{Estado del sistema}
-\label{sec:estado}
-breakpoints
 
 
