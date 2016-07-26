@@ -141,7 +141,9 @@
 			\item Extremadamente bajo consumo de potencia.
 		\end{itemize}
 	\end{itemize}
-
+		\begin{figure}[H]
+			{\includegraphics[width=.3\textwidth]{./imagenes/arquitectura}}
+		\end{figure}	
 %Es util y anda bien
 %Servicio a la bateria, mantenimiento
 %	
@@ -233,7 +235,7 @@
 %-------------------------------------------------%
 \subsection[Herramientas]{Herramientas}
 %-------------------------------------------------%
-\begin{frame}{Nodo Mote LSE-FIUBA} 
+\begin{frame}{Herramientas}{Nodo Mote LSE-FIUBA} 
 
 \begin{minipage}[c]{1.0\linewidth}
 	\begin{minipage}[c]{0.6\linewidth}
@@ -282,37 +284,61 @@
 %-------------------------------------------------%
 \subsection[Hardware]{Hardware}
 %-------------------------------------------------%
-
-%-------------------------------------------------%
-\subsection[Arquitectura]{Arquitectura de Software}
-%-------------------------------------------------%
-\begin{frame}{Arquitectura del estándar}
+\begin{frame}{Hardware}{El Panel Solar} 
 
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.6\linewidth}
+	\begin{minipage}[c]{0.55\linewidth}
+	\begin{tabular}{@{} l *2c @{}}    %\toprule
+		\hline
+		\emph{\textbf{Características}} & \emph{\textbf{Valor}} & \emph{\textbf{Unidad}}\\
+		%\midrule
+		\hline
+		Potencia nominal	& 10 	& Wp	\\	
+		Tensión a PN		& 17.4	& V\\
+		Corriente a PN	& 0.58		& A\\
+		Dimensiones		& 301x352x22 	& mm\\
+		Peso				& 0.58		& Kg	\\
+		%\bottomrule
+		\hline
+	\end{tabular}
+	\end{minipage}
+	\begin{minipage}[c]{0.4\linewidth}
+		\begin{figure}[H]
+			\includegraphics[width=1.1\textwidth]{./imagenes/panel.png}
+			%\caption{Mote LSE}
+		\end{figure}	  	  	
+	\end{minipage}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{Hardware}{Circuito de Extensión Cargador} 
+		\begin{figure}[H]
+			\includegraphics[width=1\textwidth]{./imagenes/circuito.jpg}
+			%\caption{Mote LSE}
+		\end{figure}	
+\end{frame}
+
+\begin{frame}{Hardware}{Diagrama de Conexión} 
+		\begin{figure}[H]
+			\includegraphics[width=0.7\textwidth]{./imagenes/conex.png}
+			%\caption{Mote LSE}
+		\end{figure}	
+\end{frame}
+%-------------------------------------------------%
+\subsection[Arquitectura]{Arquitectura del Software}
+%-------------------------------------------------%
+\begin{frame}{Arquitectura del Software}
+
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.4\linewidth}
 		\begin{itemize}
 			\item MAC Sublayer
-			\begin{itemize}
-				\item Beacon management
-				\item Channel access
-				\item GTSs management
-				\item Frame validation, ACKs
-				\item Asociación y desasociación de dispositivos
-			\end{itemize}
-			\vspace{10px}
-			\item Physical Layer (PHY):
-			\begin{itemize}
-				\item Activación/Desactivación de RF
-				\item ED, LQI, Clear Channel Assessment (CCA)
-				\item Channel selection
-				\item Tx y Rx de paquetes a través del medio físico
-			\end{itemize}
 			\vspace{10px}
 		\end{itemize}	
 	  \end{minipage}
-	  \begin{minipage}[c]{0.35\linewidth}
+	  \begin{minipage}[c]{0.5\linewidth}
 		\begin{figure}[H]
-			{\includegraphics[width=.6\textwidth]{./imagenes/arquitectura}}
+			{\includegraphics[width=1\textwidth]{./imagenes/arq.png}}
 		\end{figure}	  	  	
 	  \end{minipage}
 \end{minipage}
