@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169, handout]{beamer}
+\documentclass[aspectratio=43, handout]{beamer}
 %la opcion hangout es para complilar en modo imprimible
 %\documentclass[hangout]{beamer}
 
@@ -89,15 +89,16 @@
 \\
 \vspace{5px}
 \textbf{Carrera de Especialización en Sistemas Embebidos}\\
-\texttt{Facultad de Ingeniería - Universidad de Buenos Aires}\\
-\vspace{10px}
-\texttt{Esp. Ing. Juan Montilla}\\
+\textbf{Facultad de Ingeniería - Universidad de Buenos Aires}\\
 
 \vspace{10px}
 
 \begin{figure}[H]
 	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
-\end{figure}	  	  	
+\end{figure}	 
+\vspace{10px}
+\texttt{Esp. Ing. Juan Montilla}\\
+ 	  	
 \vspace{5px}
 \tiny 01-08-2016 
 
@@ -108,7 +109,8 @@
 %-------------------------------------------------%
 %-------------------------------------------------%
 
-\begin{frame}{\textbf{Organización de la presentación}}
+\begin{frame}{\textbf{\LARGE{Organización de la presentación}}}
+\fontsize{13pt}{13}\selectfont
   \tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
@@ -125,71 +127,95 @@
 \subsection[Motivación]{Motivación}
 %-------------------------------------------------%
 
-\begin{frame}{Motivación}{Motivación}
+\begin{frame}{\textbf{\LARGE{Motivación}}}
+\fontsize{16pt}{16}\selectfont
 	\begin{itemize}
 		\item Dispositivos con fuente de alimentación autónoma.
-		\vspace{5px}
+		\vspace{10px}
 		\item Se presenta un problema de autonomía/vida útil.
-		\vspace{5px}
-		\item Brindar la posibilidad de detectarlo.
-		\vspace{5px}
-		\item Soluciones:
-		\begin{itemize}
-			\item Módulo fotovoltaico.
-			\item Control de carga.
-			\item Optimizar la vida útil de la batería.
-			\item Extremadamente bajo consumo de potencia.
-		\end{itemize}
+		\vspace{10px}
+		\item Necesidad de detectarlo.
+		\vspace{10px}
+		\item ¿Soluciones?
 	\end{itemize}
-		\begin{figure}[H]
-			{\includegraphics[width=.3\textwidth]{./imagenes/arquitectura}}
-		\end{figure}	
 %Es util y anda bien
-%Servicio a la bateria, mantenimiento
-%	
+%Servicio a la bateria, mantenimiento	
 \end{frame}
 
+\begin{frame}{\textbf{\LARGE{Soluciones}}}
+\fontsize{15pt}{15}\selectfont
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.55\linewidth}
+		\begin{itemize}
+			\item Módulo fotovoltaico.
+					\vspace{10px}
+			\item Control de carga.
+					\vspace{10px}
+			\item Optimizar la vida útil de la batería.
+					\vspace{10px}
+			\item Extremadamente bajo consumo de potencia.
+		\end{itemize}
+		\end{minipage}
+	\begin{minipage}[c]{0.4\linewidth}
+		\begin{itemize}
+			\item IEEE 802.15.4
+		\end{itemize}		
+		\begin{figure}[H]
+			{\includegraphics[width=0.8\textwidth]{./imagenes/arquitectura}}
+		\end{figure}	
+	\end{minipage}
+\end{minipage}
+\end{frame}
 %-------------------------------------------------%
 \subsection[WSN]{¿Qué es WSN?}
 %-------------------------------------------------%
-\begin{frame}{¿Qué es WSN?} 
-\noindent Wireless Sensor Networks: \textbf{Redes de Sensores Inalámbricos}.
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
+\fontsize{14pt}{14}\selectfont
+\noindent Wireless Sensor Networks:\\
+\textbf{Redes de Sensores Inalámbricos}.
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.5\linewidth}
-
-		\begin{itemize}
-			\item Medición inteligente.
-	%	\item Comunicaciones y Control de ferrocarril
-	%	\item Redes de monitoreo de infraestructuras criticas
-			\item Domótica y seguridad.
-			\item Productos electrónicos de consumo.
-			\item Cuidado de la salud.
-			\item Control y monitoreo de vehículos.
-			\item Agricultura.
-			\item Comunicación Militar.
-		\end{itemize}
-
-\end{minipage}
-	\begin{minipage}[c]{0.45\linewidth}
+	\begin{minipage}[c]{0.41\linewidth}
 		\begin{figure}[H]			
 		\includegraphics[width=1.2\textwidth]{./imagenes/WSN.jpg}
 		\end{figure}	  	  	
 	\end{minipage}
+	\begin{minipage}[c]{0.55\linewidth}
+					\vspace{10px}
+		\begin{itemize}
+			\item Medición inteligente.
+			\vspace{5px}
+	%	\item Comunicaciones y Control de ferrocarril
+	%	\item Redes de monitoreo de infraestructuras criticas
+			\item Domótica y seguridad.
+			\vspace{5px}
+			\item Electrónica de consumo.
+			\vspace{5px}
+			\item Cuidado de la salud.
+			\vspace{5px}
+			%\item Control y monitoreo de vehículos.
+			\item Agricultura.
+			\vspace{5px}
+			\item Comunicación Militar.
+			\vspace{5px}
+		\end{itemize}
+\end{minipage}
 \end{minipage}
 \end{frame}
 
-\begin{frame}{¿Qué es WSN?} 
-\noindent Red Distribuida de WSN con interfaz de usuario a través de un sumidero.
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
+\fontsize{15pt}{15}\selectfont
+		\noindent Interfaz de usuario a través de un sumidero
 		\begin{figure}[H]			
-		\includegraphics[width=0.37\textwidth]{./imagenes/RedDistribuida.png}
+		\includegraphics[width=0.45\textwidth]{./imagenes/RedDistribuida.png}
 		\end{figure}	  	  	
 \end{frame}
 %-------------------------------------------------%
 \subsection[Energía]{Implicaciones de Energía}
 %-------------------------------------------------%
-\begin{frame}{Implicaciones de energía} 
+\begin{frame}{\textbf{\LARGE{Implicaciones de energía}}} 
+\fontsize{15pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.7\linewidth}
+	\begin{minipage}[c]{0.55\linewidth}
 		\begin{itemize}
 			\item El modulo fotovoltaico + pocos componentes.
 					\vspace{10px}
@@ -200,7 +226,7 @@
 		\end{itemize}
 
 \end{minipage}
-	\begin{minipage}[c]{0.25\linewidth}
+	\begin{minipage}[c]{0.40\linewidth}
 		\begin{figure}[H]			
 		\includegraphics[width=1.2\textwidth]{./imagenes/ks10t.jpg}
 		\end{figure}	  	  	
@@ -213,40 +239,40 @@
 %-------------------------------------------------%
 %-------------------------------------------------%
 %-------------------------------------------------%
-\subsection[Objetivos]{Descripción del trabajo}
-%-------------------------------------------------%
-\begin{frame}{Objetivos}{Descripción del trabajo}
-% El primer minipage es un marco para las otras dos, que parten la pantalla en dos horizontalmente.
-% Con 0.6\linewidth le indicás que porcentaje del ancho de la página debe tener la minipage
-\noindent Los objetivos del trabajo son los siguientes:
-\begin{itemize}
-%	\item Full-function device (FFD):\\ Capaz de ser PAN coordinator o coordinator. 
-%	\vspace{10px}
-
-	\item Desarrollar un software de supervisión de nodos Mote LSE con extensión de panel solar.
-	\item Implementar el sistema en n nodos desplegados en una red inalámbrica de área personal.
-	\item Gestionar el modo de operación del nodo en función de la tensión que entrega el circuito cargador y la proyección de la batería restante.
-	\item Supervisar la temperatura del entorno del nodo.
-	\item Reportar a un nodo central el estado de salud del nodo.
-	\item Fijar y leer en forma remota las alarmas/parámetros de configuración.
-	 \end{itemize}	
-\end{frame}
+%\subsection[Objetivos]{Descripción del trabajo}
+%%-------------------------------------------------%
+%\begin{frame}{\textbf{\LARGE{Objetivos}}}
+%% El primer minipage es un marco para las otras dos, que parten la pantalla en dos horizontalmente.
+%% Con 0.6\linewidth le indicás que porcentaje del ancho de la página debe tener la minipage
+%\noindent Los objetivos del trabajo son los siguientes:
+%\begin{itemize}
+%%	\item Full-function device (FFD):\\ Capaz de ser PAN coordinator o coordinator. 
+%%	\vspace{10px}
+%
+%	\item Desarrollar un software de supervisión de nodos Mote LSE con extensión de panel solar.
+%	\item Implementar el sistema en n nodos desplegados en una red inalámbrica de área personal.
+%	\item Gestionar el modo de operación del nodo en función de la tensión que entrega el circuito cargador y la proyección de la batería restante.
+%	\item Supervisar la temperatura del entorno del nodo.
+%	\item Reportar a un nodo central el estado de salud del nodo.
+%	\item Fijar y leer en forma remota las alarmas/parámetros de configuración.
+%	 \end{itemize}	
+%\end{frame}
 
 %-------------------------------------------------%
 \subsection[Herramientas]{Herramientas}
 %-------------------------------------------------%
-\begin{frame}{Herramientas}{Nodo Mote LSE-FIUBA} 
+\begin{frame}{\textbf{\LARGE{Herramientas - Nodo Mote LSE}}}
 
 \begin{minipage}[c]{1.0\linewidth}
 	\begin{minipage}[c]{0.6\linewidth}
 \begin{itemize}
-\item Microcontrolador NXP LPC1343.
-   \begin{itemize}
-   \item Procesador ARM Cortex-M3 de 32 bits @72MHz. 
-   \item 32kB de memoria Flash.
-   \item 8kB de memoria SRAM.
-   \end{itemize}
-\item Transceptor TI-2520 + Extensor TI-2591.
+\item Microcontrolador NXP LPC1343.\\
+   %\begin{itemize}
+Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
+32kB de memoria Flash.\\
+8kB de memoria SRAM.\\
+   %\end{itemize}
+\item Transceptor TI-2520\\+ Extensor TI-2591.
 \item Controlador de carga bq24080.
 \item Batería de Li-ion de 3.7V y 900mAh.
 \item Sensores de luz y temperatura.
@@ -270,9 +296,9 @@
 %--------------------------------------------------------------------%
 \subsection[Plan]{Planificación}
 %--------------------------------------------------------------------%
-\begin{frame}[t]{Planificación - AON}
+\begin{frame}[t]{\textbf{\LARGE{Planificación - AON}}}
 		\begin{figure}[H]
-			{\includegraphics[width=.73\textwidth]{./imagenes/AON.PNG}}
+			{\includegraphics[width=1\textwidth]{./imagenes/AON.PNG}}
 		\end{figure}	 
 \end{frame}
 
@@ -284,10 +310,13 @@
 %-------------------------------------------------%
 \subsection[Hardware]{Hardware}
 %-------------------------------------------------%
-\begin{frame}{Hardware}{El Panel Solar} 
-
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.55\linewidth}
+\begin{frame}{\textbf{\LARGE{Hardware - El Panel Solar}}}
+\begin{center}
+			\begin{figure}[H]
+			\includegraphics[width=0.5\textwidth]{./imagenes/panel.png}
+			%\caption{Mote LSE}
+		\end{figure}	
+		
 	\begin{tabular}{@{} l *2c @{}}    %\toprule
 		\hline
 		\emph{\textbf{Características}} & \emph{\textbf{Valor}} & \emph{\textbf{Unidad}}\\
@@ -301,44 +330,53 @@
 		%\bottomrule
 		\hline
 	\end{tabular}
-	\end{minipage}
-	\begin{minipage}[c]{0.4\linewidth}
-		\begin{figure}[H]
-			\includegraphics[width=1.1\textwidth]{./imagenes/panel.png}
-			%\caption{Mote LSE}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\end{center}
 \end{frame}
 
-\begin{frame}{Hardware}{Circuito de Extensión Cargador} 
+\begin{frame}{\textbf{Hardware - Circuito de Extensión Cargador}}
 		\begin{figure}[H]
 			\includegraphics[width=1\textwidth]{./imagenes/circuito.jpg}
 			%\caption{Mote LSE}
 		\end{figure}	
 \end{frame}
 
-\begin{frame}{Hardware}{Diagrama de Conexión} 
+\begin{frame}{\textbf{\LARGE{Hardware - Diagrama de Conexión}}}
 		\begin{figure}[H]
-			\includegraphics[width=0.7\textwidth]{./imagenes/conex.png}
+			\includegraphics[width=0.9\textwidth]{./imagenes/conex.png}
 			%\caption{Mote LSE}
 		\end{figure}	
 \end{frame}
 %-------------------------------------------------%
 \subsection[Arquitectura]{Arquitectura del Software}
 %-------------------------------------------------%
-\begin{frame}{Arquitectura del Software}
+\begin{frame}{\textbf{\LARGE{Arquitectura del Software}}}
 
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.4\linewidth}
+	\begin{minipage}[c]{0.5\linewidth}
 		\begin{itemize}
-			\item MAC Sublayer
+			\vspace{20px}
+			\item APPS (Applications)
+			\begin{itemize}
+			\item cc2520Task
+			\item monitoreoWsn
 			\vspace{10px}
+			\end{itemize}
+			\item HAL (Hardware Abstraction Layer)
+			\begin{itemize}
+			\item Board Drivers
+			\item 802.15.4
+			\vspace{10px}
+			\end{itemize}						
+			\item Hardware
+			\begin{itemize}
+			\item Biblioteca de Cortex ARM: CMSISv2p00 LPC13xx
+			\vspace{10px}
+			\end{itemize}
 		\end{itemize}	
 	  \end{minipage}
-	  \begin{minipage}[c]{0.5\linewidth}
+	  \begin{minipage}[c]{0.4\linewidth}
 		\begin{figure}[H]
-			{\includegraphics[width=1\textwidth]{./imagenes/arq.png}}
+			{\includegraphics[width=1.2\textwidth]{./imagenes/arq.png}}
 		\end{figure}	  	  	
 	  \end{minipage}
 \end{minipage}
@@ -348,58 +386,96 @@
 %-------------------------------------------------%
 \subsection[Firmware]{Firmware}
 %-------------------------------------------------%
-\begin{frame}{Topología de la Red}{Estrella o punto a punto}
 
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.45\linewidth}
-		\begin{itemize}
-			\item Estrella (Star)
-			\begin{itemize}
-				\item PAN coordinator.
-				\item Comunicaciones centralizadas.
-				\item Ej: Automatización del hogar, Periféricos de PC, Juegos,...
-					\end{itemize}
-			\vspace{10px}
-			\item Punto a punto (Peer-to-Peer)
-			\begin{itemize}
-				\item PAN coorditator.
-				\item Permite redes más complejas.
-				\item Multi-Hop routing.
-				\item Ej: Control industrial,  WSNs, Tracking de inventario,...
-			\end{itemize}
-	  	\end{itemize}	
-	\end{minipage}
-	\hspace{-20px}
-	\begin{minipage}[c]{0.7\linewidth}
-		\begin{figure}[H]
-			{\includegraphics[width=.7\textwidth]{./imagenes/Topology}}
-		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
+\begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\begin{figure}
+	\centering
+    \includegraphics[width=1\textwidth]{./imagenes/data.jpg}
+    	\caption{Esquema del formato de la trama de Datos IEEE 802.15.4}
+\end{figure}
 \end{frame}
 
-\begin{frame}{Topología Punto a punto}{Árbol de Cluster}
-\begin{minipage}[c]{1.0\linewidth}
-\begin{minipage}[c]{0.45\linewidth}
-		\begin{itemize}
-			\item Mayoría de FFDs.
-			\vspace{10px}
-			\item 1 \textit{overall PAN coordinator}.
-			\vspace{10px}
-			\item RFDs al final de una rama.
-			\vspace{10px}
-			\item Aumenta el área de covertura.
-			\vspace{10px}
-			\item Aumenta la latencia de la red.
-		\end{itemize}	
-	\end{minipage}
-	\hspace{-15px}
-	\begin{minipage}[c]{0.65\linewidth}
+\begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\begin{table}[ht]
+	\centering
+	\caption{Descripción de la estructura del payload (Disp$\rightarrow$Coord)}
+	\begin{tabular}{@{} l *6c @{}}    %\toprule
+		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3-4}} & \emph{\textbf{5}} & \emph{\textbf{6-127}}\\
+		\hline
+		Significado & Edo. de & Edo. de & Temp. & Voltaje & Ciclos & Datos\\
+		 & Alarma & Operación & Amb. & Bat. & de Carga & \\
+		\hline
+	\end{tabular}
+	\label{tab:dispcoor}
+\end{table}
+\begin{table}[ht]
+	\centering
+	\caption{Descripción de la estructura del payload (Coord$\rightarrow$Disp)}
+	\begin{tabular}{@{} l *6c @{}}    %\toprule
+		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3}} & \emph{\textbf{4}} & \emph{\textbf{5-127}}\\
+		\hline
+		Significado & Set & Ciclo & Límite & Límite & Límite & Datos\\
+		 & Alarma & de Trabajo & Voltaje & Temp. Alta & Temp. Baja & \\
+		\hline
+	\end{tabular}
+	\label{tab:coordisp}
+\end{table}
+\end{frame}
+
+\begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\begin{table}[ht]
+	\centering
+	\caption{Descripción del byte de Estado de Operación}
+	\begin{tabular}{@{} l *1c @{}}    %\toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\hline
+		00000000 &  Modo Batería\\
+		11111111 &  Modo Panel\\
+		Otros & Reservado\\
+		\hline
+	\end{tabular}
+	\label{tab:edoope}
+\end{table}
+
+\fontsize{13pt}{13}\selectfont
+\begin{table}[ht]
+	\centering
+	\caption{Descripción del byte de Estado de Alarma}
+	\begin{tabular}{@{} l *1c @{}}    %\toprule
+		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
+		\hline
+		00000000 & TempAmbaja\\	
+		00000001 & TempAmbalta\\
+		00000010 & ProyBatrest\\
+		00000001 & TensionBat\\
+		Otros & Reservado\\
+		\hline
+	\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\noindent Control de carga de la batería
+\begin{table}[ht]
+	\centering
+	\caption{Indicador de estado de los pines de estado del \textit{bq2480}}
+	\begin{tabular}{@{} l *3c @{}}    %\toprule
+		\emph{\textbf{Estado}} & \emph{\textbf{STAT1}} & \emph{\textbf{STAT2}}\\
+		\hline
+		Precarga en progreso &  ON & ON \\	
+		%Carga rápida en progreso	&  ON & OFF \\
+		Carga completa &  OFF & ON \\
+		Modo sleep &  OFF & OFF \\
+		\hline
+	\end{tabular}
+	\label{tab:STAT}
+\end{table}
+\end{frame}
+
+\begin{frame}{\textbf{\LARGE{Topología de la Red}}}
 		\begin{figure}[H]
-			{\includegraphics[width=.8\textwidth]{./imagenes/cluster}}
+			{\includegraphics[width=.9\textwidth]{./imagenes/Topology}}
 		\end{figure}	  	  	
-	\end{minipage}
-\end{minipage}
 \end{frame}
 
 %-------------------------------------------------%
@@ -462,16 +538,18 @@
 \textbf{Carrera de Especialización en Sistemas Embebidos}\\
 \textbf{Facultad de Ingeniería - Universidad de Buenos Aires}\\
 \vspace{10px}
-\texttt{Esp. Ing. Juan V. Montilla C.}\\
+\texttt{Gracias por su atención}\\
 
 \vspace{10px}
 
 \begin{figure}[H]
 	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
 \end{figure}	
+\vspace{10px}
+\texttt{Esp. Ing. Juan V. Montilla C.}\\
 
 \vspace{5px}
-\tiny versión: 01-08-2016 
+\tiny 01-08-2016 
  	  	
 \end{center}
 \end{frame}
