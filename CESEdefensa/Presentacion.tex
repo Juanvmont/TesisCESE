@@ -28,7 +28,7 @@
 
 %\title[WSN]{Sistema de Monitoreo de Salud de Nodos WSN Alimentados a Energía Solar}
 \subtitle{WSN}
-\author[]{Esp. Ing. Juan Montilla}
+\author[]{Esp. Ing. Juan V. Montilla C.}
 \institute[CESE-FIUBA]{Carrera de Especialización en Sistemas Embebidos - Facultad de Ingeniería - Universidad de Buenos Aires}
 \date{}
 
@@ -97,7 +97,7 @@
 	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
 \end{figure}	 
 \vspace{10px}
-\texttt{Esp. Ing. Juan Montilla}\\
+\texttt{Esp. Ing. Juan V. Montilla C.}\\
  	  	
 \vspace{5px}
 \tiny 01-08-2016 
@@ -316,7 +316,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 			\includegraphics[width=0.5\textwidth]{./imagenes/panel.png}
 			%\caption{Mote LSE}
 		\end{figure}	
-		
+	\vspace{5px}	
 	\begin{tabular}{@{} l *2c @{}}    %\toprule
 		\hline
 		\emph{\textbf{Características}} & \emph{\textbf{Valor}} & \emph{\textbf{Unidad}}\\
@@ -396,6 +396,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\fontsize{8pt}{8}\selectfont
 \begin{table}[ht]
 	\centering
 	\caption{Descripción de la estructura del payload (Disp$\rightarrow$Coord)}
@@ -480,17 +481,58 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 
 %-------------------------------------------------%
 %-------------------------------------------------%
-\section{Ensayos y Resultados}
+\section{Ensayos}
 %-------------------------------------------------%
 %-------------------------------------------------%
+\begin{frame}{\textbf{\LARGE{Ensayos}}}
+\begin{center}
+		\begin{figure}[H]
+			{\includegraphics[width=.9\textwidth]{./imagenes/carga.png}}
+		\end{figure}	 
+		Voltaje y Estados del Circuito Controlador de Carga\\
+		vs Tiempo en estado de recarga
+\end{center}	  	
+\end{frame}
 
+\begin{frame}{\textbf{\LARGE{Ensayos}}}
+\begin{center}
+		\begin{figure}[H]
+			{\includegraphics[width=.9\textwidth]{./imagenes/descarga.png}}
+		\end{figure}	  
+		Voltaje y Estados del Circuito Controlador de Carga\\
+		vs Tiempo en modo batería
+\end{center}	 	  	
+\end{frame}
+
+\begin{frame}{\textbf{\LARGE{Demostración}}}
+\begin{center}
+		\begin{figure}[H]
+			{\includegraphics[width=.9\textwidth]{./imagenes/debu.jpg}}
+		\end{figure}	  
+\end{center}	 	  	
+\end{frame}
 
 %-------------------------------------------------%
 %-------------------------------------------------%
 \section{Trabajos Futuros}
 %-------------------------------------------------%
 %-------------------------------------------------%
-
+\begin{frame}{\textbf{\LARGE{Trabajos Futuros}}}
+\fontsize{15pt}{15}\selectfont
+	\begin{itemize}
+			\item Implementación en otras plataformas (funcionalidades vs consumos).
+			\begin{itemize}
+			\fontsize{14pt}{14}\selectfont
+			\item Temperatura de la batería.
+			\item Corriente de carga de la batería.
+			\item Consumo de corriente del circuito.
+			\end{itemize}
+			\vspace{10px}
+			\item Implementación con otros algoritmos.
+			\vspace{10px}
+			\item Soporte a las plataformas disponibles del Proyecto CIAA.
+	\end{itemize}	  	
+\end{frame}
 
 %%-------------------------------------------------%
 %%-------------------------------------------------%
