@@ -88,6 +88,7 @@
 \hfill\hfill
 \\
 \vspace{5px}
+\textbf{Trabajo Final}\\
 \textbf{Carrera de Especialización en Sistemas Embebidos}\\
 \textbf{Facultad de Ingeniería - Universidad de Buenos Aires}\\
 
@@ -100,7 +101,7 @@
 \texttt{Esp. Ing. Juan V. Montilla C.}\\
  	  	
 \vspace{5px}
-\tiny 01-08-2016 
+\tiny Agosto 2016 
 
 \end{center}
 \end{frame}
@@ -174,7 +175,7 @@
 \noindent Wireless Sensor Networks:\\
 \textbf{Redes de Sensores Inalámbricos}.
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.41\linewidth}
+	\begin{minipage}[c]{0.4\linewidth}
 		\begin{figure}[H]			
 		\includegraphics[width=1.2\textwidth]{./imagenes/WSN.jpg}
 		\end{figure}	  	  	
@@ -202,11 +203,11 @@
 \end{minipage}
 \end{frame}
 
-\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}{\LARGE{Interfaz de usuario a través de un sumidero}}
 \fontsize{15pt}{15}\selectfont
-		\noindent Interfaz de usuario a través de un sumidero
+		%\noindent Interfaz de usuario a través de un sumidero
 		\begin{figure}[H]			
-		\includegraphics[width=0.45\textwidth]{./imagenes/RedDistribuida.png}
+		\includegraphics[width=0.55\textwidth]{./imagenes/RedDistribuida.png}
 		\end{figure}	  	  	
 \end{frame}
 %-------------------------------------------------%
@@ -217,7 +218,7 @@
 \begin{minipage}[c]{1.0\linewidth}
 	\begin{minipage}[c]{0.55\linewidth}
 		\begin{itemize}
-			\item El modulo fotovoltaico + pocos componentes.
+			\item El modulo fotovoltaico mas pocos componentes.
 					\vspace{10px}
 			\item Generadores Eléctricos Solares Autónomos (GESA).
 					\vspace{10px}
@@ -282,12 +283,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 	\begin{minipage}[c]{0.35\linewidth}
 		\begin{figure}[H]
 			\vspace{35px}
-			\includegraphics[width=1.2\textwidth]{./imagenes/mote.jpg}
-			\\
-			\vspace{10px}
-			\includegraphics[width=1.2\textwidth]{./imagenes/motePCB}
-			\label{Mote LSE}
-			%\caption{Mote LSE}
+			\includegraphics[width=0.8\textwidth]{./imagenes/mote(1).jpg}
 		\end{figure}	  	  	
 	\end{minipage}
 \end{minipage}
@@ -298,7 +294,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 %--------------------------------------------------------------------%
 \begin{frame}[t]{\textbf{\LARGE{Planificación - AON}}}
 		\begin{figure}[H]
-			{\includegraphics[width=1\textwidth]{./imagenes/AON.PNG}}
+			{\includegraphics[width=1\textwidth]{./imagenes/Aon.PNG}}
 		\end{figure}	 
 \end{frame}
 
@@ -316,7 +312,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 			\includegraphics[width=0.5\textwidth]{./imagenes/panel.png}
 			%\caption{Mote LSE}
 		\end{figure}	
-	\vspace{5px}	
+	\vspace{10px}	
 	\begin{tabular}{@{} l *2c @{}}    %\toprule
 		\hline
 		\emph{\textbf{Características}} & \emph{\textbf{Valor}} & \emph{\textbf{Unidad}}\\
@@ -333,12 +329,6 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \end{center}
 \end{frame}
 
-\begin{frame}{\textbf{Hardware - Circuito de Extensión Cargador}}
-		\begin{figure}[H]
-			\includegraphics[width=1\textwidth]{./imagenes/circuito.jpg}
-			%\caption{Mote LSE}
-		\end{figure}	
-\end{frame}
 
 \begin{frame}{\textbf{\LARGE{Hardware - Diagrama de Conexión}}}
 		\begin{figure}[H]
@@ -347,14 +337,14 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 		\end{figure}	
 \end{frame}
 %-------------------------------------------------%
-\subsection[Arquitectura]{Arquitectura del Software}
+\subsection[Arquitectura]{Arquitectura del Firmware}
 %-------------------------------------------------%
-\begin{frame}{\textbf{\LARGE{Arquitectura del Software}}}
-
+\begin{frame}{\textbf{\LARGE{Arquitectura del Firmware}}}
+\fontsize{14pt}{14}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.5\linewidth}
+	\begin{minipage}[c]{0.4\linewidth}
 		\begin{itemize}
-			\vspace{20px}
+			%\vspace{20px}
 			\item APPS (Applications)
 			\begin{itemize}
 			\item cc2520Task
@@ -370,13 +360,13 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 			\item Hardware
 			\begin{itemize}
 			\item Biblioteca de Cortex ARM: CMSISv2p00 LPC13xx
-			\vspace{10px}
+			%\vspace{10px}
 			\end{itemize}
 		\end{itemize}	
 	  \end{minipage}
 	  \begin{minipage}[c]{0.4\linewidth}
 		\begin{figure}[H]
-			{\includegraphics[width=1.2\textwidth]{./imagenes/arq.png}}
+			{\includegraphics[width=1.5\textwidth]{./imagenes/arqcolor.PNG}}
 		\end{figure}	  	  	
 	  \end{minipage}
 \end{minipage}
@@ -391,16 +381,21 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \begin{figure}
 	\centering
     \includegraphics[width=1\textwidth]{./imagenes/data.jpg}
-    	\caption{Esquema del formato de la trama de Datos IEEE 802.15.4}
+    	\caption{Formato de la trama de Datos IEEE 802.15.4}
 \end{figure}
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
-\fontsize{8pt}{8}\selectfont
+\fontsize{15pt}{15}\selectfont
+	\centering
+	\noindent Estructura del payload (Disp$\rightarrow$Coord)
+	\vspace{15px}
 \begin{table}[ht]
 	\centering
-	\caption{Descripción de la estructura del payload (Disp$\rightarrow$Coord)}
+	\fontsize{8pt}{8}\selectfont
+
 	\begin{tabular}{@{} l *6c @{}}    %\toprule
+	\hline
 		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3-4}} & \emph{\textbf{5}} & \emph{\textbf{6-127}}\\
 		\hline
 		Significado & Edo. de & Edo. de & Temp. & Voltaje & Ciclos & Datos\\
@@ -409,10 +404,14 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 	\end{tabular}
 	\label{tab:dispcoor}
 \end{table}
+		\vspace{20px}
+	\noindent Estructura del payload (Coord$\rightarrow$Disp)
 \begin{table}[ht]
 	\centering
-	\caption{Descripción de la estructura del payload (Coord$\rightarrow$Disp)}
-	\begin{tabular}{@{} l *6c @{}}    %\toprule
+	\fontsize{8pt}{8}\selectfont
+		\vspace{15px}
+	\begin{tabular}{@{} l *6c @{}}    %\toprule	
+	\hline
 		\emph{\textbf{Byte}} & \emph{\textbf{0}} & \emph{\textbf{1}} & \emph{\textbf{2}} & \emph{\textbf{3}} & \emph{\textbf{4}} & \emph{\textbf{5-127}}\\
 		\hline
 		Significado & Set & Ciclo & Límite & Límite & Límite & Datos\\
@@ -424,10 +423,14 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+	\fontsize{15pt}{15}\selectfont
+		\centering
+	\noindent Byte de Estado de Operación
 \begin{table}[ht]
 	\centering
-	\caption{Descripción del byte de Estado de Operación}
+	\fontsize{13pt}{13}\selectfont
 	\begin{tabular}{@{} l *1c @{}}    %\toprule
+	\hline
 		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
 		\hline
 		00000000 &  Modo Batería\\
@@ -438,17 +441,19 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 	\label{tab:edoope}
 \end{table}
 
-\fontsize{13pt}{13}\selectfont
+\noindent Byte de Estado de Alarma
+%\fontsize{13pt}{13}\selectfont
 \begin{table}[ht]
 	\centering
-	\caption{Descripción del byte de Estado de Alarma}
+	\fontsize{13pt}{13}\selectfont
 	\begin{tabular}{@{} l *1c @{}}    %\toprule
+	\hline
 		\emph{\textbf{Valor}} & \emph{\textbf{Descripción}}\\
 		\hline
 		00000000 & TempAmbaja\\	
 		00000001 & TempAmbalta\\
 		00000010 & ProyBatrest\\
-		00000001 & TensionBat\\
+		00000011 & TensionBat\\
 		Otros & Reservado\\
 		\hline
 	\end{tabular}
@@ -456,11 +461,16 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
+\fontsize{16pt}{16}\selectfont
+	\centering
 \noindent Control de carga de la batería
+\vspace{15px}
 \begin{table}[ht]
 	\centering
-	\caption{Indicador de estado de los pines de estado del \textit{bq2480}}
+	\noindent Pines de estado del \textit{bq2480}
+	\vspace{10px}
 	\begin{tabular}{@{} l *3c @{}}    %\toprule
+		\hline		
 		\emph{\textbf{Estado}} & \emph{\textbf{STAT1}} & \emph{\textbf{STAT2}}\\
 		\hline
 		Precarga en progreso &  ON & ON \\	
@@ -475,7 +485,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 
 \begin{frame}{\textbf{\LARGE{Topología de la Red}}}
 		\begin{figure}[H]
-			{\includegraphics[width=.9\textwidth]{./imagenes/Topology}}
+			{\includegraphics[width=.9\textwidth]{./imagenes/topologia.jpg}}
 		\end{figure}	  	  	
 \end{frame}
 
@@ -487,8 +497,9 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \begin{frame}{\textbf{\LARGE{Ensayos}}}
 \begin{center}
 		\begin{figure}[H]
-			{\includegraphics[width=.9\textwidth]{./imagenes/carga.png}}
-		\end{figure}	 
+			{\includegraphics[width=1\textwidth]{./imagenes/cargas.png}}
+		\end{figure}	
+		\vspace{5px} 
 		Voltaje y Estados del Circuito Controlador de Carga\\
 		vs Tiempo en estado de recarga
 \end{center}	  	
@@ -497,8 +508,9 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \begin{frame}{\textbf{\LARGE{Ensayos}}}
 \begin{center}
 		\begin{figure}[H]
-			{\includegraphics[width=.9\textwidth]{./imagenes/descarga.png}}
-		\end{figure}	  
+			{\includegraphics[width=0.9\textwidth]{./imagenes/descargas.PNG}}
+		\end{figure}	 
+		\vspace{10px} 
 		Voltaje y Estados del Circuito Controlador de Carga\\
 		vs Tiempo en modo batería
 \end{center}	 	  	
@@ -577,10 +589,11 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \hfill\hfill
 \\
 \vspace{5px}
+\textbf{Trabajo Final}\\
 \textbf{Carrera de Especialización en Sistemas Embebidos}\\
 \textbf{Facultad de Ingeniería - Universidad de Buenos Aires}\\
 \vspace{10px}
-\texttt{Gracias por su atención}\\
+\texttt{¿Preguntas?}\\
 
 \vspace{10px}
 
@@ -591,7 +604,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \texttt{Esp. Ing. Juan V. Montilla C.}\\
 
 \vspace{5px}
-\tiny 01-08-2016 
+\tiny Agosto 2016 
  	  	
 \end{center}
 \end{frame}
