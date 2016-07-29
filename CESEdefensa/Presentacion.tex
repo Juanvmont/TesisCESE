@@ -17,6 +17,7 @@
 \usepackage{caption}
 \captionsetup[figure]{labelformat=empty}
 
+\setbeamertemplate{footline}[frame number]
 %\usetikzlibrary{shapes,arrows}
 \setbeamerfont{author}{size=\large}
 \setbeamerfont{institute}{size=\normalsize\bfseries}
@@ -180,15 +181,14 @@
 		\includegraphics[width=1.2\textwidth]{./imagenes/WSN.jpg}
 		\end{figure}	  	  	
 	\end{minipage}
-	\begin{minipage}[c]{0.57\linewidth}
-					\vspace{10px}
+	\begin{minipage}[c]{0.58\linewidth}
+			\vspace{20px}
 		\begin{itemize}
-			\vspace{5px}
 			\item Medición inteligente.
 			\vspace{5px}
-	%	\item Comunicaciones y Control de ferrocarril
-	%	\item Redes de monitoreo de infraestructuras criticas
 			\item Domótica y seguridad.
+			\vspace{5px}
+			\item Juguetes interactivos.
 			\vspace{5px}
 			\item Electrónica de consumo.
 			\vspace{5px}
@@ -332,7 +332,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 
 \begin{frame}{\textbf{\LARGE{Hardware - Diagrama de Conexión}}}
 		\begin{figure}[H]
-			\includegraphics[width=0.9\textwidth]{./imagenes/conex.png}
+			\includegraphics[width=1\textwidth]{./imagenes/conex.png}
 			%\caption{Mote LSE}
 		\end{figure}	
 \end{frame}
@@ -461,10 +461,10 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
-\fontsize{14pt}{14}\selectfont
+\fontsize{15pt}{15}\selectfont
 	\centering
 \noindent Control de carga de la batería
-\vspace{15px}
+\vspace{14px}
 \begin{table}[ht]
 	\centering
 	\noindent Pines de estado del \textit{bq2480}
