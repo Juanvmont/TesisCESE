@@ -124,6 +124,58 @@
 \section{Introducción General}
 %-------------------------------------------------%
 %-------------------------------------------------%
+%-------------------------------------------------%
+\subsection[WSN]{¿Qué es WSN?}
+%-------------------------------------------------%
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
+\fontsize{14pt}{14}\selectfont
+\noindent Wireless Sensor Networks:\\
+\textbf{Redes de Sensores Inalámbricos}.
+\begin{minipage}[c]{1.0\linewidth}
+	\begin{minipage}[c]{0.4\linewidth}
+		\begin{figure}[H]			
+		\includegraphics[width=1.2\textwidth]{./imagenes/WSN.jpg}
+		\end{figure}	  	  	
+	\end{minipage}
+	\begin{minipage}[c]{0.58\linewidth}
+			\vspace{20px}
+		\begin{itemize}
+			\item Medición inteligente.
+			\vspace{5px}
+			\item Domótica y seguridad.
+			\vspace{5px}
+			\item Juguetes interactivos.
+			\vspace{5px}
+			\item Electrónica de consumo.
+			\vspace{5px}
+			\item Cuidado de la salud.
+			\vspace{5px}
+			\item Comunicación Militar.
+			\vspace{5px}
+			\item Agricultura.
+			\vspace{5px}
+		\end{itemize}
+\end{minipage}
+\end{minipage}
+\end{frame}
+
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
+\fontsize{15pt}{15}\selectfont
+		\noindent Ejemplo de sensado en agricultura (temperatura)
+		\begin{figure}[H]			
+		\includegraphics[width=1\textwidth]{./imagenes/plantaciones-de-citricos-1.jpg}
+		\end{figure}	  	  	
+\end{frame}
+
+
+
+\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}{\LARGE{Interfaz de usuario a través de un sumidero}}
+\fontsize{15pt}{15}\selectfont
+		%\noindent Interfaz de usuario a través de un sumidero
+		\begin{figure}[H]			
+		\includegraphics[width=0.55\textwidth]{./imagenes/RedDistribuida.png}
+		\end{figure}	  	  	
+\end{frame}
 
 %-------------------------------------------------%
 \subsection[Motivación]{Motivación}
@@ -168,55 +220,14 @@
 	\end{minipage}
 \end{minipage}
 \end{frame}
-%-------------------------------------------------%
-\subsection[WSN]{¿Qué es WSN?}
-%-------------------------------------------------%
-\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}
-\fontsize{14pt}{14}\selectfont
-\noindent Wireless Sensor Networks:\\
-\textbf{Redes de Sensores Inalámbricos}.
-\begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.4\linewidth}
-		\begin{figure}[H]			
-		\includegraphics[width=1.2\textwidth]{./imagenes/WSN.jpg}
-		\end{figure}	  	  	
-	\end{minipage}
-	\begin{minipage}[c]{0.58\linewidth}
-			\vspace{20px}
-		\begin{itemize}
-			\item Medición inteligente.
-			\vspace{5px}
-			\item Domótica y seguridad.
-			\vspace{5px}
-			\item Juguetes interactivos.
-			\vspace{5px}
-			\item Electrónica de consumo.
-			\vspace{5px}
-			\item Cuidado de la salud.
-			\vspace{5px}
-			\item Agricultura.
-			\vspace{5px}
-			\item Comunicación Militar.
-			\vspace{5px}
-		\end{itemize}
-\end{minipage}
-\end{minipage}
-\end{frame}
 
-\begin{frame}{\textbf{\LARGE{¿Qué es WSN?}}}{\LARGE{Interfaz de usuario a través de un sumidero}}
-\fontsize{15pt}{15}\selectfont
-		%\noindent Interfaz de usuario a través de un sumidero
-		\begin{figure}[H]			
-		\includegraphics[width=0.55\textwidth]{./imagenes/RedDistribuida.png}
-		\end{figure}	  	  	
-\end{frame}
 %-------------------------------------------------%
 \subsection[Energía]{Implicaciones de Energía}
 %-------------------------------------------------%
 \begin{frame}{\textbf{\LARGE{Implicaciones de energía}}} 
 \fontsize{15pt}{15}\selectfont
 \begin{minipage}[c]{1.0\linewidth}
-	\begin{minipage}[c]{0.55\linewidth}
+	\begin{minipage}[c]{0.57\linewidth}
 		\begin{itemize}
 			\item El modulo fotovoltaico y pocos componentes.
 					\vspace{10px}
@@ -224,6 +235,8 @@
 					\vspace{10px}
 			\item Acceso reducido\\a red eléctrica.
 					\vspace{10px}
+			\item Tendencia a la baja (\textdollar).
+			\vspace{10px}
 		\end{itemize}
 
 \end{minipage}
@@ -347,14 +360,14 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 			%\vspace{20px}
 			\item APPS (Applications)
 			\begin{itemize}
+			\item monitoreoWsn			
 			\item cc2520Task
-			\item monitoreoWsn
 			\vspace{10px}
 			\end{itemize}
 			\item HAL (Hardware Abstraction Layer)
 			\begin{itemize}
+			\item 802.15.4			
 			\item Board Drivers
-			\item 802.15.4
 			\vspace{10px}
 			\end{itemize}						
 			\item Hardware
@@ -376,13 +389,20 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 %-------------------------------------------------%
 \subsection[Firmware]{Firmware}
 %-------------------------------------------------%
+\begin{frame}{\textbf{\LARGE{Topología de la Red}}}
+		\begin{figure}[H]
+			{\includegraphics[width=1\textwidth]{./imagenes/topologia.jpg}}
+		\end{figure}	  	  	
+\end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
 \begin{figure}
 	\centering
-    \includegraphics[width=1\textwidth]{./imagenes/data.jpg}
-    	\caption{Formato de la trama de Datos IEEE 802.15.4}
+    \includegraphics[width=1\textwidth]{./imagenes/data.jpg}    	
+    %	\caption{Formato de la trama de Datos IEEE 802.15.4}
 \end{figure}
+	\centering
+	\noindent \LARGE{Formato de trama de Datos IEEE 802.15.4}
 \end{frame}
 
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
@@ -463,30 +483,24 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 \begin{frame}{\textbf{\LARGE{Descripción Funcional}}}
 \fontsize{15pt}{15}\selectfont
 	\centering
-\noindent Control de carga de la batería
-\vspace{14px}
+\noindent Control de carga de la batería\\
+\vspace{20px}
 \begin{table}[ht]
 	\centering
-	\noindent Pines de estado del \textit{bq2480}
-	\vspace{10px}
+		\noindent Pines de estado del \textit{bq2480}
+	\vspace{5px}
 	\begin{tabular}{@{} l *3c @{}}    %\toprule
 		\hline		
 		\emph{\textbf{Estado}} & \emph{\textbf{STAT1}} & \emph{\textbf{STAT2}}\\
 		\hline
-		Precarga en progreso &  ON & ON \\	
+		Precarga en progreso &  1 & 1 \\	
 		%Carga rápida en progreso	&  ON & OFF \\
-		Carga completa &  OFF & ON \\
-		Modo sleep &  OFF & OFF \\
+		Carga completa &  0 & 1 \\
+		Modo sleep &  0 & 0 \\
 		\hline
 	\end{tabular}
 	\label{tab:STAT}
 \end{table}
-\end{frame}
-
-\begin{frame}{\textbf{\LARGE{Topología de la Red}}}
-		\begin{figure}[H]
-			{\includegraphics[width=.9\textwidth]{./imagenes/topologia.jpg}}
-		\end{figure}	  	  	
 \end{frame}
 
 %-------------------------------------------------%
@@ -522,6 +536,22 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 			{\includegraphics[width=.9\textwidth]{./imagenes/debu.jpg}}
 		\end{figure}	  
 \end{center}	 	  	
+\end{frame}
+
+%-------------------------------------------------%
+%-------------------------------------------------%
+\section{Conclusiones}
+%-------------------------------------------------%
+%-------------------------------------------------%
+\begin{frame}{\textbf{\LARGE{Conclusiones}}}
+\fontsize{15pt}{15}\selectfont
+\begin{itemize}
+			\item Es posible agregar un circuito de extensión de carga al nodo \textit{Mote LSE} a partir de un módulo fotovoltaico.
+					\vspace{10px}
+			\item La implementación del control de carga permite optimizar la vida útil de la batería/nodo.
+					\vspace{10px}
+			\item La plataforma y el protocolo de comunicación permite desarrollar aplicaciones de baja complejidad y consumo de potencia y conocer el estado de salud/batería del nodo.
+		\end{itemize}	  	
 \end{frame}
 
 %-------------------------------------------------%
@@ -593,7 +623,7 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
 %\textbf{Carrera de Especialización en Sistemas Embebidos}\\
 %\textbf{Facultad de Ingeniería - Universidad de Buenos Aires}\\
 \vspace{10px}
-\texttt{\LARGE{¿Preguntas?}}\\
+\textbf{\LARGE{¿Preguntas?}}\\
 
 \vspace{10px}
 
@@ -608,6 +638,35 @@ Procesador ARM Cortex-M3 de 32 bits @72MHz.\\
  	  	
 \end{center}
 \end{frame}
+
+\begin{frame}[plain,noframenumbering]
+\begin{center}
+%\vspace{5px}
+\hfill
+    \begin{beamercolorbox}[center,dp=3ex,ht=10.25ex, wd=1\linewidth]{bgcolor}
+        \Large\textbf{MUCHAS GRACIAS...}\\
+    \end{beamercolorbox}
+\hfill\hfill
+\\
+\vspace{5px}
+
+\vspace{10px}
+
+
+\vspace{10px}
+
+\begin{figure}[H]
+	\includegraphics[width=.3\textwidth]{./imagenes/red.jpg}
+\end{figure}	
+\vspace{10px}
+\texttt{Esp. Ing. Juan V. Montilla C.}\\
+
+\vspace{5px}
+\tiny Agosto 2016 
+ 	  	
+\end{center}
+\end{frame}
+
 \endgroup
 
 \end{document}
